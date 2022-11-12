@@ -8,6 +8,7 @@ class NGUOIDUNG
 	private $phone_number;
 	private $address;
 	private $images;
+	private $status;
 	/**
 	 * Get the value of id
 	 */
@@ -148,15 +149,36 @@ class NGUOIDUNG
 		return $this;
 	}
 
+
+	/**
+	 * Get the value of status
+	 */
+	public function getStatus()
+	{
+		return $this->status;
+	}
+
+	/**
+	 * Set the value of status
+	 *
+	 * @return  self
+	 */
+	public function setStatus($status)
+	{
+		$this->status = $status;
+
+		return $this;
+	}
+
 	// authentication
-	public function kiemtranguoidunghople($email, $matkhau)
+	public function checkUser($email, $password)
 	{
 		$db = DATABASE::connect();
 		try {
-			$sql = "SELECT * FROM nguoidung WHERE email=:email AND matkhau=:matkhau AND trangthai=1";
+			$sql = "SELECT * FROM user WHERE email=:email AND password=:password AND status=1";
 			$cmd = $db->prepare($sql);
 			$cmd->bindValue(":email", $email);
-			$cmd->bindValue(":matkhau", md5($matkhau));
+			$cmd->bindValue(":password", md5($password));
 			$cmd->execute();
 			$valid = ($cmd->rowCount() == 1);
 			$cmd->closeCursor();
