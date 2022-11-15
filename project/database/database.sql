@@ -140,7 +140,8 @@ CREATE TABLE `cart_item` (
   `id` int(11) NOT NULL,
   `cart_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
-  `quantity` int not null
+  `quantity` int not null, 
+  `is_paid` bit default 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -182,7 +183,7 @@ CREATE TABLE `user` (
 CREATE TABLE `order` (
   `id` int(11) NOT NULL,
   `user_id` int(11) not null,
-  `cart_id` int(11) not null,
+  `item_id` int(11) not null,
   `shipping_address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `order_description` varchar(255) COLLATE utf8_unicode_ci,
   `order_total` int(11) not null,
@@ -252,7 +253,7 @@ ALTER TABLE `user`
 ALTER TABLE `order`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`),
-  ADD KEY `cart_id` (`cart_id`);
+  ADD KEY `item_id` (`item_id`);
   
   
 -- AUTO_INCREMENT for dumped tables
@@ -324,7 +325,7 @@ ALTER TABLE `cart_item`
 -- Constraints for table `mathang`
 --
 ALTER TABLE `order`
-	ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`id`) ON UPDATE CASCADE,
+	ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `cart_item` (`id`) ON UPDATE CASCADE,
 	ADD CONSTRAINT `order_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON UPDATE CASCADE;
 COMMIT;
 
