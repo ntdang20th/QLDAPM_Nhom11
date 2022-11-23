@@ -189,6 +189,43 @@ class NGUOIDUNG
 			exit();
 		}
 	}
+	// lấy thông tin người dùng có $email
+	public function getUserInfo($email){
+		$db = DATABASE::connect();
+		try{
+			$sql = "SELECT * FROM nguoidung WHERE email=:email";
+			$cmd = $db->prepare($sql);
+			$cmd->bindValue(":email", $email);
+			$cmd->execute();
+			$ketqua = $cmd->fetch();
+			$cmd->closeCursor();
+			return $ketqua;
+		}
+		catch(PDOException $e){
+			$error_message=$e->getMessage();
+			echo "<p>Lỗi truy vấn: $error_message</p>";
+			exit();
+		}
+	}
+
+	// Đổi mật khẩu
+	public function doimatkhau($email,$matkhau){
+		$db = DATABASE::connect();
+		try{
+			$sql = "UPDATE nguoidung set matkhau=:matkhau where email=:email";
+			$cmd = $db->prepare($sql);
+			$cmd->bindValue(':email',$email);
+			$cmd->bindValue(':matkhau',md5($matkhau));
+			$ketqua = $cmd->execute();            
+            return $ketqua;
+		}
+		catch(PDOException $e){
+			$error_message=$e->getMessage();
+			echo "<p>Lỗi truy vấn: $error_message</p>";
+			exit();
+		}
+	}
+
 
 	//Select user
 	public function selectAllUser()
@@ -247,6 +284,27 @@ class NGUOIDUNG
 	}
 
 	// update user 
+	// Cập nhật thông tin ng dùng: họ tên, số đt, email, ảnh đại diện 
+	public function capnhatnguoidung($id,$email,$sodt,$hoten,$hinhanh){
+		$db = DATABASE::connect();
+		try{
+			$sql = "UPDATE nguoidung set hoten=:hoten, email=:email, sodienthoai=:sodt, hinhanh=:hinhanh where id=:id";
+			$cmd = $db->prepare($sql);
+			$cmd->bindValue(':id',$id);
+			$cmd->bindValue(':email',$email);
+			$cmd->bindValue(':sodt',$sodt);
+			$cmd->bindValue(':hoten',$hoten);
+			$cmd->bindValue(':hinhanh',$hinhanh);
+			$ketqua = $cmd->execute();            
+            return $ketqua;
+		}
+		catch(PDOException $e){
+			$error_message=$e->getMessage();
+			echo "<p>Lỗi truy vấn: $error_message</p>";
+			exit();
+		}
+	}
+
 	public function updateUser($id, $password, $email, $phone_number, $address, $images)
 	{
 		$dbcon = DATABASE::connect();

@@ -35,8 +35,8 @@ switch($action){
     case "xldangnhap":
         $email = $_POST["txtemail"];
         $matkhau = $_POST["txtmatkhau"];
-        if($nguoidung->kiemtranguoidunghople($email,$matkhau)==TRUE){
-            $_SESSION["nguoidung"] = $nguoidung->laythongtinnguoidung($email);
+        if($nguoidung->checkUser($email,$matkhau)==TRUE){
+            $_SESSION["nguoidung"] = $nguoidung->getUserInfo($email);
             include("main.php");
         }
         else{
@@ -57,7 +57,7 @@ switch($action){
         
         $nguoidung->capnhatnguoidung($mand,$email,$sodt,$hoten,$hinhanh);
 
-        $_SESSION["nguoidung"] = $nguoidung->laythongtinnguoidung($email);
+        $_SESSION["nguoidung"] = $nguoidung->getUserInfo($email);
         include("main.php");        
         break;
 
