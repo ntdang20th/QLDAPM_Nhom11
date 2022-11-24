@@ -170,8 +170,8 @@ CREATE TABLE `user` (
   `username` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `phone_number` tinyint(4) NOT NULL DEFAULT 3,
-  `address` tinyint(4) NOT NULL DEFAULT 1,
+  `phone_number` varchar(15) ,
+  `address` tinyint(4) ,
   `hinhanh` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 -- --------------------------------------------------------
