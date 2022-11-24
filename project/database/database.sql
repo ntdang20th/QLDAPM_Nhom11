@@ -19,11 +19,11 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `shop`
+-- Database: `shop_matkinh`
 --
-DROP DATABASE IF EXISTS `shop`;
-CREATE DATABASE IF NOT EXISTS `shop` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-USE `shop`;
+DROP DATABASE IF EXISTS `shop_matkinh`;
+CREATE DATABASE IF NOT EXISTS `shop_matkinh` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+USE `shop_matkinh`;
 
 -- --------------------------------------------------------
 
