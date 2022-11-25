@@ -10,39 +10,8 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style>
-    h3 {
-      text-shadow: 2px 2px 2px silver;
-    }
+  <link rel="stylesheet" href="../styles.css">
 
-    .carousel-inner img {
-      width: 100%;
-      /* Set width to 100% */
-      margin: auto;
-    }
-
-    .carousel-caption h3 {
-      color: #fff !important;
-    }
-
-    @media (max-width: 600px) {
-      .carousel-caption {
-        display: none;
-        /* Hide the carousel text when the screen is less than 600 pixels wide */
-      }
-    }
-
-    footer {
-      background-color: #000000;
-      color: #f5f5f5;
-      padding: 32px;
-    }
-
-    footer a:hover {
-      color: #777;
-      text-decoration: none;
-    }
-  </style>
 </head>
 
 <body id="abc" data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -80,7 +49,26 @@
               <span class="glyphicon glyphicon-search"></span> Tìm kiếm sản phẩm</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="admin/ktnguoidung/loginform.php"><span class="glyphicon glyphicon-user"></span>Đăng nhập</a></li>
+          
+          <li>
+          <div class="container-fluid">  
+              <!-- Thông tin người dùng - sẽ bổ sung ở bài thực hành sau -->          
+              <div class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  
+                <span class="glyphicon glyphicon-user"></span> 
+                  <?php if(isset($_SESSION["nguoidung"])) echo $_SESSION["nguoidung"]["username"]; ?>
+                  <span class="caret"></span></a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <li><a href="#" class="subtitle"><span class="glyphicon glyphicon-envelope"></span> Thông báo</a></li>
+                  <li><a href="#" class="subtitle" data-toggle="modal" data-target="#fcapnhatthongtin"><span class="glyphicon glyphicon-edit"></span> Hồ sơ cá nhân</a></li>
+                  <li><a href="#" class="subtitle" data-toggle="modal" data-target="#fdoimatkhau"><span class="glyphicon glyphicon-wrench"></span> Đổi mật khẩu</a></li>
+                  <li class="divider"></li>
+                  <li><a  class="subtitle" href="?action=dangxuat"><span class="glyphicon glyphicon-log-out"></span> Thoát</a></li>
+                </ul>  
+                
+              </div>
+          </li>
           <li><a href="#" class="text-warning">
               <span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng
             </a>

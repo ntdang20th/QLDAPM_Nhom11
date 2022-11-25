@@ -56,12 +56,9 @@
         <li><a href="../qldanhmuc/index.php"><span class="glyphicon glyphicon-list-alt"></span> Quản lý danh mục</a></li>
         <li><a href="../qlmathang/index.php"><span class="glyphicon glyphicon-gift"></span> Quản lý mặt hàng</a></li>
         <li><a href=""><span class="glyphicon glyphicon-list-alt"></span> Quản lý... (bổ sung)</a></li>
-        <?php
-        if(isset($_SESSION["nguoidung"]) && $_SESSION["nguoidung"]["loai"]==1){
-        ?>
+        
         <li class="active"><a href="#"><span class="glyphicon glyphicon-cog"></span> Quản trị</a></li>
         <li><a href="../qlnguoidung"><span class="glyphicon glyphicon-list-alt"></span> Quản lý người dùng</a></li>
-      <?php } ?>
       </ul><br>
     </div>
     <!-- Menu mh lớn - kết thúc -->
@@ -72,8 +69,8 @@
         <!-- Thông tin người dùng - sẽ bổ sung ở bài thực hành sau -->          
         <div class="dropdown" style="text-align: right;">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <span class="glyphicon glyphicon-user"></span> 
-            Chào <?php if(isset($_SESSION["nguoidung"])) echo $_SESSION["nguoidung"]["hoten"]; ?>
+          <span class="glyphicon glyphicon-user"></span> 
+            Chào <?php if(isset($_SESSION["nguoidung"])) echo $_SESSION["nguoidung"]["username"]; ?>
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu dropdown-menu-right">
