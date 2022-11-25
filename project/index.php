@@ -121,6 +121,46 @@ switch ($action) {
             include("login.php");
         }
         break;
+    case "capNhatHoSoCaNhan":
+        $tongmh = $mh->demtongsomathang();
+        $mathang = $mh->laymathang();
+        $soluong = 4;
+        $tongsotrang = ceil($tongmh / $soluong);
+        if (!isset($_REQUEST["trang"]))
+            $tranghh = 1;
+        else
+            $tranghh = $_REQUEST["trang"];
+        $batdau = ($tranghh - 1) * $soluong;
+        $mathang = $mh->laymathangphantrang($batdau, $soluong);
+
+        $userName = $_POST['txtUserName'];
+        $email = $_POST['txtEmail'];
+        $phoneNumber = $_POST['txtDienThoai'];
+        $address = $_POST['txtDiaChi'];
+        $nguoidung->capnhatnguoidung($userName, $email, $phoneNumber, $address);
+        $_SESSION['nguoidung'] = $nguoidung->getUserInfo($userName);
+        include('main.php');
+        break;
+    case 'doiMatKhau':
+        $tongmh = $mh->demtongsomathang();
+        $mathang = $mh->laymathang();
+        $soluong = 4;
+        $tongsotrang = ceil($tongmh / $soluong);
+        if (!isset($_REQUEST["trang"]))
+            $tranghh = 1;
+        else
+            $tranghh = $_REQUEST["trang"];
+        $batdau = ($tranghh - 1) * $soluong;
+        $mathang = $mh->laymathangphantrang($batdau, $soluong);
+        
+        $matKhauMoi = $_POST['txtMatKhauMoi'];
+        $userName = $_SESSION['nguoidung']['username'];
+        $nguoidung->doiMatKhau($userName, $matKhauMoi);
+        
+        $_SESSION['nguoidung'] = $nguoidung->getUserInfo($userName);
+
+        include("main.php");
+        break;
     default:
         break;
 }

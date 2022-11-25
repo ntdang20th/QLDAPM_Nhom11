@@ -193,32 +193,14 @@ class NGUOIDUNG
 	{
 		$db = DATABASE::connect();
 		try {
-			$sql = "SELECT `username`, `email`, `phone_number`, `address`, `hinhanh` 
-					FROM `user` 
+			$sql = "SELECT * 
+					FROM user
 					WHERE username=:username";
 			$cmd = $db->prepare($sql);
 			$cmd->bindValue(":username", $username);
 			$cmd->execute();
 			$ketqua = $cmd->fetch();
 			$cmd->closeCursor();
-			return $ketqua;
-		} catch (PDOException $e) {
-			$error_message = $e->getMessage();
-			echo "<p>Lỗi truy vấn: $error_message</p>";
-			exit();
-		}
-	}
-
-	// Đổi mật khẩu
-	public function doimatkhau($email, $matkhau)
-	{
-		$db = DATABASE::connect();
-		try {
-			$sql = "UPDATE nguoidung set matkhau=:matkhau where email=:email";
-			$cmd = $db->prepare($sql);
-			$cmd->bindValue(':email', $email);
-			$cmd->bindValue(':matkhau', md5($matkhau));
-			$ketqua = $cmd->execute();
 			return $ketqua;
 		} catch (PDOException $e) {
 			$error_message = $e->getMessage();
@@ -285,18 +267,17 @@ class NGUOIDUNG
 	}
 
 	// update user 
-	// Cập nhật thông tin ng dùng: họ tên, số đt, email, ảnh đại diện 
-	public function capnhatnguoidung($id, $email, $sodt, $hoten, $hinhanh)
+	// Cập nhật thông tin ng dùng: họ tên, số đt, email, ảnh đại diện (không cập nhật hình ảnh và mật khẩu)
+	public function capnhatnguoidung($id, $email, $sodt, $diaChi)
 	{
 		$db = DATABASE::connect();
 		try {
-			$sql = "UPDATE nguoidung set hoten=:hoten, email=:email, sodienthoai=:sodt, hinhanh=:hinhanh where id=:id";
+			$sql = "UPDATE user set email=:email, phone_number=:sodt, address =:diaChi where username=:id";
 			$cmd = $db->prepare($sql);
 			$cmd->bindValue(':id', $id);
 			$cmd->bindValue(':email', $email);
 			$cmd->bindValue(':sodt', $sodt);
-			$cmd->bindValue(':hoten', $hoten);
-			$cmd->bindValue(':hinhanh', $hinhanh);
+			$cmd->bindValue(':diaChi', $diaChi);
 			$ketqua = $cmd->execute();
 			return $ketqua;
 		} catch (PDOException $e) {
@@ -326,4 +307,22 @@ class NGUOIDUNG
 			exit();
 		}
 	}
+
+	public function doiMatKhau($userName, $matKhauMoi)
+	{
+		$dbcon = DATABASE::connect();
+		try {
+			$sql = "UPDATE user SET password=:matKhauMoi WHERE username=:username";
+			$cmd = $dbcon->prepare($sql);
+			$cmd->bindValue(":username", $userName);
+			$cmd->bindValue(":matKhauMoi", md5($matKhauMoi));
+			$result = $cmd->execute();
+			return $result;
+		} catch (PDOException $e) {
+			$error_message = $e->getMessage();
+			echo "<p>Lỗi truy vấn: $error_message</p>";
+			exit();
+		}
+	}
+	
 }
