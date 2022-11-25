@@ -92,8 +92,12 @@ switch($action){
             $mathang = getProductsbyName($tuKhoa);
         else if($loaiTimKiem == "giaMin")
             $mathang = getPriceMin($tuKhoa);
-        else
+        else if($loaiTimKiem == 'giaMax')
             $mathang = getPriceMax($tuKhoa);
+        else if($loaiTimKiem == 'conHang')
+            $mathang = laySPConHang();
+        else if($loaiTimKiem == 'hetHang')
+            $mathang = laySPHetHang();
         include("main.php");
         break;
     default:

@@ -3,6 +3,7 @@ if(!isset($_SESSION["nguoidung"]))
     header("location:../index.php");
 require("../../model/database.php");
 require("../../model/danhmuc.php");
+require("../../model/timkiem.php");
 
 // Xét xem có thao tác nào được chọn
 if(isset($_REQUEST["action"])){
@@ -42,7 +43,22 @@ switch($action){
         break;
 	case "capnhat":
 		$dm->suadanhmuc($_POST["txtid"], $_POST["txtten"]);
-        $danhmuc = $dm->laydanhmuc();       
+        $danhmuc = $dm->laydanhmuc();
+        include("main.php");
+        break;
+    case "timKiem":
+        if(isset($_POST['txtTuKhoa']))
+            $tuKhoa = $_POST['txtTuKhoa'];
+        
+        if(isset($_POST['optbang']))
+            $loaiTimKiem = $_POST['optbang'];
+
+        if($loaiTimKiem =='selectTenHoacTenVietTat')
+            $danhmuc = layDanhMucTheoTenHoacTenVietTat($tuKhoa);
+        else if($loaiTimKiem == 'selectConHang')
+            $danhmuc = layDanhMucConHang();
+        else if($loaiTimKiem =='selectHetHang')
+            $danhmuc = layDanhMucHetHang();
         include("main.php");
         break;
     default:
