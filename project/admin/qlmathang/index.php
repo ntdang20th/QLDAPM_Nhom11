@@ -5,6 +5,7 @@ if(!isset($_SESSION["nguoidung"])){
 require("../../model/database.php");
 require("../../model/danhmuc.php");
 require("../../model/mathang.php");
+require("../../model/timkiem.php");
 
 // Xét xem có thao tác nào được chọn
 if(isset($_REQUEST["action"])){
@@ -32,13 +33,13 @@ switch($action){
 		$duongdan = "../../" . $hinhanh; // nơi lưu file upload
 		move_uploaded_file($_FILES["filehinhanh"]["tmp_name"], $duongdan);
 		// xử lý thêm		
-		$tenmathang = $_POST["txttenmathang"];
-		$mota = $_POST["txtmota"];
-		$giagoc = $_POST["txtgianhap"];
-		$giaban = $_POST["txtgiaban"];
-		$soluongton = $_POST["txtsoluong"];
-		$danhmuc_id = $_POST["optdanhmuc"];
-		$mh->themmathang($tenmathang,$mota,$giagoc,$giaban,$soluongton,$danhmuc_id,$hinhanh);
+		$title	 = $_POST["txttenmathang"];
+		$description	 = $_POST["txtmota"];
+		$price = $_POST["txtgiaban"];
+		$category_id	= $_POST["optdanhmuc"];
+		//$active = $_POST["txtsoluong"];
+	    //	$danhmuc_id = $_POST["optdanhmuc"];
+		$mh->themmathang($hinhanh,$title,$description,$price,$category_id);
 		$mathang = $mh->laymathang();
 		include("main.php");
         break;
@@ -86,7 +87,19 @@ switch($action){
         $mathang = $mh->laymathang();    
         include("main.php");
         break;
-
+    case "timKiem":
+        if(isset($_POST['txtTuKhoa']))
+            $tuKhoa = $_POST['txtTuKhoa'];
+        if(isset($_POST['optbang']))
+            $loaiTimKiem = $_POST['optbang'];
+        if($loaiTimKiem == "tenSP")
+            $mathang = getProductsbyName($tuKhoa);
+        else if($loaiTimKiem == "giaMin")
+            $mathang = getPriceMin($tuKhoa);
+        else
+            $mathang = getPriceMax($tuKhoa);
+        include("main.php");
+        break;
     default:
         break;
 }

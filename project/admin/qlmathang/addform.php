@@ -4,37 +4,32 @@
 <br>
 <form method="post" enctype="multipart/form-data" action="index.php">
 <input type="hidden" name="action" value="xulythem">
+
 <div class="form-group">
-	<label>Hãng sản xuất</label>
-	<select class="form-control" name="optdanhmuc">
-	<?php
-	foreach($danhmuc as $d):
-	?>
-		<option value="<?php echo $d["id"]; ?>"><?php echo $d["tendanhmuc"]; ?></option>
-	<?php
-	endforeach;
-	?>
-	</select>
-</div>
-<div class="form-group">
-	<label>Tên mặt hàng</label>
+	<label>Tên mắt kính</label>
 	<input class="form-control" type="text" name="txttenmathang">
-</div>
-<div class="form-group">
-	<label>Giá nhập</label>
-	<input class="form-control" type="number" name="txtgianhap" value="0">
-</div>
-<div class="form-group">
-	<label>Giá bán</label>
-	<input class="form-control" type="number" name="txtgiaban" value="0">
-</div>
-<div class="form-group">
-	<label>Số lượng</label>
-	<input class="form-control" type="number" name="txtsoluong" value="0">
 </div>
 <div class="form-group">
 	<label>Mô tả</label>
 	<textarea class="form-control" name="txtmota"></textarea>
+</div>
+
+<div class="form-group">
+	<label>Giá bán</label>
+	<input class="form-control" type="number" name="txtgiaban" value="0">
+</div>
+
+<div class="form-group">
+	<label>Phân loại mắt kính</label>
+	<select class="form-control" name="optdanhmuc">
+	<?php
+	foreach($danhmuc as $d):
+	?>
+		<option value="<?php echo $d["id"]; ?>"><?php echo $d["title"]; ?></option>
+	<?php
+	endforeach;
+	?>
+	</select>
 </div>
 <div class="form-group">
 	<label>Hình ảnh</label>
