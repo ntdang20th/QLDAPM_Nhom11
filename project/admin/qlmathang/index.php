@@ -32,13 +32,13 @@ switch($action){
 		$duongdan = "../../" . $hinhanh; // nơi lưu file upload
 		move_uploaded_file($_FILES["filehinhanh"]["tmp_name"], $duongdan);
 		// xử lý thêm		
-		$tenmathang = $_POST["txttenmathang"];
-		$mota = $_POST["txtmota"];
-		$giagoc = $_POST["txtgianhap"];
-		$giaban = $_POST["txtgiaban"];
-		$soluongton = $_POST["txtsoluong"];
-		$danhmuc_id = $_POST["optdanhmuc"];
-		$mh->themmathang($tenmathang,$mota,$giagoc,$giaban,$soluongton,$danhmuc_id,$hinhanh);
+		$title	 = $_POST["txttenmathang"];
+		$description	 = $_POST["txtmota"];
+		$price = $_POST["txtgiaban"];
+		$category_id	= $_POST["optdanhmuc"];
+		//$active = $_POST["txtsoluong"];
+	    //	$danhmuc_id = $_POST["optdanhmuc"];
+		$mh->themmathang($hinhanh,$title,$description,$price,$category_id);
 		$mathang = $mh->laymathang();
 		include("main.php");
         break;

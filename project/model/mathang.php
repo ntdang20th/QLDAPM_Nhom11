@@ -130,19 +130,18 @@ class MATHANG
     }
 
     // Thêm mới
-    public function themmathang($tenmathang, $mota, $giagoc, $giaban, $soluongton, $danhmuc_id, $hinhanh)
+    public function themmathang($hinhanh,$title,$description,$price,$category_id)
     {
         $dbcon = DATABASE::connect();
         try {
-            $sql = "INSERT INTO mathang(tenmathang,mota,giagoc,giaban,soluongton,danhmuc_id,hinhanh,luotxem,luotmua) 
-				VALUES(:tenmathang,:mota,:giagoc,:giaban,:soluongton,:danhmuc_id,:hinhanh,0,0)";
+            $sql = "INSERT INTO  product git(title,description,price,category_id,hinhanh) 
+				VALUES(:title,:description,:price,:category_id,:hinhanh)";
             $cmd = $dbcon->prepare($sql);
-            $cmd->bindValue(":tenmathang", $tenmathang);
-            $cmd->bindValue(":mota", $mota);
-            $cmd->bindValue(":giagoc", $giagoc);
-            $cmd->bindValue(":giaban", $giaban);
-            $cmd->bindValue(":soluongton", $soluongton);
-            $cmd->bindValue(":danhmuc_id", $danhmuc_id);
+            $cmd->bindValue(":title", $title);
+            $cmd->bindValue(":description", $description);
+            $cmd->bindValue(":price", $price);
+            $cmd->bindValue(":category_id", $category_id);
+        
             $cmd->bindValue(":hinhanh", $hinhanh);
             $result = $cmd->execute();
             return $result;
