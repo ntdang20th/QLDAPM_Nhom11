@@ -12,10 +12,9 @@
       <div class="col-sm-3">
         <div class="panel panel-primary text-center">
           <div class="panel-heading">
-
             <a href="?action=xemchitiet&mahang=<?php echo $mh["id"]; ?>" style="color:white;font-weight:bold;"><?php echo $mh["title"]; ?></a>
           </div>
-          <div class="panel-body"><a href="?action=xemchitiet&mahang=<?php echo $mh["id"]; ?>"><img src="images/<?php echo $mh["hinhanh"]; ?>" class="img-responsive" style="width:100%" alt="<?php echo $mh["title"]; ?>"></a>
+          <div class="panel-body"><a href="?action=xemchitiet&mahang=<?php echo $mh["id"]; ?>"><img src="images/<?php echo $mh["hinhanh"]; ?> " class="img-responsive" style="width:100%" alt="<?php echo $mh["title"]; ?>"></a>
             <p><strong>Giá bán: <span class="text-danger">
                   <?php echo number_format($mh["price"]); ?>đ</span> </strong></p>
           </div>
