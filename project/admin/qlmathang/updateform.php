@@ -4,42 +4,29 @@
 	<form method="post" action="index.php" enctype="multipart/form-data">
 		<input type="hidden" name="action" value="xulysua">
 		<input type="hidden" name="txtid" value="<?php echo $m["id"]; ?>">
+		
+		<div class="form-group">
+			<label>Tên mắt kính</label>
+			<input class="form-control" type="text" name="txttenhang" required value="<?php echo $m["title"]; ?>">
+		</div>
+		<div class="form-group">
+			<label>Mô tả</label>
+			<textarea class="form-control" name="txtmota" required><?php echo $m["description"]; ?></textarea>
+		</div>
+		
+		<div class="form-group">
+			<label>Giá bán</label>
+			<input class="form-control" type="number" name="txtgiaban" value="<?php echo $m["price"]; ?>" required>
+		</div>
 		<div class="form-group">
 			<label>Hãng sản xuất</label>
 			<select class="form-control" name="optdanhmuc">
 				<?php foreach ($danhmuc as $dm) { ?>
-					<option value="<?php echo $dm["id"]; ?>" <?php if ($dm["id"] == $m["danhmuc_id"]) echo "selected"; ?>><?php echo $dm["tendanhmuc"]; ?></option>
+					<option value="<?php echo $dm["id"]; ?>" <?php if ($dm["id"] == $m["category_id"]) echo "selected"; ?>><?php echo $dm["title"]; ?></option>
 				<?php } ?>
 			</select>
 		</div>
-		<div class="form-group">
-			<label>Tên hàng</label>
-			<input class="form-control" type="text" name="txttenhang" required value="<?php echo $m["tenmathang"]; ?>">
-		</div>
-		<div class="form-group">
-			<label>Mô tả</label>
-			<textarea class="form-control" name="txtmota" required><?php echo $m["mota"]; ?></textarea>
-		</div>
-		<div class="form-group">
-			<label>Giá gốc</label>
-			<input class="form-control" type="number" name="txtgiagoc" value="<?php echo $m["giagoc"]; ?>" required>
-		</div>
-		<div class="form-group">
-			<label>Giá bán</label>
-			<input class="form-control" type="number" name="txtgiaban" value="<?php echo $m["giaban"]; ?>" required>
-		</div>
-		<div class="form-group">
-			<label>Số lượng tồn</label>
-			<input class="form-control" type="number" name="txtsoluongton" value="<?php echo $m["soluongton"]; ?>" required>
-		</div>
-		<div class="form-group">
-			<label>Lượt xem</label>
-			<input class="form-control" type="number" name="txtluotxem" value="<?php echo $m["luotxem"]; ?>" required>
-		</div>
-		<div class="form-group">
-			<label>Lượt mua</label>
-			<input class="form-control" type="number" name="txtluotmua" value="<?php echo $m["luotmua"]; ?>" required>
-		</div>
+	
 		<div id="hinh" class="form-group">
 			<label>Hình ảnh</label><br>
 			<input type="hidden" name="txthinhcu" value="<?php echo $m["hinhanh"]; ?>">
