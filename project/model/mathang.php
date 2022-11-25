@@ -65,7 +65,7 @@ class MATHANG
     {
         $dbcon = DATABASE::connect();
         try {
-            $sql = "SELECT * FROM product";
+            $sql = "SELECT * FROM product where active = 1";
             $cmd = $dbcon->prepare($sql);
             $cmd->execute();
             $result = $cmd->fetchAll();
@@ -135,15 +135,15 @@ class MATHANG
     {
         $dbcon = DATABASE::connect();
         try {
-            $sql = "INSERT INTO  product git(title,description,price,category_id,hinhanh) 
-				VALUES(:title,:description,:price,:category_id,:hinhanh)";
+            $sql = "INSERT INTO `product`( `title`, `description`, `price`, `category_id`, `active`, `hinhanh`) 
+				VALUES(:title,:description,:price,:category_id,1,:hinhanh)";
             $cmd = $dbcon->prepare($sql);
             $cmd->bindValue(":title", $title);
             $cmd->bindValue(":description", $description);
             $cmd->bindValue(":price", $price);
             $cmd->bindValue(":category_id", $category_id);
-        
             $cmd->bindValue(":hinhanh", $hinhanh);
+
             $result = $cmd->execute();
             return $result;
         } catch (PDOException $e) {
@@ -159,7 +159,7 @@ class MATHANG
     {
         $dbcon = DATABASE::connect();
         try {
-            $sql = "DELETE FROM product WHERE id=:id";
+            $sql = "update product set active = 0 where id =:id";
             $cmd = $dbcon->prepare($sql);
             $cmd->bindValue(":id", $id);
             $result = $cmd->execute();
