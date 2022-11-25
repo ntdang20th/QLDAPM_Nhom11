@@ -11,71 +11,74 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
-    .img-responsive{
-    height: 200px;
-    width: 100px;
-    display: flex;
-}
-
-.subtitle{
-    color: red;
-}
-
-h3 {
-    text-shadow: 2px 2px 2px silver;
-  }
-
-  .carousel-inner img {
-    width: 100%;
-    /* Set width to 100% */
-    margin: auto;
-  }
-
-  .carousel-caption h3 {
-    color: #fff !important;
-  }
-
-  @media (max-width: 600px) {
-    .carousel-caption {
-      display: none;
-      /* Hide the carousel text when the screen is less than 600 pixels wide */
+    .img-responsive {
+      height: 200px;
+      width: 100px;
+      display: flex;
     }
-  }
 
-  .navbar-nav li div a{
-    padding-top: 15px;
-    padding-bottom: 15px;
-    display: block;
-    color: #9d9d9d;
-    background-color: black;
-  }
+    .subtitle {
+      color: red;
+    }
 
-  .nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
-  background-color: black;
-  border-color: #337ab7;
-  text-decoration: none;
-}
-.navbar-nav .open .dropdown-menu {
-  
-  background-color: black;
-}
+    h3 {
+      text-shadow: 2px 2px 2px silver;
+    }
 
-  .navbar-nav li div a:hover{
-    background-color: transparent;
-    text-decoration: none;
-    color: #fff;
-  }
-  
-  footer {
-    background-color: #000000;
-    color: #f5f5f5;
-    padding: 32px;
-  }
+    .carousel-inner img {
+      width: 100%;
+      /* Set width to 100% */
+      margin: auto;
+    }
 
-  footer a:hover {
-    color: #777;
-    text-decoration: none;
-  }
+    .carousel-caption h3 {
+      color: #fff !important;
+    }
+
+    @media (max-width: 600px) {
+      .carousel-caption {
+        display: none;
+        /* Hide the carousel text when the screen is less than 600 pixels wide */
+      }
+    }
+
+    .navbar-nav li div a {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      display: block;
+      color: #9d9d9d;
+      background-color: black;
+    }
+
+    .nav .open>a,
+    .nav .open>a:focus,
+    .nav .open>a:hover {
+      background-color: black;
+      border-color: #337ab7;
+      text-decoration: none;
+    }
+
+    .navbar-nav .open .dropdown-menu {
+
+      background-color: black;
+    }
+
+    .navbar-nav li div a:hover {
+      background-color: transparent;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    footer {
+      background-color: #000000;
+      color: #f5f5f5;
+      padding: 32px;
+    }
+
+    footer a:hover {
+      color: #777;
+      text-decoration: none;
+    }
   </style>
 
 </head>
@@ -138,8 +141,7 @@ h3 {
           <li>
           </li>
           <!-- ádasd -->
-          <li>
-            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Đăng ký</button>
+          <li><a href="" data-toggle="modal" data-target="#myModal">Đăng ký</a>
           </li>
           <!--Contact Form-->
 
@@ -160,7 +162,7 @@ h3 {
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">×</button>
-          <h4><span class="glyphicon glyphicon-search"></span> Bạn cần tìm gì?</h4>
+          <h4><span class="glyphicon glyphicon-search"></span>Đăng ký tài khoản mua sắm</h4>
         </div>
         <div class="modal-body">
           <form role="form" method="post">
@@ -169,18 +171,17 @@ h3 {
               <input type="text" class="form-control" id="txttukhoa" name="txtTuKhoa" placeholder="Nhập từ khóa">
             </div>
             <div class="form-group">
-              <label for="optbang"> Loại tìm kiếm: </label>
-              <select name="optbang" class="form-control">
-                <option value="">--- chọn loại tìm kiếm ---</option>
-                <option selected value="tenSP">Sản phẩm theo tên</option>
-                <option value="giaMin">Sản phẩm theo giá tối thiểu</option>
-                <option value="giaMax">Sản phẩm theo giá tối đa</option>
-              </select>
+              <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span> Từ khóa: </label>
+              <input type="text" class="form-control" id="txttukhoa" name="txtTuKhoa" placeholder="Nhập từ khóa">
             </div>
-            <button type="submit" class="btn btn-info">Tìm kiếm
-              <span class="glyphicon glyphicon-ok"></span>
-            </button>
-            <input type="hidden" name="action" value="timKiem">
+            <div class="form-group">
+              <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span> Từ khóa: </label>
+              <input type="text" class="form-control" id="txttukhoa" name="txtTuKhoa" placeholder="Nhập từ khóa">
+            </div>
+            <div class="form-group">
+              <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span> Từ khóa: </label>
+              <input type="text" class="form-control" id="txttukhoa" name="txtTuKhoa" placeholder="Nhập từ khóa">
+            </div>
           </form>
         </div>
 
@@ -195,31 +196,38 @@ h3 {
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Đăng ký tài khoản mua sắm</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4><span></span>Đăng ký tài khoản mua sắm</h4>
         </div>
         <div class="modal-body">
-          <div>
-            <label for="">Tài khoản</label>
-            <input type="text" class="form-control">
-          </div>
-          <div>
-            <label for="">Tài khoản</label>
-            <input type="text" class="form-control">
-          </div>
-          <div>
-            <label for="">Tài khoản</label>
-            <input type="text" class="form-control">
-          </div>
-          <div>
-            <label for="">Tài khoản</label>
-            <input type="text" class="form-control">
-          </div>
+          <form role="form" method="post">
+            <div class="form-group">
+              <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span>Tài khoản:</label>
+              <input type="text" class="form-control" id="txttukhoa" name="txtTuKhoa" placeholder="Nhập từ khóa">
+            </div>
+            <div class="form-group">
+              <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span>Mật khẩu:</label>
+              <input type="text" class="form-control" id="txttukhoa" name="txtTuKhoa" placeholder="Nhập từ khóa">
+            </div>
+            <div class="form-group">
+              <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span>Email:</label>
+              <input type="text" class="form-control" id="txttukhoa" name="txtTuKhoa" placeholder="Nhập từ khóa">
+            </div>
+            <div class="form-group">
+              <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span>Số điện thoại:</label>
+              <input type="text" class="form-control" id="txttukhoa" name="txtTuKhoa" placeholder="Nhập từ khóa">
+            </div>
+            <div class="form-group">
+              <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span>Địa chỉ:</label>
+              <input type="text" class="form-control" id="txttukhoa" name="txtTuKhoa" placeholder="Nhập từ khóa">
+            </div>
+            <button type="submit" class="btn btn-info">Đăng ký
+              <span class="glyphicon glyphicon-ok"></span>
+            </button>
+            <input type="hidden" name="action" value="timKiem">
+          </form>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
 
+      </div>
     </div>
   </div>
