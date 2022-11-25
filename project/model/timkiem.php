@@ -1,5 +1,4 @@
 <?php
-
     function getCategory(){
     $dbcon = DATABASE::connect();
     try{
@@ -24,7 +23,7 @@
         $cmd = $dbcon->prepare($sql);
         $cmd->bindValue(":id", $id);
         $cmd->execute();
-        $result = $cmd->fetch();             
+        $result = $cmd->fetch();
         return $result;
     }
     catch(PDOException $e){
@@ -33,6 +32,66 @@
         exit();
     }
 }
+
+
+// Lấy danh mục theo tên và tên viết tắt
+function layDanhMucTheoTenHoacTenVietTat($tenHoacTenVietTat){
+    $dbcon = DATABASE::connect();
+    try{
+        $sql = "SELECT * FROM category WHERE title = '$tenHoacTenVietTat' or slug = '$tenHoacTenVietTat'";
+        $cmd = $dbcon->prepare($sql);
+        $cmd->execute();
+        $result = $cmd->fetchAll();             
+        return $result;
+    }
+    catch(PDOException $e){
+        $error_message = $e->getMessage();
+        echo "<p>Lỗi truy vấn: $error_message</p>";
+        exit();
+    }
+}
+
+// Lấy các danh mục còn hàng
+function layDanhMucConHang()
+{
+    $dbcon = DATABASE::connect();
+    try{
+        $sql = "SELECT *
+        FROM category
+        WHERE active = 1";
+        $cmd = $dbcon->prepare($sql);
+        $cmd->execute();
+        $result = $cmd->fetchAll();             
+        return $result;
+    }
+    catch(PDOException $e){
+        $error_message = $e->getMessage();
+        echo "<p>Lỗi truy vấn: $error_message</p>";
+        exit();
+    }
+}
+
+
+// Lấy các danh mục hết hàng
+function layDanhMucHetHang()
+{
+    $dbcon = DATABASE::connect();
+    try{
+        $sql = "SELECT *
+        FROM category
+        WHERE active = 0";
+        $cmd = $dbcon->prepare($sql);
+        $cmd->execute();
+        $result = $cmd->fetchAll();             
+        return $result;
+    }
+    catch(PDOException $e){
+        $error_message = $e->getMessage();
+        echo "<p>Lỗi truy vấn: $error_message</p>";
+        exit();
+    }
+}
+
 // lấy sản phẩm theo mã danh mục
     function getProductsbyCategory($categoryid)
 {
@@ -151,7 +210,7 @@ function getPriceMin($pricemin /*, $batDau, $soLuong*/)
 }
 
 //lấy tất cả sản phẩm còn hàng
-function getActiveProduct()
+function laySPConHang()
 {
     $dbcon = DATABASE::connect();
     try{

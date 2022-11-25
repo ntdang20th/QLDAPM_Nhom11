@@ -1,6 +1,7 @@
 <?php include("../view/top.php"); ?>
 
 <h3>Quản lý danh mục <i>(Các loại mắt kính)</i> </h3>
+<a href="" data-toggle="modal" data-target="#modalTimKiem" class="btn btn-success">Tìm kiếm danh mục</a>
 <br>
 <table class="table table-hover">
 	<tr>
@@ -77,5 +78,41 @@
 		});
 	});
 </script>
+
+<!-- Hộp tìm kiếm -->
+<div class="modal fade" id="modalTimKiem" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4><span class="glyphicon glyphicon-search"></span> Bạn cần tìm gì?</h4>
+        </div>
+        <div class="modal-body">
+          <form role="form" method="post">
+            <div class="form-group">
+              <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span> Từ khóa: </label>
+              <input type="text" class="form-control" id="txttukhoa" name="txtTuKhoa" placeholder="Nhập từ khóa">
+            </div>
+            <div class="form-group">
+              <label for="optbang"> Loại tìm kiếm: </label>
+              <select name="optbang" class="form-control">
+                <option value="">--- chọn loại tìm kiếm ---</option>
+                <option selected value="selectTenHoacTenVietTat">Danh mục theo tên hoặc tên viết tắt</option>
+                <option value="selectConHang">Danh mục còn hàng</option>
+                <option value="selectHetHang">Danh mục hết hàng</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-info">Tìm kiếm
+              <span class="glyphicon glyphicon-ok"></span>
+            </button>
+            <input type="hidden" name="action" value="timKiem">
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
 <?php include("../view/bottom.php"); ?>

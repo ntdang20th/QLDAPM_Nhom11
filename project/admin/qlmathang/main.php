@@ -58,6 +58,8 @@
                 <option selected value="tenSP">Sản phẩm theo tên</option>
                 <option value="giaMin">Sản phẩm theo giá tối thiểu</option>
                 <option value="giaMax">Sản phẩm theo giá tối đa</option>
+                <option value="conHang">Sản phẩm còn hàng</option>
+                <option value="hetHang">Sản phẩm hết hàng</option>
               </select>
             </div>
             <button type="submit" class="btn btn-info">Tìm kiếm
