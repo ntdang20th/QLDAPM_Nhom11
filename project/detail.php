@@ -4,15 +4,15 @@
   <div class="row">
     <div class="col-sm-9">      
 
-      <h3 class="text-primary"><?php echo $mhct["tenmathang"]; ?></h3>
+      <h3 class="text-primary"><?php echo $mhct["title"]; ?></h3>
       
       <div><img src="<?php echo $mhct["hinhanh"]; ?>"></div>
 
       <h4 class="text-primary">Giá bán: 
-        <span class="text-danger"><?php echo number_format($mhct["giaban"]); ?> đ</span>
+        <span class="text-danger"><?php echo number_format($mhct["price"]); ?> đ</span>
       </h4>
 
-      <p><?php echo $mhct["mota"]; ?></p>
+      <p><?php echo $mhct["description"]; ?></p>
 
       <form metohd="POST" class="form-inline">
         <input type="hidden" name="action" value="chovaogio">
@@ -35,14 +35,14 @@
         <div class="panel panel-info text-center">
           <div class="panel-heading">
           <a href="?action=xemchitiet&mahang=<?php echo $m["id"]; ?>">
-            <?php echo $m["tenmathang"]; ?>
+            <?php echo $m["title"]; ?>
           </a>
           </div>
           <div class="panel-body">      
             <a href="?action=xemchitiet&mahang=<?php echo $m["id"]; ?>">
             <img src="<?php echo $m["hinhanh"]; ?>" class="img-responsive" style="width:100%"></a>
             <div>Giá bán: <span  class="text-danger">
-            <?php echo number_format($m["giaban"]); ?>đ</span>  
+            <?php echo number_format($m["price"]); ?>đ</span>  
             </div>
             
           <div class="panel-footer"><a class="btn btn-info" href="?action=xemchitiet&mahang=<?php echo $m["id"]; ?>">
