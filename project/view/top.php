@@ -10,7 +10,73 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .img-responsive{
+    height: 200px;
+    width: 100px;
+    display: flex;
+}
+
+.subtitle{
+    color: red;
+}
+
+h3 {
+    text-shadow: 2px 2px 2px silver;
+  }
+
+  .carousel-inner img {
+    width: 100%;
+    /* Set width to 100% */
+    margin: auto;
+  }
+
+  .carousel-caption h3 {
+    color: #fff !important;
+  }
+
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none;
+      /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+  }
+
+  .navbar-nav li div a{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: block;
+    color: #9d9d9d;
+    background-color: black;
+  }
+
+  .nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+  background-color: black;
+  border-color: #337ab7;
+  text-decoration: none;
+}
+.navbar-nav .open .dropdown-menu {
+  
+  background-color: black;
+}
+
+  .navbar-nav li div a:hover{
+    background-color: transparent;
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  footer {
+    background-color: #000000;
+    color: #f5f5f5;
+    padding: 32px;
+  }
+
+  footer a:hover {
+    color: #777;
+    text-decoration: none;
+  }
+  </style>
 
 </head>
 

@@ -23,7 +23,7 @@ class DANHMUC{
     public function laydanhmuc(){
         $dbcon = DATABASE::connect();
         try{
-            $sql = "SELECT * FROM category";
+            $sql = "SELECT * FROM category where active=1";
             $cmd = $dbcon->prepare($sql);
             $cmd->execute();
             $result = $cmd->fetchAll();
@@ -37,18 +37,17 @@ class DANHMUC{
     }
 
     // Thêm mới
-    public function themdanhmuc($tile, $slug,$active, $description)
+    public function themdanhmuc($tile, $slug, $description)
     {
         $dbcon = DATABASE::connect();
         try{
-            $sql = "INSERT INTO category (title, slug,active, description)
-                	VALUES(:$tile, :$slug, :$active, :$description)";
+            $sql = "INSERT INTO `category`( `title`, `slug`, `description`, `active`) 
+                	VALUES(:tile, :slug, :descript, 1) ";
             
             $cmd = $dbcon->prepare($sql);
             $cmd->bindValue(":tile", $tile);
             $cmd->bindValue(":slug", $slug);
-            $cmd->bindValue(":active", $active);
-            $cmd->bindValue(":description", $description);
+            $cmd->bindValue(":descript", $description);
           
 
             $result = $cmd->execute();            
@@ -65,7 +64,8 @@ class DANHMUC{
     public function xoadanhmuc($id){
         $dbcon = DATABASE::connect();
         try{
-            $sql = "DELETE FROM category WHERE id=:id";
+           
+            $sql = " update category set active = 0 where id =:id";
             $cmd = $dbcon->prepare($sql);
             $cmd->bindValue(":id", $id);
             $result = $cmd->execute();            
