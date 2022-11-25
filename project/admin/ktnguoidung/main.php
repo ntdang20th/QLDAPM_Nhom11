@@ -2,7 +2,7 @@
 <div>
 
 <h3>Trang quản trị</h3>
-<h4>Chào <?php echo $_SESSION["nguoidung"]["hoten"]; ?>! Chúc một ngày tốt lành!</h4>
+<h4>Chào <?php echo $_SESSION["nguoidung"]["username"]; ?>! Chúc một ngày tốt lành!</h4>
 <p>SV hãy bổ sung nội dung tùy thích...</p>
 
 </div>

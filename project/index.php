@@ -4,6 +4,9 @@ require("model/danhmuc.php");
 require("model/mathang.php");
 require("model/giohang.php");
 require("model/timkiem.php");
+require("model/nguoidung.php");
+
+session_start();
 
 $dm = new DANHMUC();
 $mh = new MATHANG();
@@ -14,6 +17,9 @@ if (isset($_REQUEST["action"])) {
 } else {
     $action = "macdinh";
 }
+
+$nguoidung = new NGUOIDUNG();
+
 
 // $mathangnoibat = $mh->laymathangnoibat();
 
@@ -80,6 +86,40 @@ switch ($action) {
             else
                 $mathang = getPriceMax($tuKhoa);
             include('main.php');
+        break;
+    
+    case "dangnhap":
+        include("login.php");
+        break;
+
+    case "dangxuat":
+    
+        unset($_SESSION["nguoidung"]);
+                
+        include("login.php");
+        break;
+
+    case "xldangnhap":
+        $username = $_POST["txtusername"];
+        $matkhau = $_POST["txtmatkhau"];
+        if($nguoidung->checkUser($username,$matkhau)==TRUE){
+            $_SESSION["nguoidung"] = $nguoidung->getUserInfo($username);
+            $tongmh = $mh->demtongsomathang();
+            $mathang = $mh->laymathang();
+            $soluong = 4;
+            $tongsotrang = ceil($tongmh / $soluong);
+            if (!isset($_REQUEST["trang"]))
+                $tranghh = 1;
+            else
+                $tranghh = $_REQUEST["trang"];
+            $batdau = ($tranghh - 1) * $soluong;
+            $mathang = $mh->laymathangphantrang($batdau, $soluong);
+            include("main.php");
+        }
+        else{
+            $tb = "Đăng nhập không thành công!";
+            include("login.php");
+        }
         break;
     default:
         break;

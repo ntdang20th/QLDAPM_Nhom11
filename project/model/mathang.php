@@ -19,26 +19,26 @@ class MATHANG
         }
     }
 
-    // Lấy mặt hàng nổi bật top 4 có lượt xem cao nhất
-    // public function laymathangnoibat(){
-    //     $dbcon = DATABASE::connect();
-    //     try{
-    //         $sql = "SELECT m.*, d.tendanhmuc 
-    //         FROM mathang m, danhmuc d 
-    //         WHERE d.id=m.danhmuc_id 
-    //         ORDER BY luotxem 
-    //         DESC LIMIT 0, 4";
-    //         $cmd = $dbcon->prepare($sql);
-    //         $cmd->execute();
-    //         $ketqua = $cmd->fetchAll();
-    //         return $ketqua;
-    //     }
-    //     catch(PDOException $e){
-    //         $error_message = $e->getMessage();
-    //         echo "<p>Lỗi truy vấn: $error_message</p>";
-    //         exit();
-    //     }
-    // }
+    //Lấy mặt hàng nổi bật top 4 lượt mua
+    public function laymathangnoibat(){
+        $dbcon = DATABASE::connect();
+        try{
+            $sql = "SELECT m.*, d.tendanhmuc 
+            FROM mathang m, danhmuc d 
+            WHERE d.id=m.danhmuc_id 
+            ORDER BY luotxem 
+            DESC LIMIT 0, 4";
+            $cmd = $dbcon->prepare($sql);
+            $cmd->execute();
+            $ketqua = $cmd->fetchAll();
+            return $ketqua;
+        }
+        catch(PDOException $e){
+            $error_message = $e->getMessage();
+            echo "<p>Lỗi truy vấn: $error_message</p>";
+            exit();
+        }
+    }
     // lấy mặt hàng phân trang
     public function laymathangphantrang($m, $n)
     {

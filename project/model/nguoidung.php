@@ -3,7 +3,6 @@ class NGUOIDUNG
 {
 	private $id;
 	private $username;
-	private $password;
 	private $email;
 	private $phone_number;
 	private $address;
@@ -190,13 +189,15 @@ class NGUOIDUNG
 		}
 	}
 	// lấy thông tin người dùng có $email
-	public function getUserInfo($email)
+	public function getUserInfo($username)
 	{
 		$db = DATABASE::connect();
 		try {
-			$sql = "SELECT * FROM user WHERE email=:email";
+			$sql = "SELECT `username`, `email`, `phone_number`, `address`, `hinhanh` 
+					FROM `user` 
+					WHERE username=:username";
 			$cmd = $db->prepare($sql);
-			$cmd->bindValue(":email", $email);
+			$cmd->bindValue(":username", $username);
 			$cmd->execute();
 			$ketqua = $cmd->fetch();
 			$cmd->closeCursor();
