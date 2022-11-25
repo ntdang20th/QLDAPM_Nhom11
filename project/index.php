@@ -54,7 +54,31 @@ switch ($action) {
         themhangvaogio($mahang, $soluong);
         $giohang = laygiohang();
         include("cart.php");
-
+        break;
+    case "timKiem":
+            // $tongmh = $mh->demtongsomathang();
+            // $soluong = 4;
+            // $tongsotrang = ceil($tongmh / $soluong);
+            // if (!isset($_REQUEST["trang"]))
+            //     $tranghh = 1;
+            // else
+            //     $tranghh = $_REQUEST["trang"];
+            // $batdau = ($tranghh - 1) * $soluong;
+            
+            if(isset($_POST['txtTuKhoa']))
+                $tuKhoa = $_POST['txtTuKhoa'];
+            
+            if(isset($_POST['optbang']))
+                $loaiTimKiem = $_POST['optbang'];
+            
+            
+            if($loaiTimKiem == "tenSP")
+                $mathang = getProductsbyName($tuKhoa);
+            else if($loaiTimKiem == "giaMin")
+                $mathang = getPriceMin($tuKhoa);
+            else
+                $mathang = getPriceMax($tuKhoa);
+            include('main.php');
         break;
     default:
         break;
