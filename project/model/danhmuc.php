@@ -37,18 +37,19 @@ class DANHMUC{
     }
 
     // Thêm mới
-    public function themdanhmuc($tile, $slug, $description, $active)
+    public function themdanhmuc($tile, $slug,$active, $description)
     {
         $dbcon = DATABASE::connect();
         try{
-            $sql = "INSERT INTO category (title, slug, description, active)
-                	VALUES(:$tile, :$slug, :$description, :$active)";
+            $sql = "INSERT INTO category (title, slug,active, description)
+                	VALUES(:$tile, :$slug, :$active, :$description)";
             
             $cmd = $dbcon->prepare($sql);
             $cmd->bindValue(":tile", $tile);
             $cmd->bindValue(":slug", $slug);
-            $cmd->bindValue(":description", $description);
             $cmd->bindValue(":active", $active);
+            $cmd->bindValue(":description", $description);
+          
 
             $result = $cmd->execute();            
             return $result;

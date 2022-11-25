@@ -23,8 +23,9 @@
 			<td><?php echo $m["description"]; ?></td>
 			<td><?php echo $m["price"]; ?></td>
 			<td><?php echo $m["active"]; ?></td>
+
 			
-			<td><?php if($m["active"]!=1) 
+			<td><?php if($m["active"]) 
 			{if($m["active"]==1) echo "Kích hoạt"; else echo "Khóa" ; }?></td>
 
 			<td><img src="../../<?php echo $m["hinhanh"]; ?>" width="100" class="img-thumbnail"></td>

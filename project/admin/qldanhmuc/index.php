@@ -24,10 +24,10 @@ switch($action){
         //xu ly them
         $tile = $_POST["txtten"];
         $slug = $_POST["txtslug"];
-        $description = $_POST["txtmota"];
         $active = $_POST["txttrangthai"];
-
-        $dm->themdanhmuc($tile,$slug,$description,$active);    
+        $description = $_POST["txtmota"];
+       
+        $dm->themdanhmuc($tile, $slug,$active, $description);    
 		$danhmuc = $dm->laydanhmuc(); 
         include("main.php");
         break;

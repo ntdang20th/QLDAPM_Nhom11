@@ -159,7 +159,7 @@ class MATHANG
     {
         $dbcon = DATABASE::connect();
         try {
-            $sql = "DELETE FROM mathang WHERE id=:id";
+            $sql = "DELETE FROM product WHERE id=:id";
             $cmd = $dbcon->prepare($sql);
             $cmd->bindValue(":id", $id);
             $result = $cmd->execute();
