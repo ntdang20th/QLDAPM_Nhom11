@@ -6,7 +6,6 @@ require("model/giohang.php");
 require("model/timkiem.php");
 require("model/nguoidung.php");
 
-session_start();
 
 $dm = new DANHMUC();
 $mh = new MATHANG();
@@ -94,6 +93,7 @@ switch ($action) {
 
     case "dangxuat":
     
+
         unset($_SESSION["nguoidung"]);
                 
         include("login.php");

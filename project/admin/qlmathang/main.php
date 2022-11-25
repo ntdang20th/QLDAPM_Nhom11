@@ -8,8 +8,7 @@
 	<tr>
 		<th>Tên mặt hàng</th>
 		<th>Mô tả</th>
-		<th>Giá Bán</th>
-		<th>Trạng Thái</th>
+		<th>Giá Bán</th>		
 		<th>Trang thái</th>
 		<th>Hình Ảnh</th>
 		<th>Sửa</th>
@@ -22,7 +21,7 @@
 			<td><?php echo $m["title"]; ?></td>
 			<td><?php echo $m["description"]; ?></td>
 			<td><?php echo $m["price"]; ?></td>
-			<td><?php echo $m["active"]; ?></td>
+			
 
 			
 			<td><?php if($m["active"]) 
