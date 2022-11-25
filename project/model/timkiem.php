@@ -126,7 +126,7 @@ function laymathangphantrang($m, $n)
 
 
 //lấy sản phẩm theo giá bán tối thiểu (có phân trang)
-    function getPriceMin($pricemin /*, $batDau, $soLuong*/)
+function getPriceMin($pricemin /*, $batDau, $soLuong*/)
 {
     $dbcon = DATABASE::connect();
     try{
@@ -138,6 +138,46 @@ function laymathangphantrang($m, $n)
         $sql = "SELECT p.*, c.title
         FROM product p, category c
         WHERE p.category_id = c.id and p.price >= $pricemin";
+        $cmd = $dbcon->prepare($sql);
+        $cmd->execute();
+        $result = $cmd->fetchAll();             
+        return $result;
+    }
+    catch(PDOException $e){
+        $error_message = $e->getMessage();
+        echo "<p>Lỗi truy vấn: $error_message</p>";
+        exit();
+    }
+}
+
+//lấy tất cả sản phẩm còn hàng
+function getActiveProduct()
+{
+    $dbcon = DATABASE::connect();
+    try{
+        $sql = "SELECT p.*, c.title
+        FROM product p, category c
+        WHERE p.category_id = c.id and p.active = 1";
+        $cmd = $dbcon->prepare($sql);
+        $cmd->execute();
+        $result = $cmd->fetchAll();             
+        return $result;
+    }
+    catch(PDOException $e){
+        $error_message = $e->getMessage();
+        echo "<p>Lỗi truy vấn: $error_message</p>";
+        exit();
+    }
+}
+
+//lấy tất cả sản phẩm còn hàng
+function laySPHetHang()
+{
+    $dbcon = DATABASE::connect();
+    try{
+        $sql = "SELECT p.*, c.title
+        FROM product p, category c
+        WHERE p.category_id = c.id and p.active = 0";
         $cmd = $dbcon->prepare($sql);
         $cmd->execute();
         $result = $cmd->fetchAll();             

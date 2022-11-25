@@ -15,6 +15,8 @@ else{
     $action="macdinh"; 
 }
 
+var_dump($action);
+
 $nguoidung = new NGUOIDUNG();
 $tb = "";
 switch($action){
