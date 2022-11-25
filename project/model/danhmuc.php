@@ -23,7 +23,7 @@ class DANHMUC{
     public function laydanhmuc(){
         $dbcon = DATABASE::connect();
         try{
-            $sql = "SELECT * FROM danhmuc";
+            $sql = "SELECT * FROM category";
             $cmd = $dbcon->prepare($sql);
             $cmd->execute();
             $result = $cmd->fetchAll();
@@ -40,7 +40,7 @@ class DANHMUC{
     public function themdanhmuc($tendm){
         $dbcon = DATABASE::connect();
         try{
-            $sql = "INSERT INTO danhmuc(tendanhmuc) VALUES(:tendanhmuc)";
+            $sql = "INSERT INTO category VALUES(:title, :slug, :description, :active)";
             $cmd = $dbcon->prepare($sql);
             $cmd->bindValue(":tendanhmuc", $tendm);
             $result = $cmd->execute();            
@@ -107,4 +107,3 @@ class DANHMUC{
     }
 
 }
-?>

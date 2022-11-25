@@ -44,9 +44,9 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `title`,`slug`,`description`,`active`) VALUES
-(1, 'Adidas', 'ADI', 'Adidas from American', 1),
-(2, 'Puma', 'PUM', 'Puma from French', 1),
-(3, 'NIKE', 'NIK', 'NIKE from Singapor', 1);
+(1, 'Kính mát', 'ADI', 'mát lắm', 1),
+(2, 'Kính cận', 'PUM', 'mù đeo dô cũng thấy', 1),
+(3, 'Kính lão đắt thọ', 'NIK', 'sống lâu', 1);
 
 -- --------------------------------------------------------
 
@@ -68,13 +68,11 @@ CREATE TABLE `product` (
 -- Dumping data for table `diachi`
 --
 
--- INSERT INTO `product` (`id`, `title`, `description`, `price`, `category_id`, `active`) VALUES
--- (1, 'Kính A', 'màu đỏ', 120000, 1, 1),
--- (2, 'Kính B', 'màu đỏ', 130000, 1, 1),
--- (3, 'Kính D', 'màu đỏ', 140000, 2, 1),
--- (4, 'Kính G', 'màu đỏ', 150000, 3, 1),
--- (5, 'Kính Y', 'màu đỏ', 160000, 2, 1),
--- (6, 'Kính Ư', 'màu đỏ', 170000, 3, 1),
+INSERT INTO product VALUES (1, 'Mắt kính', 'màu đỏ', 120000, 1, 1, 'kinh1.jpg');
+INSERT INTO product VALUES (2, 'Mắt kính chấn bé đù', 'màu vàng', 130000, 1, 1, 'kinh2.jpg');
+INSERT INTO product VALUES (3, 'Mắt mính laze', 'màu xanh', 140000, 2, 1, 'kinh3.jpg');
+INSERT INTO product VALUES (4, 'Mắt kính nhìn xuyên thấu', 'màu đen', 150000, 3, 1, 'kinh4.jpg');
+INSERT INTO product VALUES (5, 'Kính trên nhường dưới', 'màu đen', 150000, 3, 1, 'kinh5.jpg');
 
 -- --------------------------------------------------------
 

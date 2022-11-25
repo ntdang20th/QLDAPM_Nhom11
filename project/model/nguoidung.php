@@ -171,13 +171,13 @@ class NGUOIDUNG
 	}
 
 	// authentication
-	public function checkUser($email, $password)
+	public function checkUser($username, $password)
 	{
 		$db = DATABASE::connect();
 		try {
-			$sql = "SELECT * FROM user WHERE email=:email AND password=:password AND status=1";
+			$sql = "SELECT * FROM user WHERE username=:username AND password=:password";
 			$cmd = $db->prepare($sql);
-			$cmd->bindValue(":email", $email);
+			$cmd->bindValue(":username", $username);
 			$cmd->bindValue(":password", md5($password));
 			$cmd->execute();
 			$valid = ($cmd->rowCount() == 1);
@@ -190,37 +190,37 @@ class NGUOIDUNG
 		}
 	}
 	// lấy thông tin người dùng có $email
-	public function getUserInfo($email){
+	public function getUserInfo($email)
+	{
 		$db = DATABASE::connect();
-		try{
-			$sql = "SELECT * FROM nguoidung WHERE email=:email";
+		try {
+			$sql = "SELECT * FROM user WHERE email=:email";
 			$cmd = $db->prepare($sql);
 			$cmd->bindValue(":email", $email);
 			$cmd->execute();
 			$ketqua = $cmd->fetch();
 			$cmd->closeCursor();
 			return $ketqua;
-		}
-		catch(PDOException $e){
-			$error_message=$e->getMessage();
+		} catch (PDOException $e) {
+			$error_message = $e->getMessage();
 			echo "<p>Lỗi truy vấn: $error_message</p>";
 			exit();
 		}
 	}
 
 	// Đổi mật khẩu
-	public function doimatkhau($email,$matkhau){
+	public function doimatkhau($email, $matkhau)
+	{
 		$db = DATABASE::connect();
-		try{
+		try {
 			$sql = "UPDATE nguoidung set matkhau=:matkhau where email=:email";
 			$cmd = $db->prepare($sql);
-			$cmd->bindValue(':email',$email);
-			$cmd->bindValue(':matkhau',md5($matkhau));
-			$ketqua = $cmd->execute();            
-            return $ketqua;
-		}
-		catch(PDOException $e){
-			$error_message=$e->getMessage();
+			$cmd->bindValue(':email', $email);
+			$cmd->bindValue(':matkhau', md5($matkhau));
+			$ketqua = $cmd->execute();
+			return $ketqua;
+		} catch (PDOException $e) {
+			$error_message = $e->getMessage();
 			echo "<p>Lỗi truy vấn: $error_message</p>";
 			exit();
 		}
@@ -285,21 +285,21 @@ class NGUOIDUNG
 
 	// update user 
 	// Cập nhật thông tin ng dùng: họ tên, số đt, email, ảnh đại diện 
-	public function capnhatnguoidung($id,$email,$sodt,$hoten,$hinhanh){
+	public function capnhatnguoidung($id, $email, $sodt, $hoten, $hinhanh)
+	{
 		$db = DATABASE::connect();
-		try{
+		try {
 			$sql = "UPDATE nguoidung set hoten=:hoten, email=:email, sodienthoai=:sodt, hinhanh=:hinhanh where id=:id";
 			$cmd = $db->prepare($sql);
-			$cmd->bindValue(':id',$id);
-			$cmd->bindValue(':email',$email);
-			$cmd->bindValue(':sodt',$sodt);
-			$cmd->bindValue(':hoten',$hoten);
-			$cmd->bindValue(':hinhanh',$hinhanh);
-			$ketqua = $cmd->execute();            
-            return $ketqua;
-		}
-		catch(PDOException $e){
-			$error_message=$e->getMessage();
+			$cmd->bindValue(':id', $id);
+			$cmd->bindValue(':email', $email);
+			$cmd->bindValue(':sodt', $sodt);
+			$cmd->bindValue(':hoten', $hoten);
+			$cmd->bindValue(':hinhanh', $hinhanh);
+			$ketqua = $cmd->execute();
+			return $ketqua;
+		} catch (PDOException $e) {
+			$error_message = $e->getMessage();
 			echo "<p>Lỗi truy vấn: $error_message</p>";
 			exit();
 		}

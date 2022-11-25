@@ -1,58 +1,59 @@
 <?php
-class MATHANG{
+class MATHANG
+{
     ///Tong so mat hang
-    public function demtongsomathang(){
+    public function demtongsomathang()
+    {
         $dbcon = DATABASE::connect();
-        try{
-            $sql = "SELECT COUNT(*) FROM mathang";
+        try {
+            $sql = "SELECT COUNT(*) FROM product";
             $cmd = $dbcon->prepare($sql);
             $cmd->execute();
             $count = $cmd->fetchColumn();
             //rsort($result);
             return $count;
-        }
-        catch(PDOException $e){
+        } catch (PDOException $e) {
             $error_message = $e->getMessage();
             echo "<p>Lỗi truy vấn: $error_message</p>";
             exit();
         }
     }
-    
-	// Lấy mặt hàng nổi bật top 4 có lượt xem cao nhất
-    public function laymathangnoibat(){
-        $dbcon = DATABASE::connect();
-        try{
-            $sql = "SELECT m.*, d.tendanhmuc 
-            FROM mathang m, danhmuc d 
-            WHERE d.id=m.danhmuc_id 
-            ORDER BY luotxem 
-            DESC LIMIT 0, 4";
-            $cmd = $dbcon->prepare($sql);
-            $cmd->execute();
-            $ketqua = $cmd->fetchAll();
-            return $ketqua;
-        }
-        catch(PDOException $e){
-            $error_message = $e->getMessage();
-            echo "<p>Lỗi truy vấn: $error_message</p>";
-            exit();
-        }
-    }
+
+    // Lấy mặt hàng nổi bật top 4 có lượt xem cao nhất
+    // public function laymathangnoibat(){
+    //     $dbcon = DATABASE::connect();
+    //     try{
+    //         $sql = "SELECT m.*, d.tendanhmuc 
+    //         FROM mathang m, danhmuc d 
+    //         WHERE d.id=m.danhmuc_id 
+    //         ORDER BY luotxem 
+    //         DESC LIMIT 0, 4";
+    //         $cmd = $dbcon->prepare($sql);
+    //         $cmd->execute();
+    //         $ketqua = $cmd->fetchAll();
+    //         return $ketqua;
+    //     }
+    //     catch(PDOException $e){
+    //         $error_message = $e->getMessage();
+    //         echo "<p>Lỗi truy vấn: $error_message</p>";
+    //         exit();
+    //     }
+    // }
     // lấy mặt hàng phân trang
-    public function laymathangphantrang($m,$n){
+    public function laymathangphantrang($m, $n)
+    {
         $dbcon = DATABASE::connect();
-        try{
-            $sql = "SELECT m.*, d.tendanhmuc 
-            FROM mathang m, danhmuc d 
-            WHERE d.id=m.danhmuc_id 
+        try {
+            $sql = "SELECT m.*, d.title 
+            FROM product m, category d 
+            WHERE d.id=m.category_id 
             ORDER BY id  
             DESC LIMIT $m, $n";
             $cmd = $dbcon->prepare($sql);
             $cmd->execute();
             $ketqua = $cmd->fetchAll();
             return $ketqua;
-        }
-        catch(PDOException $e){
+        } catch (PDOException $e) {
             $error_message = $e->getMessage();
             echo "<p>Lỗi truy vấn: $error_message</p>";
             exit();
@@ -60,34 +61,34 @@ class MATHANG{
     }
 
     // Lấy danh sách
-    public function laymathang(){
+    public function laymathang()
+    {
         $dbcon = DATABASE::connect();
-        try{
-            $sql = "SELECT * FROM mathang";
+        try {
+            $sql = "SELECT * FROM product";
             $cmd = $dbcon->prepare($sql);
             $cmd->execute();
             $result = $cmd->fetchAll();
             rsort($result); // sắp xếp giảm thay cho order by desc
             return $result;
-        }
-        catch(PDOException $e){
+        } catch (PDOException $e) {
             $error_message = $e->getMessage();
             echo "<p>Lỗi truy vấn: $error_message</p>";
             exit();
         }
     }
-	    // Lấy danh sách mặt hàng thuộc 1 danh mục
-    public function laymathangtheodanhmuc($danhmuc_id){
+    // Lấy danh sách mặt hàng thuộc 1 danh mục
+    public function laymathangtheodanhmuc($category_id)
+    {
         $dbcon = DATABASE::connect();
-        try{
-            $sql = "SELECT * FROM mathang WHERE danhmuc_id=:madm" ;
+        try {
+            $sql = "SELECT * FROM product WHERE category_id=:madm";
             $cmd = $dbcon->prepare($sql);
-			$cmd->bindValue(":madm",$danhmuc_id);
+            $cmd->bindValue(":madm", $category_id);
             $cmd->execute();
             $result = $cmd->fetchAll();
             return $result;
-        }
-        catch(PDOException $e){
+        } catch (PDOException $e) {
             $error_message = $e->getMessage();
             echo "<p>Lỗi truy vấn: $error_message</p>";
             exit();
@@ -95,57 +96,57 @@ class MATHANG{
     }
 
     // Lấy mặt hàng theo id
-    public function laymathangtheoid($id){
+    public function laymathangtheoid($id)
+    {
         $dbcon = DATABASE::connect();
-        try{
-            $sql = "SELECT * FROM mathang WHERE id=:id";
+        try {
+            $sql = "SELECT * FROM product WHERE id=:id";
             $cmd = $dbcon->prepare($sql);
             $cmd->bindValue(":id", $id);
             $cmd->execute();
-            $result = $cmd->fetch();             
+            $result = $cmd->fetch();
             return $result;
-        }
-        catch(PDOException $e){
+        } catch (PDOException $e) {
             $error_message = $e->getMessage();
             echo "<p>Lỗi truy vấn: $error_message</p>";
             exit();
         }
     }
     // Cập nhật lượt xem
-    public function tangluotxem($id){
+    public function tangluotxem($id)
+    {
         $dbcon = DATABASE::connect();
-        try{
-            $sql = "UPDATE mathang SET luotxem=luotxem+1 WHERE id=:id";
+        try {
+            $sql = "UPDATE product SET luotxem=luotxem+1 WHERE id=:id";
             $cmd = $dbcon->prepare($sql);
             $cmd->bindValue(":id", $id);
-            $result = $cmd->execute();            
+            $result = $cmd->execute();
             return $result;
-        }
-        catch(PDOException $e){
+        } catch (PDOException $e) {
             $error_message = $e->getMessage();
             echo "<p>Lỗi truy vấn: $error_message</p>";
             exit();
         }
     }
-	
-	// Thêm mới
-    public function themmathang($tenmathang,$mota,$giagoc,$giaban,$soluongton,$danhmuc_id,$hinhanh){
+
+    // Thêm mới
+    public function themmathang($tenmathang, $mota, $giagoc, $giaban, $soluongton, $danhmuc_id, $hinhanh)
+    {
         $dbcon = DATABASE::connect();
-        try{
+        try {
             $sql = "INSERT INTO mathang(tenmathang,mota,giagoc,giaban,soluongton,danhmuc_id,hinhanh,luotxem,luotmua) 
 				VALUES(:tenmathang,:mota,:giagoc,:giaban,:soluongton,:danhmuc_id,:hinhanh,0,0)";
             $cmd = $dbcon->prepare($sql);
             $cmd->bindValue(":tenmathang", $tenmathang);
-			$cmd->bindValue(":mota", $mota);
-			$cmd->bindValue(":giagoc", $giagoc);
-			$cmd->bindValue(":giaban", $giaban);
-			$cmd->bindValue(":soluongton", $soluongton);
-			$cmd->bindValue(":danhmuc_id", $danhmuc_id);
-			$cmd->bindValue(":hinhanh", $hinhanh);
-            $result = $cmd->execute();            
+            $cmd->bindValue(":mota", $mota);
+            $cmd->bindValue(":giagoc", $giagoc);
+            $cmd->bindValue(":giaban", $giaban);
+            $cmd->bindValue(":soluongton", $soluongton);
+            $cmd->bindValue(":danhmuc_id", $danhmuc_id);
+            $cmd->bindValue(":hinhanh", $hinhanh);
+            $result = $cmd->execute();
             return $result;
-        }
-        catch(PDOException $e){
+        } catch (PDOException $e) {
             $error_message = $e->getMessage();
             echo "<p>Lỗi truy vấn: $error_message</p>";
             exit();
@@ -153,16 +154,16 @@ class MATHANG{
     }
 
     // Xóa 
-    public function xoamathang($id){
+    public function xoamathang($id)
+    {
         $dbcon = DATABASE::connect();
-        try{
+        try {
             $sql = "DELETE FROM mathang WHERE id=:id";
             $cmd = $dbcon->prepare($sql);
             $cmd->bindValue(":id", $id);
-            $result = $cmd->execute();            
+            $result = $cmd->execute();
             return $result;
-        }
-        catch(PDOException $e){
+        } catch (PDOException $e) {
             $error_message = $e->getMessage();
             echo "<p>Lỗi truy vấn: $error_message</p>";
             exit();
@@ -170,9 +171,10 @@ class MATHANG{
     }
 
     // Cập nhật 
-    public function suamathang($id, $tenmathang,$mota,$giagoc,$giaban,$soluongton,$danhmuc_id,$hinhanh,$luotxem,$luotmua){
+    public function suamathang($id, $tenmathang, $mota, $giagoc, $giaban, $soluongton, $danhmuc_id, $hinhanh, $luotxem, $luotmua)
+    {
         $dbcon = DATABASE::connect();
-        try{
+        try {
             $sql = "UPDATE mathang SET tenmathang=:tenmathang,
 										mota=:mota,
 										giagoc=:giagoc,
@@ -185,24 +187,21 @@ class MATHANG{
 										WHERE id=:id";
             $cmd = $dbcon->prepare($sql);
             $cmd->bindValue(":tenmathang", $tenmathang);
-			$cmd->bindValue(":mota", $mota);
-			$cmd->bindValue(":giagoc", $giagoc);
-			$cmd->bindValue(":giaban", $giaban);
-			$cmd->bindValue(":soluongton", $soluongton);
-			$cmd->bindValue(":danhmuc_id", $danhmuc_id);
-			$cmd->bindValue(":hinhanh", $hinhanh);
-			$cmd->bindValue(":luotxem", $luotxem);
-			$cmd->bindValue(":luotmua", $luotmua);
+            $cmd->bindValue(":mota", $mota);
+            $cmd->bindValue(":giagoc", $giagoc);
+            $cmd->bindValue(":giaban", $giaban);
+            $cmd->bindValue(":soluongton", $soluongton);
+            $cmd->bindValue(":danhmuc_id", $danhmuc_id);
+            $cmd->bindValue(":hinhanh", $hinhanh);
+            $cmd->bindValue(":luotxem", $luotxem);
+            $cmd->bindValue(":luotmua", $luotmua);
             $cmd->bindValue(":id", $id);
-            $result = $cmd->execute();            
+            $result = $cmd->execute();
             return $result;
-        }
-        catch(PDOException $e){
+        } catch (PDOException $e) {
             $error_message = $e->getMessage();
             echo "<p>Lỗi truy vấn: $error_message</p>";
             exit();
         }
     }
-
 }
-?>
