@@ -169,8 +169,7 @@ CREATE TABLE `user` (
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `phone_number` varchar(15) ,
-  `address` varchar(255) ,
-  `hinhanh` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+  `address` varchar(255)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 -- --------------------------------------------------------
 
@@ -327,8 +326,5 @@ ALTER TABLE `order`
 	ADD CONSTRAINT `order_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON UPDATE CASCADE;
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
-INSERT INTO user VALUES (NULL, 'admin', MD5('123'), 'admin@gmail.com', '0956626169', 'long xuyen, an giang', 'avatar');
+INSERT INTO user VALUES ('admin', MD5('123'), 'admin@gmail.com', '0956626169', 'long xuyen, an giang', 'avatar');

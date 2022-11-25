@@ -228,20 +228,19 @@ class NGUOIDUNG
 	}
 
 	// Add user
-	public function addUser($username, $password, $email, $phone_number, $address, $images)
+	public function addUser($username, $password, $email, $phone_number, $address)
 	{
 		$dbcon = DATABASE::connect();
 		try {
-			$sql = "INSERT INTO user(username, password, email, phone_number, address, images) VALUES(:username, :password, :email, :phone_number, :address, :images)";
+			$hash = md5($password);
+			$sql = "INSERT INTO user (username, password, email, phone_number, address) VALUES (:username, :password, :email, :phone_number, :address)";
 			$cmd = $dbcon->prepare($sql);
 			$cmd->bindValue(":username", $username);
-			$cmd->bindValue(":password", $password);
+			$cmd->bindValue(":password", $hash);
 			$cmd->bindValue(":email", $email);
 			$cmd->bindValue(":phone_number", $phone_number);
 			$cmd->bindValue(":address", $address);
-			$cmd->bindValue(":images", $images);
-			$result = $cmd->execute();
-			return $result;
+			$cmd->execute();
 		} catch (PDOException $e) {
 			$error_message = $e->getMessage();
 			echo "<p>Lỗi truy vấn: $error_message</p>";
@@ -324,5 +323,4 @@ class NGUOIDUNG
 			exit();
 		}
 	}
-	
 }

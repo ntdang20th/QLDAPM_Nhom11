@@ -52,10 +52,7 @@
       <li><a href="?trang=<?php echo $tranghh + 1; ?>"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
       <li><a href="?trang=<?php echo $tongsotrang; ?>"><span class="glyphicon glyphicon-step-forward"></span></a></li>
     </ul>
-
   </div>
-
-
   <?php include("topview.php"); ?>
 
 

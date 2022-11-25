@@ -18,6 +18,7 @@ if (isset($_REQUEST["action"])) {
 }
 
 $nguoidung = new NGUOIDUNG();
+$acitve = 0;
 
 
 // $mathangnoibat = $mh->laymathangnoibat();
@@ -62,47 +63,47 @@ switch ($action) {
         include("cart.php");
         break;
     case "timKiem":
-            // $tongmh = $mh->demtongsomathang();
-            // $soluong = 4;
-            // $tongsotrang = ceil($tongmh / $soluong);
-            // if (!isset($_REQUEST["trang"]))
-            //     $tranghh = 1;
-            // else
-            //     $tranghh = $_REQUEST["trang"];
-            // $batdau = ($tranghh - 1) * $soluong;
-            
-            if(isset($_POST['txtTuKhoa']))
-                $tuKhoa = $_POST['txtTuKhoa'];
-            
-            if(isset($_POST['optbang']))
-                $loaiTimKiem = $_POST['optbang'];
-            
-            
-            if($loaiTimKiem == "tenSP")
-                $mathang = getProductsbyName($tuKhoa);
-            else if($loaiTimKiem == "giaMin")
-                $mathang = getPriceMin($tuKhoa);
-            else
-                $mathang = getPriceMax($tuKhoa);
-            include('main.php');
+        // $tongmh = $mh->demtongsomathang();
+        // $soluong = 4;
+        // $tongsotrang = ceil($tongmh / $soluong);
+        // if (!isset($_REQUEST["trang"]))
+        //     $tranghh = 1;
+        // else
+        //     $tranghh = $_REQUEST["trang"];
+        // $batdau = ($tranghh - 1) * $soluong;
+
+        if (isset($_POST['txtTuKhoa']))
+            $tuKhoa = $_POST['txtTuKhoa'];
+
+        if (isset($_POST['optbang']))
+            $loaiTimKiem = $_POST['optbang'];
+
+
+        if ($loaiTimKiem == "tenSP")
+            $mathang = getProductsbyName($tuKhoa);
+        else if ($loaiTimKiem == "giaMin")
+            $mathang = getPriceMin($tuKhoa);
+        else
+            $mathang = getPriceMax($tuKhoa);
+        include('main.php');
         break;
-    
+
     case "dangnhap":
         include("login.php");
         break;
 
     case "dangxuat":
-    
+
 
         unset($_SESSION["nguoidung"]);
-                
+
         include("login.php");
         break;
 
     case "xldangnhap":
         $username = $_POST["txtusername"];
         $matkhau = $_POST["txtmatkhau"];
-        if($nguoidung->checkUser($username,$matkhau)==TRUE){
+        if ($nguoidung->checkUser($username, $matkhau) == TRUE) {
             $_SESSION["nguoidung"] = $nguoidung->getUserInfo($username);
             $tongmh = $mh->demtongsomathang();
             $mathang = $mh->laymathang();
@@ -115,8 +116,7 @@ switch ($action) {
             $batdau = ($tranghh - 1) * $soluong;
             $mathang = $mh->laymathangphantrang($batdau, $soluong);
             include("main.php");
-        }
-        else{
+        } else {
             $tb = "Đăng nhập không thành công!";
             include("login.php");
         }
@@ -152,14 +152,37 @@ switch ($action) {
             $tranghh = $_REQUEST["trang"];
         $batdau = ($tranghh - 1) * $soluong;
         $mathang = $mh->laymathangphantrang($batdau, $soluong);
-        
+
         $matKhauMoi = $_POST['txtMatKhauMoi'];
         $userName = $_SESSION['nguoidung']['username'];
         $nguoidung->doiMatKhau($userName, $matKhauMoi);
-        
+
         $_SESSION['nguoidung'] = $nguoidung->getUserInfo($userName);
 
         include("main.php");
+        break;
+    case 'xulydangkytaikhoan':
+        $tongmh = $mh->demtongsomathang();
+        $mathang = $mh->laymathang();
+        $soluong = 4;
+        $tongsotrang = ceil($tongmh / $soluong);
+        if (!isset($_REQUEST["trang"]))
+            $tranghh = 1;
+        else
+            $tranghh = $_REQUEST["trang"];
+        $batdau = ($tranghh - 1) * $soluong;
+        $mathang = $mh->laymathangphantrang($batdau, $soluong);
+
+        if (isset($_POST["txtusername"]) && isset($_POST["txtpassword"]) && isset($_POST["txtemail"]) && isset($_POST["txtphone"]) && isset($_POST["txtaddress"])) {
+            $username = $_POST['txtusername'];
+            $password = $_POST['txtpassword'];
+            $email = $_POST['txtemail'];
+            $phone = $_POST['txtphone'];
+            $address = $_POST['txtaddress'];
+            $nguoidung->addUser($username, $password, $email, $phone, $address);
+            include("main.php");
+        } else
+            include("main.php");
         break;
     default:
         break;
