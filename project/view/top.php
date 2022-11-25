@@ -77,7 +77,7 @@
           <li><a href="#">Liên hệ</a></li>
 
           <li><a href="#" data-toggle="modal" data-target="#modalTimKiem">
-              <span class="glyphicon glyphicon-search"></span> Tìm kiếm</a></li>
+              <span class="glyphicon glyphicon-search"></span> Tìm kiếm sản phẩm</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="admin/ktnguoidung/loginform.php"><span class="glyphicon glyphicon-user"></span>Đăng nhập</a></li>
@@ -101,26 +101,28 @@
           <h4><span class="glyphicon glyphicon-search"></span> Bạn cần tìm gì?</h4>
         </div>
         <div class="modal-body">
-          <form role="form">
+          <form role="form" method="post">
             <div class="form-group">
               <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span> Từ khóa: </label>
-              <input type="text" class="form-control" id="txttukhoa" placeholder="Nhập từ khóa">
+              <input type="text" class="form-control" id="txttukhoa" name="txtTuKhoa" placeholder="Nhập từ khóa">
             </div>
             <div class="form-group">
-              <label for="optbang"> Trong: </label>
-              <select name="optbang" class="form-control" id="optbang">
-                <option value="mathang">Sản phẩm</option>
-                <option value="baiviet">Tin tức</option>
+              <label for="optbang"> Loại tìm kiếm: </label>
+              <select name="optbang" class="form-control">
+                <option value="">--- chọn loại tìm kiếm ---</option>
+                <option selected value="tenSP">Sản phẩm theo tên</option>
+                <option value="giaMin">Sản phẩm theo giá tối thiểu</option>
+                <option value="giaMax">Sản phẩm theo giá tối đa</option>
               </select>
             </div>
             <button type="submit" class="btn btn-info">Tìm kiếm
               <span class="glyphicon glyphicon-ok"></span>
             </button>
+            <input type="hidden" name="action" value="timKiem">
           </form>
         </div>
 
       </div>
     </div>
   </div>
-
   <br>
