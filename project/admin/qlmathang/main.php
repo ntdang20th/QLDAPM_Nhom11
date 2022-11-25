@@ -1,6 +1,7 @@
 <?php include("../view/top.php"); ?>
 
 <h3>Quản lý mặt hàng</h3>
+<a href="" class="btn btn-success">Tìm kiếm mặt hàng</a>
 <br>
 <a href="index.php?action=them" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Thêm mặt hàng</a>
 <br> <br>
