@@ -49,26 +49,34 @@
               <span class="glyphicon glyphicon-search"></span> Tìm kiếm sản phẩm</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          
+
           <li>
-          <div class="container-fluid">  
-              <!-- Thông tin người dùng - sẽ bổ sung ở bài thực hành sau -->          
+            <div class="container-fluid">
+              <!-- Thông tin người dùng - sẽ bổ sung ở bài thực hành sau -->
               <div class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                  
-                <span class="glyphicon glyphicon-user"></span> 
-                  <?php if(isset($_SESSION["nguoidung"])) echo $_SESSION["nguoidung"]["username"]; ?>
+
+                  <span class="glyphicon glyphicon-user"></span>
+                  <?php if (isset($_SESSION["nguoidung"])) echo $_SESSION["nguoidung"]["username"]; ?>
                   <span class="caret"></span></a>
                 <ul class="dropdown-menu dropdown-menu-right">
                   <li><a href="#" class="subtitle"><span class="glyphicon glyphicon-envelope"></span> Thông báo</a></li>
                   <li><a href="#" class="subtitle" data-toggle="modal" data-target="#fcapnhatthongtin"><span class="glyphicon glyphicon-edit"></span> Hồ sơ cá nhân</a></li>
                   <li><a href="#" class="subtitle" data-toggle="modal" data-target="#fdoimatkhau"><span class="glyphicon glyphicon-wrench"></span> Đổi mật khẩu</a></li>
                   <li class="divider"></li>
-                  <li><a  class="subtitle" href="?action=dangxuat"><span class="glyphicon glyphicon-log-out"></span> Thoát</a></li>
-                </ul>  
-                
+                  <li><a class="subtitle" href="?action=dangxuat"><span class="glyphicon glyphicon-log-out"></span> Thoát</a></li>
+                </ul>
+
               </div>
           </li>
+          <li>
+          </li>
+          <!-- ádasd -->
+          <li>
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Đăng ký</button>
+          </li>
+          <!--Contact Form-->
+
           <li><a href="#" class="text-warning">
               <span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng
             </a>
@@ -114,3 +122,38 @@
     </div>
   </div>
   <br>
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Đăng ký tài khoản mua sắm</h4>
+        </div>
+        <div class="modal-body">
+          <div>
+            <label for="">Tài khoản</label>
+            <input type="text" class="form-control">
+          </div>
+          <div>
+            <label for="">Tài khoản</label>
+            <input type="text" class="form-control">
+          </div>
+          <div>
+            <label for="">Tài khoản</label>
+            <input type="text" class="form-control">
+          </div>
+          <div>
+            <label for="">Tài khoản</label>
+            <input type="text" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
