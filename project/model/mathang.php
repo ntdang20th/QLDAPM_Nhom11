@@ -130,6 +130,7 @@ class MATHANG
     }
 
     // Thêm mới
+
     public function themmathang($hinhanh,$title,$description,$price,$category_id)
     {
         $dbcon = DATABASE::connect();
@@ -149,6 +150,7 @@ class MATHANG
             $error_message = $e->getMessage();
             echo "<p>Lỗi truy vấn: $error_message</p>";
             exit();
+
         }
     }
 
@@ -170,31 +172,25 @@ class MATHANG
     }
 
     // Cập nhật 
-    public function suamathang($id, $tenmathang, $mota, $giagoc, $giaban, $soluongton, $danhmuc_id, $hinhanh, $luotxem, $luotmua)
+    public function suamathang($id,$title,$category_id,$description,$price,$hinhanh)
     {
         $dbcon = DATABASE::connect();
         try {
-            $sql = "UPDATE mathang SET tenmathang=:tenmathang,
-										mota=:mota,
-										giagoc=:giagoc,
-										giaban=:giaban,
-										soluongton=:soluongton,
-										danhmuc_id=:danhmuc_id,
-										hinhanh=:hinhanh,
-										luotxem=:luotxem,
-										luotmua=:luotmua
+            $sql = "UPDATE product SET title=:title,
+                                        category_id=:category_id,
+										description=:description,
+										price=:price,
+										
+                                        hinhanh=:hinhanh									
+
 										WHERE id=:id";
             $cmd = $dbcon->prepare($sql);
-            $cmd->bindValue(":tenmathang", $tenmathang);
-            $cmd->bindValue(":mota", $mota);
-            $cmd->bindValue(":giagoc", $giagoc);
-            $cmd->bindValue(":giaban", $giaban);
-            $cmd->bindValue(":soluongton", $soluongton);
-            $cmd->bindValue(":danhmuc_id", $danhmuc_id);
-            $cmd->bindValue(":hinhanh", $hinhanh);
-            $cmd->bindValue(":luotxem", $luotxem);
-            $cmd->bindValue(":luotmua", $luotmua);
-            $cmd->bindValue(":id", $id);
+            $cmd->bindValue(":title", $title);
+            $cmd->bindValue(":category_id", $category_id);
+            $cmd->bindValue(":description", $description);
+            $cmd->bindValue(":price", $price);
+            $cmd->bindValue(":hinhanh",$hinhanh);
+           $cmd->bindValue(":id", $id);
             $result = $cmd->execute();
             return $result;
         } catch (PDOException $e) {

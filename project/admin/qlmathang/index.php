@@ -61,14 +61,10 @@ switch($action){
         break;
     case "xulysua":
         $id = $_POST["txtid"];
-        $danhmuc_id = $_POST["optdanhmuc"];
-        $tenmathang = $_POST["txttenhang"];
-        $mota = $_POST["txtmota"];
-        $giagoc = $_POST["txtgiagoc"];
-        $giaban = $_POST["txtgiaban"];
-        $soluongton = $_POST["txtsoluongton"];
-        $luotxem = $_POST["txtluotxem"];
-        $luotmua = $_POST["txtluotmua"];
+        $title	 = $_POST["txttenhang"];
+        $category_id	= $_POST["optdanhmuc"];
+        $description	 = $_POST["txtmota"];
+        $price =$_POST["txtgiaban"];
         $hinhanh = $_POST["txthinhcu"];
 
         // upload file mới (nếu có)
@@ -80,7 +76,7 @@ switch($action){
         }
         
         // sửa mặt hàng
-        $mh->suamathang($id, $tenmathang,$mota,$giagoc,$giaban,$soluongton,$danhmuc_id,$hinhanh,$luotxem,$luotmua);         
+        $mh->suamathang($id,$title,$category_id,$description,$price,$hinhanh);         
     
         // hiển thị ds mặt hàng
         $mathang = $mh->laymathang();    
