@@ -3,6 +3,7 @@ require("model/database.php");
 require("model/danhmuc.php");
 require("model/mathang.php");
 require("model/giohang.php");
+require("model/timkiem.php");
 
 $dm = new DANHMUC();
 $mh = new MATHANG();
