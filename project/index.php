@@ -94,6 +94,7 @@ switch ($action) {
 
     case "dangxuat":
     
+        
         unset($_SESSION["nguoidung"]);
                 
         include("login.php");
