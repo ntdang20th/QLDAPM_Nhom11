@@ -37,12 +37,19 @@ class DANHMUC{
     }
 
     // Thêm mới
-    public function themdanhmuc($tendm){
+    public function themdanhmuc($tile, $slug, $description, $active)
+    {
         $dbcon = DATABASE::connect();
         try{
-            $sql = "INSERT INTO category VALUES(:title, :slug, :description, :active)";
+            $sql = "INSERT INTO category (title, slug, description, active)
+                	VALUES(:$tile, :$slug, :$description, :$active)";
+            
             $cmd = $dbcon->prepare($sql);
-            $cmd->bindValue(":tendanhmuc", $tendm);
+            $cmd->bindValue(":tile", $tile);
+            $cmd->bindValue(":slug", $slug);
+            $cmd->bindValue(":description", $description);
+            $cmd->bindValue(":active", $active);
+
             $result = $cmd->execute();            
             return $result;
         }
@@ -57,7 +64,7 @@ class DANHMUC{
     public function xoadanhmuc($id){
         $dbcon = DATABASE::connect();
         try{
-            $sql = "DELETE FROM danhmuc WHERE id=:id";
+            $sql = "DELETE FROM category WHERE id=:id";
             $cmd = $dbcon->prepare($sql);
             $cmd->bindValue(":id", $id);
             $result = $cmd->execute();            

@@ -21,7 +21,13 @@ switch($action){
         include("main.php");
         break;
     case "them":
-        $dm->themdanhmuc($_POST["txtten"]);    
+        //xu ly them
+        $tile = $_POST["txtten"];
+        $slug = $_POST["txtslug"];
+        $description = $_POST["txtmota"];
+        $active = $_POST["txttrangthai"];
+
+        $dm->themdanhmuc($tile,$slug,$description,$active);    
 		$danhmuc = $dm->laydanhmuc(); 
         include("main.php");
         break;
