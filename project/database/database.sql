@@ -104,6 +104,18 @@ INSERT INTO product VALUES (13, 'Kính Mắt Dior Clan 2 DDB/1I Polarized', 'K
 -- insert rayben + Gentle Monster
 
 -- insert Luis vuiton + prada
+INSERT INTO product VALUES (24, 'Kính Mát Louis Vuitton 1.1 Millionaires Sunglasses Z1166W', 'Kính Mát Louis Vuitton 1.1 Millionaires Sunglasses Z1166W', 1, 5, 1, 'Louis_Vuitton_1.1_Millionaires_Sunglasse_ Z1166W.jpg');
+INSERT INTO product VALUES (25, 'Kính Mát Louis Vuitton Z1485E LV Waimea Sunglasses Màu Nâu', 'Kính Mát Louis Vuitton Z1485E LV Waimea Sunglasses Màu Nâu', 1, 5, 1, 'Louis _Vuitton _Z1485E _LV _Waimea Sunglasses _Màu _Nâu.jpg');
+INSERT INTO product VALUES (26, 'Gọng Kính Louis Vuitton 01', 'Gọng Kính Louis Vuitton 01', 6, 5, 1, 'GỌNG _Kính _Louis _Vuitton _01.jpg');
+INSERT INTO product VALUES (27, 'Kính Cận Louis Vuitton 1A16', 'Kính Cận Louis Vuitton 1A16', 2, 5, 1, 'kinh_can_louis_vuitton.jpg');
+INSERT INTO product VALUES (28, 'Kính Thể Thao Louis Vuitton E0068', 'Kính Thể Thao Louis Vuitton E0068', 5, 5, 1, 'Louis _Vuitton _E0068.jpg');
+
+INSERT INTO product VALUES (29, 'Kính Mát Prada PR 17WS Talc Màu Trắng', 'Kính Mát Prada PR 17WS Talc Màu Trắng', 1, 6, 1, 'Kinh_Prada_PR_17WS_Talc.jpg');
+INSERT INTO product VALUES (30, 'Gọng kính PRADA 0PS06L DG01O1', 'Gọng kính PRADA 0PS06L DG01O1', 6, 6, 1, 'Gọng_kính_PRADA_0PS06L_DG01O1.jpg');
+INSERT INTO product VALUES (31, 'Kính cận Prada 0PS 02SS', 'Kính cận Prada 0PS 02SS', 2, 6, 1, 'Kính_cận_Prada_0PS_02SS.jpg');
+INSERT INTO product VALUES (32, 'Kính thể thao Prada SPR07XSF 5436S1', 'Kính thể thao Prada SPR07XSF 5436S1', 5, 6, 1, 'Prada_SPR07XSF_5436S1.jpg');
+INSERT INTO product VALUES (33, 'Kính Mát Prada 0PR 01US', 'Kính Mát Prada 0PR 01US', 1, 6, 1, 'Prada_0PR_01US.jpg');
+
 
 -- insert lacoste + cartier
 -- --------------------------------------------------------
