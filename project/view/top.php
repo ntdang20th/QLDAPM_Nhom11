@@ -205,7 +205,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" datadismiss="modal">&times;</button>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h3 class="modal-title">Hồ sơ cá nhân</h3>
           </div>
           <div class="modal-body">
@@ -246,7 +246,7 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" datadismiss="modal">Đóng</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
           </div>
         </div>
       </div>
@@ -268,8 +268,18 @@
               </div>
 
               <div class="form-group">
+                <label>Mật khẩu cũ</label>
+                <input class="form-control" type="text" name="txtMatKhauCu" placeholder="Nhập mật khẩu cũ" required>
+              </div>
+
+              <div class="form-group">
                 <label>Mật khẩu mới</label>
                 <input class="form-control" type="text" name="txtMatKhauMoi" placeholder="Nhập mật khẩu mới" required>
+              </div>
+
+              <div class="form-group">
+                <label>Nhập Lại Mật khẩu mới </label>
+                <input class="form-control" type="text" name="txtMatKhauMoi1" placeholder="Nhập lại mật khẩu mới" required>
               </div>
 
               <div class="form-group">
@@ -280,7 +290,7 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" datadismiss="modal">Đóng</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
           </div>
         </div>
       </div>
