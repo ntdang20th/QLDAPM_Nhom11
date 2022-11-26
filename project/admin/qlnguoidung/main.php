@@ -2,16 +2,12 @@
 <div>
   <h3>Quản lý người dùng</h3>
   <!-- Thông báo lỗi nếu có -->
-  <?php
-  if(isset($tb)){
-  ?>
-  <div class="alert alert-danger alert-dismissible fade in">
+  <?php if (isset($message)) { ?>
+    <div class="alert alert-danger alert-dismissible fade in">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <strong>Lỗi!</strong> <?php echo $tb; ?>
-  </div>
-  <?php
-  }
-  ?>
+      <?php echo $message; ?>
+    </div>
+  <?php } ?>
   <!-- Nút mở hộp modal chứa form thêm mới -->
   <div><a class="btn btn-primary" data-toggle="modal" data-target="#fthemnguoidung"><span class="glyphicon glyphicon-plus"></span> Thêm người dùng</a></div>
 
@@ -19,31 +15,76 @@
 
   <!-- Danh sách người dùng -->
   <table class="table table-hover">
-        <tr><th>Tên Người Dùng</th><th>Email </th><th>Số Điện Thoại</th><th>Địa Chỉ</th><th>Hình Ảnh</th><th>Loại Phân Quyền</th></tr>
-      <?php foreach ($nguoidung as $nd): ?>
-        <tr><td><?php echo $nd["username"]; ?></td>
-        	<td><?php echo $nd["email"]; ?></td>
-          <td><?php echo $nd["phone_number"]; ?></td>
-          <td><?php echo $nd["address"]; ?></td>
-          
-          <?php 
-          if($nd["loai"]!=1) {
-            if($nd["trangthai"]==1){ ?>
-              <a href="?action=khoa&trangthai=0&mand=<?php echo $nd["id"]; ?>">Khóa</a></td></tr>
-            <?php 
-            }
-            else { ?>
-              <a href="?action=khoa&trangthai=1&mand=<?php echo $nd["id"]; ?>">Kích hoạt</a></td></tr>
-          <?php 
-            }
-          }
-      endforeach; ?>
+    <tr>
+      <th>Tên Người Dùng</th>
+      <th>Email </th>
+      <th>Số Điện Thoại</th>
+      <th>Địa Chỉ</th>
+      <th>Chức năng</th>
+    </tr>
+    <?php foreach ($nguoidung as $nd) : ?>
+      <tr>
+        <td><?php echo $nd["username"]; ?></td>
+        <td><?php echo $nd["email"]; ?></td>
+        <td><?php echo $nd["phone_number"]; ?></td>
+        <td><?php echo $nd["address"]; ?></td>
+        <td>
+          <a class="btn btn-danger" href="index.php?action=xoa&id=<?php echo $nd["id"]; ?>"><span class="glyphicon glyphicon-trash"></span></a>
+          <a href="#" data-toggle="modal" data-target="#fsuanguoidung" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span></a>
+          <div class="modal fade" id="fsuanguoidung" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h3 class="modal-title">Cập nhật thông tin người dùng</h3>
+                </div>
+                <div class="modal-body">
+                  <form method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                      <label>Username</label>
+                      <input class="form-control" type="email" name="txtUsername" placeholder="nhập tên tài khoản" value="<?php echo $nd["username"]; ?>" disabled>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Số điện thoại</label>
+                      <input class="form-control" type="number" name="txtDienThoai" placeholder="Số điện thoại" value="<?php echo $nd["email"]; ?>">
+                    </div>
+
+                    <div class="form-group">
+                      <label>Email</label>
+                      <input class="form-control" type="text" name="txtEmail" placeholder="Email" value="<?php echo $nd["phone_number"]; ?>" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Địa Chỉ</label>
+                      <input class="form-control" type="text" name="txtDiaChi" placeholder="Nhập địa chỉ" value="<?php echo $nd["address"]; ?>" required>
+                    </div>
+
+                    <div class="form-group">
+                      <input type="hidden" name="txtUserName" value="<?php echo $_SESSION['nguoidung']['username']; ?>">
+
+                      <input type="hidden" name="action" value="capNhatHoSoCaNhan">
+                      <input class="btn btn-primary" type="submit" value="Lưu">
+                      <input class="btn btn-warning" type="reset" value="Hủy">
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a class="btn btn-success" href="index.php?action=resetpass&id=<?php echo $nd["id"]; ?>"><span>Reset mật khẩu</span></a>
+        </td>
+      </tr>
+    <?php endforeach; ?>
   </table>
 
 
   <!-- Hộp modal chứa form thêm mới -->
   <div class="modal fade" id="fthemnguoidung" role="dialog">
-    <div class="modal-dialog">    
+    <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -51,37 +92,39 @@
         </div>
         <div class="modal-body">
           <form method="post">
-            <div class="form-group">        
-            <input class="form-control" type="text" name="txtemail" placeholder="Email" required>
-            </div>
-            <div class="form-group"><input class="form-control"  type="text" name="txtmatkhau" placeholder="Mật khẩu" required></div>
-            <div class="form-group">        
-            <input class="form-control" type="number" name="txtdienthoai" placeholder="Số điện thoại" required>
-            </div>
-            <div class="form-group">
-            <input class="form-control"  type="text" name="txthoten" placeholder="Họ tên" required></div>
-            <div class="form-group">
-            <label>Chọn quyền</label>
-            <select class="form-control" name="optloaind">                
-                <option value="1">Quản trị</option>
-                <option value="2" selected>Thành viên</option>
-                <option value="3">Khách hàng</option>
-            </select></div>
-            <div class="form-group">
-            <input type="hidden" name="action" value="them" >
-            <input class="btn btn-primary"  type="submit" value="Thêm">
-            <input class="btn btn-warning"  type="reset" value="Hủy"></div>
-          </form>
-
-          
+            <form method="post">
+              <div class="form-group">
+                <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span>Tài khoản:</label>
+                <input type="text" class="form-control" id="txtusername" name="txtusername" placeholder="Nhập tên tài khoản..." required>
+              </div>
+              <div class="form-group">
+                <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span>Mật khẩu:</label>
+                <input type="password" class="form-control" name="txtpassword" placeholder="Nhập mật khẩu..." required>
+              </div>
+              <div class="form-group">
+                <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span>Email:</label>
+                <input type="text" class="form-control" id="txtemail" name="txtemail" placeholder="Nhập email..." required>
+              </div>
+              <div class="form-group">
+                <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span>Số điện thoại:</label>
+                <input type="text" class="form-control" id="txtphone" name="txtphone" placeholder="Nhập số điên thoại..." required>
+              </div>
+              <div class="form-group">
+                <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span>Địa chỉ:</label>
+                <input type="text" class="form-control" id="txtaddress" name="txtaddress" placeholder="Nhập địa chỉ..." required>
+              </div>
+              <div class="form-group">
+                <input type="hidden" name="action" value="them">
+                <input class="btn btn-primary" type="submit" value="Thêm">
+                <input class="btn btn-warning" type="reset" value="Hủy">
+              </div>
+            </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
         </div>
       </div>
-      
+
     </div>
   </div>
-
-</div>
-<?php include("../view/bottom.php"); ?>
+  <?php include("../view/bottom.php"); ?>

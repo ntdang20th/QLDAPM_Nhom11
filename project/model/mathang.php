@@ -47,6 +47,7 @@ class MATHANG
             $sql = "SELECT p.*, v.price as vprice, c.title as catitle
             FROM product p, variation v, category c
             WHERE p.id = v.product_id
+            AND p.category_id = c.id
             ORDER BY id  
             DESC LIMIT $m, $n";
             $cmd = $dbcon->prepare($sql);

@@ -169,6 +169,40 @@ class NGUOIDUNG
 		return $this;
 	}
 
+	public function resetPass($id, $newpass)
+	{
+		$dbcon = DATABASE::connect();
+		try {
+			$hash = md5($newpass);
+			$sql = "UPDATE user SET password=:newpass WHERE id=:id";
+			$cmd = $dbcon->prepare($sql);
+			$cmd->bindValue(":newpass", $hash);
+			$cmd->bindValue(":id", $id);
+			$cmd->execute();
+		} catch (PDOException $e) {
+			$error_message = $e->getMessage();
+			echo "<p>Lỗi truy vấn: $error_message</p>";
+			exit();
+		}
+	}
+
+	public function checkUsername($username)
+	{
+		$db = DATABASE::connect();
+		try {
+			$sql = "SELECT * FROM user WHERE username=:username";
+			$cmd = $db->prepare($sql);
+			$cmd->bindValue(":username", $username);
+			$cmd->execute();
+			$result = $cmd->fetchAll();
+			return $result;
+		} catch (PDOException $e) {
+			$error_message = $e->getMessage();
+			echo "<p>Lỗi truy vấn: $error_message</p>";
+			exit();
+		}
+	}
+
 	// authentication
 	public function checkUser($username, $password)
 	{
