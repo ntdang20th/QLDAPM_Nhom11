@@ -86,11 +86,12 @@
 
     .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
       color: #9d9d9d;
-  }
-  .navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover {
-    color: #fff;
-    background-color: #000000;
-}
+    }
+
+    .navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover {
+      color: #fff;
+      background-color: #000000;
+    }
   </style>
 
 </head>
@@ -130,37 +131,37 @@
               <span class="glyphicon glyphicon-search"></span> Tìm kiếm sản phẩm</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-        <?php if (isset($_SESSION["nguoidung"])) {?>
-          <li>
-            <div class="container-fluid">
-              <!-- Thông tin người dùng - sẽ bổ sung ở bài thực hành sau -->
-              <div class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                  <span class="glyphicon glyphicon-user"></span>
-                  <?php echo $_SESSION["nguoidung"]["username"]; ?>
-                  <span class="caret"></span></a>
-                <ul class="dropdown-menu dropdown-menu-right">
-                  <li><a href="#" class="subtitle"><span class="glyphicon glyphicon-envelope"></span> Thông báo</a></li>
-                  <li><a href="#" class="subtitle" data-toggle="modal" data-target="#fCapNhatThongTin"><span class="glyphicon glyphicon-edit"></span> Hồ sơ cá nhân</a></li>
-                  <li><a href="#" class="subtitle" data-toggle="modal" data-target="#fDoiMatKhau"><span class="glyphicon glyphicon-wrench"></span> Đổi mật khẩu</a></li>
-                  <li class="divider"></li>
-                  <li><a class="subtitle" href="?action=dangxuat"><span class="glyphicon glyphicon-log-out"></span> Thoát</a></li>
-                </ul>
+          <?php if (isset($_SESSION["nguoidung"])) { ?>
+            <li>
+              <div class="container-fluid">
+                <!-- Thông tin người dùng - sẽ bổ sung ở bài thực hành sau -->
+                <div class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <?php echo $_SESSION["nguoidung"]["username"]; ?>
+                    <span class="caret"></span></a>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="#" class="subtitle"><span class="glyphicon glyphicon-envelope"></span> Thông báo</a></li>
+                    <li><a href="#" class="subtitle" data-toggle="modal" data-target="#fCapNhatThongTin"><span class="glyphicon glyphicon-edit"></span> Hồ sơ cá nhân</a></li>
+                    <li><a href="#" class="subtitle" data-toggle="modal" data-target="#fDoiMatKhau"><span class="glyphicon glyphicon-wrench"></span> Đổi mật khẩu</a></li>
+                    <li class="divider"></li>
+                    <li><a class="subtitle" href="?action=dangxuat"><span class="glyphicon glyphicon-log-out"></span> Thoát</a></li>
+                  </ul>
 
-              </div>
-          </li>
-          <!-- ádasd -->
-          
-          </li>
-          <?php }else{?>
-          <!--Contact Form-->
-          <li><a href="?action=dangnhap" >Đăng nhập</a>
-          <li><a href="" data-toggle="modal" data-target="#myModal">Đăng ký</a>
-          <?php }?>
-          <li><a href="#" class="text-warning">
-              <span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng
-            </a>
-          </li>
+                </div>
+            </li>
+            <!-- ádasd -->
+
+            </li>
+          <?php } else { ?>
+            <!--Contact Form-->
+            <li><a href="?action=dangnhap">Đăng nhập</a>
+            <li><a href="" data-toggle="modal" data-target="#myModal">Đăng ký</a>
+            <?php } ?>
+            <li><a href="#" class="text-warning">
+                <span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng
+              </a>
+            </li>
         </ul>
       </div>
     </div>
@@ -304,7 +305,7 @@
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">×</button>
+            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-xing" aria-hidden="true"></i></button>
             <h4><span></span>Đăng ký tài khoản mua sắm</h4>
           </div>
           <div class="modal-body">
@@ -312,7 +313,7 @@
               <input type="hidden" name="action" value="xulydangkytaikhoan">
               <div class="form-group">
                 <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span>Tài khoản:</label>
-                <input type="text" class="form-control" name="txtusername" placeholder="Nhập tên tài khoản..." required>
+                <input type="text" class="form-control" id="txtusername" name="txtusername" placeholder="Nhập tên tài khoản..." required>
               </div>
               <div class="form-group">
                 <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span>Mật khẩu:</label>
@@ -320,15 +321,15 @@
               </div>
               <div class="form-group">
                 <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span>Email:</label>
-                <input type="text" class="form-control" name="txtemail" placeholder="Nhập email..." required>
+                <input type="text" class="form-control" id="txtemail" name="txtemail" placeholder="Nhập email..." required>
               </div>
               <div class="form-group">
                 <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span>Số điện thoại:</label>
-                <input type="text" class="form-control" name="txtphone" placeholder="Nhập số điên thoại..." required>
+                <input type="text" class="form-control" id="txtphone" name="txtphone" placeholder="Nhập số điên thoại..." required>
               </div>
               <div class="form-group">
                 <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span>Địa chỉ:</label>
-                <input type="text" class="form-control" name="txtaddress" placeholder="Nhập địa chỉ..." required>
+                <input type="text" class="form-control" id="txtaddress" name="txtaddress" placeholder="Nhập địa chỉ..." required>
               </div>
               <div>
                 <input type="submit" id="register" class="btn btn-info" value="Đăng ký" />

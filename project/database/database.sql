@@ -117,7 +117,21 @@ INSERT INTO product VALUES (32, 'Kính thể thao Prada SPR07XSF 5436S1', 'Kính
 INSERT INTO product VALUES (33, 'Kính Mát Prada 0PR 01US', 'Kính Mát Prada 0PR 01US', 1, 6, 1, 'Prada_0PR_01US.jpg');
 
 
--- insert lacoste + cartier
+-- insert lacoste + cartier by tong
+INSERT INTO product VALUES (50, 'Kính Mắt Lacoste L166SA 001', 'Kính Mắt Lacoste L166SA 001', 1, 6, 1, 'kinh-mat-lacoste-l166sa-001-1.jpg');
+INSERT INTO product VALUES (51, 'Gọng Kính Lacoste L2726A-005', 'Gọng Kính Lacoste L2726A-005', 6, 6, 1, 'gong-can-lacoste-l2726a-005-1.jpg');
+INSERT INTO product VALUES (52, 'Gọng Kính Lacoste L2203-033', 'Gọng Kính Lacoste L2203-033', 6, 6, 1, 'liensonoptic-gong-can-lacoste-l2203-033-1.jpg');
+INSERT INTO product VALUES (53, 'Gọng Kính Lacoste L2760A-001', 'Gọng Kính Lacoste L2760A-001', 6, 6, 1, 'gong-can-lacoste-l2760a-001-1.jpg');
+INSERT INTO product VALUES (54, 'Gọng Kính Lacoste L2755-214', 'Gọng Kính Lacoste L2755-214', 6, 6, 1, 'liensonoptic-gong-can-lacoste-l2755a-214-1.jpg');
+
+INSERT INTO product VALUES (55, 'CARTIER SANTOS CT0034S 008', 'CARTIER SANTOS CT0034S 008', 1, 7, 1, 'kinh_mat_cartier_ct0034s-008.jpg');
+INSERT INTO product VALUES (56, 'CARTIER ESW00094', 'CARTIER ESW00094', 1, 7, 1, 'cartier-esw00094-cartier-esw00094.png');
+INSERT INTO product VALUES (57, 'CARTIER T8200812 CT0062S-001', 'CARTIER T8200812 CT0062S-001', 1, 7, 1, 'cartier-t8200812-cartier-t8200812.png');
+INSERT INTO product VALUES (58, 'CARTIER EYE00074', 'CARTIER EYE00074', 2, 7, 1, 'cartier-eye00074-cartier-eye00074.png');
+INSERT INTO product VALUES (60, 'CARTIER EYP00006-CT0070O', 'CARTIER EYP00006-CT0070O', 2, 7, 1, 'cartier-eyp00006-cartier-eyp00006-1.png');
+
+
+
 -- --------------------------------------------------------
 
 --

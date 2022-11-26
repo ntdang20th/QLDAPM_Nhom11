@@ -37,16 +37,15 @@ class DANHMUC{
     }
 
     // Thêm mới
-    public function themdanhmuc($tile, $slug, $description)
+    public function themdanhmuc($tile, $description)
     {
         $dbcon = DATABASE::connect();
         try{
-            $sql = "INSERT INTO `category`( `title`, `slug`, `description`, `active`) 
-                	VALUES(:tile, :slug, :descript, 1) ";
+            $sql = "INSERT INTO `category`( `title`, `description`, `active`) 
+                	VALUES(:tile,  :descript, 1) ";
             
             $cmd = $dbcon->prepare($sql);
             $cmd->bindValue(":tile", $tile);
-            $cmd->bindValue(":slug", $slug);
             $cmd->bindValue(":descript", $description);
           
 
@@ -65,7 +64,7 @@ class DANHMUC{
         $dbcon = DATABASE::connect();
         try{
            
-            $sql = " update     acategory set active = 0 where id =:id";
+            $sql = " update category set active = 0 where id =:id";
             $cmd = $dbcon->prepare($sql);
             $cmd->bindValue(":id", $id);
             $result = $cmd->execute();            
@@ -79,12 +78,13 @@ class DANHMUC{
     }
 
     // Cập nhật 
-    public function suadanhmuc($id, $tendm){
+    public function suadanhmuc($id, $tendm, $mota){
         $dbcon = DATABASE::connect();
         try{
-            $sql = "UPDATE danhmuc SET tendanhmuc=:tendanhmuc WHERE id=:id";
+            $sql = "UPDATE category SET title=:tendanhmuc, description=:mota WHERE id=:id";
             $cmd = $dbcon->prepare($sql);
             $cmd->bindValue(":tendanhmuc", $tendm);
+            $cmd->bindValue(":mota", $mota);
             $cmd->bindValue(":id", $id);
             $result = $cmd->execute();              
             return $result;
