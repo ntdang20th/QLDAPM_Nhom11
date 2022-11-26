@@ -161,31 +161,29 @@ switch ($action) {
 
         include("main.php");
         break;
-    case 'xulydangkytaikhoan': {
-            $tongmh = $mh->demtongsomathang();
-            $mathang = $mh->laymathang();
-            $soluong = 4;
-            $tongsotrang = ceil($tongmh / $soluong);
-            if (!isset($_REQUEST["trang"]))
-                $tranghh = 1;
-            else
-                $tranghh = $_REQUEST["trang"];
-            $batdau = ($tranghh - 1) * $soluong;
-            $mathang = $mh->laymathangphantrang($batdau, $soluong);
+    case 'xulydangkytaikhoan':
+        $tongmh = $mh->demtongsomathang();
+        $mathang = $mh->laymathang();
+        $soluong = 4;
+        $tongsotrang = ceil($tongmh / $soluong);
+        if (!isset($_REQUEST["trang"]))
+            $tranghh = 1;
+        else
+            $tranghh = $_REQUEST["trang"];
+        $batdau = ($tranghh - 1) * $soluong;
+        $mathang = $mh->laymathangphantrang($batdau, $soluong);
 
-            if (!isset($_POST["txtusername"]) || !isset($_POST["txtpassword"]) || !isset($_POST["txtemail"]) || !isset($_POST["txtphone"]) || !isset($_POST["txtaddress"])) {
-                $username = $_POST['txtusername'];
-                $password = $_POST['txtpassword'];
-                $email = $_POST['txtemail'];
-                $phone = $_POST['txtphone'];
-                $address = $_POST['txtaddress'];
-                $nguoidung->addUser($username, $password, $email, $phone, $address);
-                include("main.php");
-            } else {
-                include("main.php");
-            }
-            break;
-        }
+        if (isset($_POST["txtusername"]) && isset($_POST["txtpassword"]) && isset($_POST["txtemail"]) && isset($_POST["txtphone"]) && isset($_POST["txtaddress"])) {
+            $username = $_POST['txtusername'];
+            $password = $_POST['txtpassword'];
+            $email = $_POST['txtemail'];
+            $phone = $_POST['txtphone'];
+            $address = $_POST['txtaddress'];
+            $nguoidung->addUser($username, $password, $email, $phone, $address);
+            include("login.php");
+        } else
+            include("login.php");
+        break;
     default:
         break;
 }

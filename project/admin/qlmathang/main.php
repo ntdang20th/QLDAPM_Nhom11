@@ -27,7 +27,7 @@
 			<td><?php if($m["active"]) 
 			{if($m["active"]==1) echo "Kích hoạt"; else echo "Khóa" ; }?></td>
 
-			<td><img src="../../<?php echo $m["hinhanh"]; ?>" width="100" class="img-thumbnail"></td>
+			<td><img src="../../images/<?php echo $m["hinhanh"]; ?>" width="100" class="img-thumbnail"></td>
 			<td><a class="btn btn-warning" href="index.php?action=sua&id=<?php echo $m["id"]; ?>"><span class="glyphicon glyphicon-edit"> </span></a></td>
 			<td><a class="btn btn-danger" href="index.php?action=xoa&id=<?php echo $m["id"]; ?>"><span class="glyphicon glyphicon-trash"></span></a></td>
 		</tr>
