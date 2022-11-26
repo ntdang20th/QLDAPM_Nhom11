@@ -282,7 +282,7 @@
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">×</button>
+            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-xing" aria-hidden="true"></i></button>
             <h4><span></span>Đăng ký tài khoản mua sắm</h4>
           </div>
           <div class="modal-body">
@@ -290,23 +290,23 @@
               <input type="hidden" name="action" value="xulydangkytaikhoan">
               <div class="form-group">
                 <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span>Tài khoản:</label>
-                <input type="text" class="form-control" name="txtusername" placeholder="Nhập tên tài khoản..." required>
+                <input type="text" class="form-control" id="txtusername" name="txtusername" placeholder="Nhập tên tài khoản..." required>
               </div>
               <div class="form-group">
                 <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span>Mật khẩu:</label>
-                <input type="text" class="form-control" name="txtpassword" placeholder="Nhập mật khẩu..." required>
+                <input type="text" class="form-control" id="txtpassword" name="txtpassword" placeholder="Nhập mật khẩu..." required>
               </div>
               <div class="form-group">
                 <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span>Email:</label>
-                <input type="text" class="form-control" name="txtemail" placeholder="Nhập email..." required>
+                <input type="text" class="form-control" id="txtemail" name="txtemail" placeholder="Nhập email..." required>
               </div>
               <div class="form-group">
                 <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span>Số điện thoại:</label>
-                <input type="text" class="form-control" name="txtphone" placeholder="Nhập số điên thoại..." required>
+                <input type="text" class="form-control" id="txtphone" name="txtphone" placeholder="Nhập số điên thoại..." required>
               </div>
               <div class="form-group">
                 <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span>Địa chỉ:</label>
-                <input type="text" class="form-control" name="txtaddress" placeholder="Nhập địa chỉ..." required>
+                <input type="text" class="form-control" id="txtaddress" name="txtaddress" placeholder="Nhập địa chỉ..." required>
               </div>
               <div>
                 <input type="submit" id="register" class="btn btn-info" value="Đăng ký" />
