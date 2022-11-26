@@ -5,11 +5,14 @@ require("model/mathang.php");
 require("model/giohang.php");
 require("model/timkiem.php");
 require("model/nguoidung.php");
-
+require("model/thuonghieu.php");
 
 $dm = new DANHMUC();
 $mh = new MATHANG();
+$th = new THUONGHIEU();
+
 $danhmuc = $dm->laydanhmuc();
+$thuonghieu = $th -> laythuonghieu();
 
 if (isset($_REQUEST["action"])) {
     $action = $_REQUEST["action"];
@@ -25,16 +28,16 @@ $acitve = 0;
 
 switch ($action) {
     case "macdinh":
-        $tongmh = $mh->demtongsomathang();
-        $mathang = $mh->laymathang();
-        $soluong = 4;
+        $tongmh = $mh->demtongsomathang(null, null);
+        $mathang = $mh->laymathang(null, null);
+        $soluong = 8;
         $tongsotrang = ceil($tongmh / $soluong);
         if (!isset($_REQUEST["trang"]))
             $tranghh = 1;
         else
             $tranghh = $_REQUEST["trang"];
         $batdau = ($tranghh - 1) * $soluong;
-        $mathang = $mh->laymathangphantrang($batdau, $soluong);
+        $mathang = $mh->laymathangphantrang($batdau, $soluong, null, null);
         include("main.php");
         break;
     case "xemchitiet":
@@ -105,16 +108,16 @@ switch ($action) {
         $matkhau = $_POST["txtmatkhau"];
         if ($nguoidung->checkUser($username, $matkhau) == TRUE) {
             $_SESSION["nguoidung"] = $nguoidung->getUserInfo($username);
-            $tongmh = $mh->demtongsomathang();
-            $mathang = $mh->laymathang();
-            $soluong = 4;
+            $tongmh = $mh->demtongsomathang(null, null);
+            $mathang = $mh->laymathang(null, null);
+            $soluong = 8;
             $tongsotrang = ceil($tongmh / $soluong);
             if (!isset($_REQUEST["trang"]))
                 $tranghh = 1;
             else
                 $tranghh = $_REQUEST["trang"];
             $batdau = ($tranghh - 1) * $soluong;
-            $mathang = $mh->laymathangphantrang($batdau, $soluong);
+            $mathang = $mh->laymathangphantrang($batdau, $soluong, null, null);
             include("main.php");
         } else {
             $tb = "Đăng nhập không thành công!";
@@ -122,8 +125,8 @@ switch ($action) {
         }
         break;
     case "capNhatHoSoCaNhan":
-        $tongmh = $mh->demtongsomathang();
-        $mathang = $mh->laymathang();
+        $tongmh = $mh->demtongsomathang(null, null);
+        $mathang = $mh->laymathang(null, null);
         $soluong = 4;
         $tongsotrang = ceil($tongmh / $soluong);
         if (!isset($_REQUEST["trang"]))
@@ -131,7 +134,7 @@ switch ($action) {
         else
             $tranghh = $_REQUEST["trang"];
         $batdau = ($tranghh - 1) * $soluong;
-        $mathang = $mh->laymathangphantrang($batdau, $soluong);
+        $mathang = $mh->laymathangphantrang($batdau, $soluong, null, null);
 
         $userName = $_POST['txtUserName'];
         $email = $_POST['txtEmail'];
@@ -142,8 +145,8 @@ switch ($action) {
         include('main.php');
         break;
     case 'doiMatKhau':
-        $tongmh = $mh->demtongsomathang();
-        $mathang = $mh->laymathang();
+        $tongmh = $mh->demtongsomathang(null, null);
+        $mathang = $mh->laymathang(null, null);
         $soluong = 4;
         $tongsotrang = ceil($tongmh / $soluong);
         if (!isset($_REQUEST["trang"]))
@@ -151,7 +154,7 @@ switch ($action) {
         else
             $tranghh = $_REQUEST["trang"];
         $batdau = ($tranghh - 1) * $soluong;
-        $mathang = $mh->laymathangphantrang($batdau, $soluong);
+        $mathang = $mh->laymathangphantrang($batdau, $soluong, null, null);
 
         $matKhauMoi = $_POST['txtMatKhauMoi'];
         $userName = $_SESSION['nguoidung']['username'];
@@ -162,8 +165,8 @@ switch ($action) {
         include("main.php");
         break;
     case 'xulydangkytaikhoan':
-        $tongmh = $mh->demtongsomathang();
-        $mathang = $mh->laymathang();
+        $tongmh = $mh->demtongsomathang(null, null);
+        $mathang = $mh->laymathang(null, null);
         $soluong = 4;
         $tongsotrang = ceil($tongmh / $soluong);
         if (!isset($_REQUEST["trang"]))
@@ -171,7 +174,7 @@ switch ($action) {
         else
             $tranghh = $_REQUEST["trang"];
         $batdau = ($tranghh - 1) * $soluong;
-        $mathang = $mh->laymathangphantrang($batdau, $soluong);
+        $mathang = $mh->laymathangphantrang($batdau, $soluong, null, null);
 
         if (isset($_POST["txtusername"]) && isset($_POST["txtpassword"]) && isset($_POST["txtemail"]) && isset($_POST["txtphone"]) && isset($_POST["txtaddress"])) {
             $username = $_POST['txtusername'];
@@ -183,6 +186,20 @@ switch ($action) {
             include("login.php");
         } else
             include("login.php");
+        break;
+
+    case "xemloai":
+        $tongmh = $mh->demtongsomathang($_REQUEST["madm"], null);
+        $mathang = $mh->laymathang($_REQUEST["madm"], null);
+        $soluong = 8;
+        $tongsotrang = ceil($tongmh / $soluong);
+        if (!isset($_REQUEST["trang"]))
+            $tranghh = 1;
+        else
+            $tranghh = $_REQUEST["trang"];
+        $batdau = ($tranghh - 1) * $soluong;
+        $mathang = $mh->laymathangphantrang($batdau, $soluong, $_REQUEST["madm"], null);
+        include("main.php");
         break;
     default:
         break;

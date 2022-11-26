@@ -128,7 +128,7 @@ INSERT INTO product VALUES (55, 'CARTIER SANTOS CT0034S 008', 'CARTIER SANTOS CT
 INSERT INTO product VALUES (56, 'CARTIER ESW00094', 'CARTIER ESW00094', 1, 7, 1, 'cartier-esw00094-cartier-esw00094.png');
 INSERT INTO product VALUES (57, 'CARTIER T8200812 CT0062S-001', 'CARTIER T8200812 CT0062S-001', 1, 7, 1, 'cartier-t8200812-cartier-t8200812.png');
 INSERT INTO product VALUES (58, 'CARTIER EYE00074', 'CARTIER EYE00074', 2, 7, 1, 'cartier-eye00074-cartier-eye00074.png');
-INSERT INTO product VALUES (60, 'CARTIER EYP00006-CT0070O', 'CARTIER EYP00006-CT0070O', 2, 7, 1, 'cartier-eyp00006-cartier-eyp00006-1.png');
+INSERT INTO product VALUES (59, 'CARTIER EYP00006-CT0070O', 'CARTIER EYP00006-CT0070O', 2, 7, 1, 'cartier-eyp00006-cartier-eyp00006-1.png');
 
 
 
@@ -150,13 +150,43 @@ CREATE TABLE `variation` (
 --
 -- Dumping data for table `donhang`
 --
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (1, 1, 3000000,3000000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (2, 2, 4000000,4000000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (3, 3, 5000000,5000000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (4, 4, 6000000,6000000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (5, 5, 1000000,1000000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (6, 6, 4000000,4000000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (7, 7, 3100000,3100000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (8, 8, 6500000,6500000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (9, 9, 370000,370000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (10,10, 3200000,3200000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (11, 11, 120000,120000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (12, 12, 3110000,3110000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (13, 13, 2000000,2000000,200,1);
 
--- INSERT INTO `donhang` (`id`, `nguoidung_id`, `diachi_id`, `ngay`, `tongtien`, `ghichu`) VALUES
--- (1, 4, 1, '2020-10-23 13:38:40', 1320000, NULL),
--- (2, 5, 2, '2020-10-24 15:13:10', 3920000, NULL),
--- (3, 8, 4, '2021-03-13 16:38:57', 6035000, NULL),
--- (4, 9, 5, '2021-03-13 16:53:28', 6035000, NULL),
--- (5, 10, 6, '2021-03-13 16:55:44', 7800000, NULL);
+
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (24,24, 3100000,3100000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (25, 25, 5000000,5000000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (26,26, 3100000,3100000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (27, 27, 5000000,5000000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (28,28, 3100000,3100000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (29, 29, 5000000,5000000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (30,30, 3100000,3100000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (31, 31, 5000000,5000000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (32,32, 3100000,3100000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (33, 33, 5000000,5000000,200,1);
+
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (50,50, 3100000,3100000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (51, 51, 5000000,5000000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (52,52, 3100000,3100000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (53, 53, 5000000,5000000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (54,54, 3100000,3100000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (55, 55, 5000000,5000000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (56,56, 3100000,3100000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (57, 57, 5000000,5000000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (58,58, 3100000,3100000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (59, 59, 5000000,5000000,200,1);
+
 
 -- --------------------------------------------------------
 
