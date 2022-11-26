@@ -65,7 +65,7 @@ class DANHMUC{
         $dbcon = DATABASE::connect();
         try{
            
-            $sql = " update category set active = 0 where id =:id";
+            $sql = " update     acategory set active = 0 where id =:id";
             $cmd = $dbcon->prepare($sql);
             $cmd->bindValue(":id", $id);
             $result = $cmd->execute();            
@@ -86,7 +86,7 @@ class DANHMUC{
             $cmd = $dbcon->prepare($sql);
             $cmd->bindValue(":tendanhmuc", $tendm);
             $cmd->bindValue(":id", $id);
-            $result = $cmd->execute();            
+            $result = $cmd->execute();              
             return $result;
         }
         catch(PDOException $e){

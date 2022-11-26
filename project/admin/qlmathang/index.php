@@ -29,8 +29,8 @@ switch($action){
         break;
 	case "xulythem":	
 		// xử lý file upload
-		$hinhanh = "images/" . basename($_FILES["filehinhanh"]["name"]); // đường dẫn ảnh lưu trong db
-		$duongdan = "../../" . $hinhanh; // nơi lưu file upload
+		$hinhanh =  basename($_FILES["filehinhanh"]["name"]); // đường dẫn ảnh lưu trong db
+		$duongdan = "../../images/" . $hinhanh; // nơi lưu file upload
 		move_uploaded_file($_FILES["filehinhanh"]["tmp_name"], $duongdan);
 		// xử lý thêm		
 		$title	 = $_POST["txttenmathang"];

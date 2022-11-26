@@ -6,10 +6,10 @@
 <br> <br>
 <table class="table table-hover">
 	<tr>
+    <th>Danh Mục</th>
 		<th>Tên mặt hàng</th>
 		<th>Mô tả</th>
 		<th>Giá Bán</th>		
-		<th>Trang thái</th>
 		<th>Hình Ảnh</th>
 		<th>Sửa</th>
 		<th>Xóa</th>
@@ -18,15 +18,12 @@
 	foreach ($mathang as $m) :
 	?>
 		<tr>
+      <td><?php echo $m["category_id"]; ?>
+     
+    </td>
 			<td><?php echo $m["title"]; ?></td>
 			<td><?php echo $m["description"]; ?></td>
 			<td><?php echo $m["price"]; ?></td>
-			
-
-			
-			<td><?php if($m["active"]) 
-			{if($m["active"]==1) echo "Kích hoạt"; else echo "Khóa" ; }?></td>
-
 			<td><img src="../../images/<?php echo $m["hinhanh"]; ?>" width="100" class="img-thumbnail"></td>
 			<td><a class="btn btn-warning" href="index.php?action=sua&id=<?php echo $m["id"]; ?>"><span class="glyphicon glyphicon-edit"> </span></a></td>
 			<td><a class="btn btn-danger" href="index.php?action=xoa&id=<?php echo $m["id"]; ?>"><span class="glyphicon glyphicon-trash"></span></a></td>
