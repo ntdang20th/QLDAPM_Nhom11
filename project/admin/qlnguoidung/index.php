@@ -16,7 +16,7 @@ $nguoidung = new NGUOIDUNG();
 
 switch($action){
     case "macdinh":   
-        $nguoidung = $nguoidung->laydanhsachnguoidung();     
+        $nguoidung = $nguoidung->selectAllUser();     
         include("main.php");
         break;
     case "khoa":   

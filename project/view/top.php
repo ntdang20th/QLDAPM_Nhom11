@@ -41,9 +41,13 @@
         /* Hide the carousel text when the screen is less than 600 pixels wide */
       }
     }
+    .navbar-nav>li>a {
+    padding-top: 17px;
+    padding-bottom: 15px;
+}
 
     .navbar-nav li div a {
-      padding-top: 15px;
+      padding-top: 16px;
       padding-bottom: 15px;
       display: block;
       color: #9d9d9d;
@@ -107,18 +111,18 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
 
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="#" data-toggle="dropdown">
-              Danh mục sản phẩm<span class="caret"></span>
-            </a>
-
-            <ul class="dropdown-menu">
-              <?php
-              foreach ($danhmuc as $dm) :
-              ?>
-                <li><a href="?action=xemnhom&madm=<?php echo $dm["id"]; ?>"><?php echo $dm["title"]; ?></a></li>
-              <?php endforeach; ?>
-            </ul>
+          <li>
+          <div class="container-fluid">
+          <div class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  Danh mục sản phẩm
+                  <span class="caret"></span></a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <?php foreach ($danhmuc as $dm): ?>
+                <li><a href="?action=xemnhom?madm=<?php echo $dm["id"];?>" class="subtitle"><?php echo $dm["title"]; ?></a></li>
+                <?php endforeach;?>
+              </ul>
+          </div>
           </li>
 
           <li><a href="#">Liên hệ</a></li>
@@ -202,7 +206,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" datadismiss="modal">&times;</button>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h3 class="modal-title">Hồ sơ cá nhân</h3>
           </div>
           <div class="modal-body">
@@ -243,7 +247,7 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" datadismiss="modal">Đóng</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
           </div>
         </div>
       </div>
@@ -265,8 +269,18 @@
               </div>
 
               <div class="form-group">
+                <label>Mật khẩu cũ</label>
+                <input class="form-control" type="text" name="txtMatKhauCu" placeholder="Nhập mật khẩu cũ" required>
+              </div>
+
+              <div class="form-group">
                 <label>Mật khẩu mới</label>
                 <input class="form-control" type="text" name="txtMatKhauMoi" placeholder="Nhập mật khẩu mới" required>
+              </div>
+
+              <div class="form-group">
+                <label>Nhập Lại Mật khẩu mới </label>
+                <input class="form-control" type="text" name="txtMatKhauMoi1" placeholder="Nhập lại mật khẩu mới" required>
               </div>
 
               <div class="form-group">
@@ -277,7 +291,7 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" datadismiss="modal">Đóng</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
           </div>
         </div>
       </div>

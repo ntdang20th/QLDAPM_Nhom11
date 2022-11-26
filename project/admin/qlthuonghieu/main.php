@@ -6,6 +6,7 @@
 <table class="table table-hover">
 	<tr>
 		<th>Tên danh mục</th>
+		<th>Tên Viết Tắt</th>
 		<th>Mô Tả</th>
 		<th>Sửa</th>
 		<th>Xóa</th>
@@ -18,10 +19,14 @@
 				<input type="hidden" name="txtid" value="<?php echo $d["id"]; ?>">
 				<input type="hidden" name="action" value="capnhat">
 				<tr>
-					<td><input type="text" class="form-control" name="txtten" value="<?php echo $d["title"]; ?>"></td>
+					<td><input type="text" class="form-control" name="txtten" value="<?php echo $d["tile"]; ?>"></td>
+					<td><input type="text" class="form-control" name="txtslug" value="<?php echo $d["slug"]; ?>"></td>
 					<td><input type="text" class="form-control" name="txtmota" value="<?php echo $d["description"]; ?>"></td>
 
-					
+					<td><?php 
+						if ($d["active"] == 1) echo "Kích hoạt";
+						else echo "Khóa";
+					?></td>
 					<td><input type="submit" class="btn btn-warning" value="Sửa"></td>
 					<td><a href="index.php?action=xoa&id=<?php echo $d["id"]; ?>">Xóa</a></td>
 				</tr>
@@ -31,8 +36,13 @@
 		?>
 			<tr>
 				<td><?php echo $d["title"]; ?></td>
+				<td><?php echo $d["slug"]; ?></td>		
 			
 				<td><?php echo $d["description"]; ?></td>
+				
+
+
+
 
 	<td><a href="index.php?action=sua&id=<?php echo $d["id"]; ?>">Sửa</a></td>
 	<td><a href="index.php?action=xoa&id=<?php echo $d["id"]; ?>">Xóa</a></td>
@@ -49,6 +59,7 @@
 <div id="formthem">
 	<form class="form-inline" method="post">
 		<input type="text" class="form-control" name="txtten" placeholder="Nhập tên danh mục">
+		<input type="text" class="form-control" name="txtslug" placeholder="Nhập Tên Viết Tắt">
 		<input type="text" class="form-control" name="txtmota" placeholder="Mô Tả">
 		<input type="hidden" name="action" value="them">
 		<input type="submit" class="btn btn-warning" value="Thêm">

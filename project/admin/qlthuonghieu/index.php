@@ -24,9 +24,10 @@ switch($action){
     case "them":
         //xu ly them
         $tile = $_POST["txtten"];
+        $slug = $_POST["txtslug"]; 
         $description = $_POST["txtmota"];
        
-        $dm->themdanhmuc($tile,$description);    
+        $dm->themdanhmuc($tile, $slug,$description);    
 		$danhmuc = $dm->laydanhmuc(); 
         include("main.php");
         break;
@@ -41,7 +42,7 @@ switch($action){
         include("main.php");
         break;
 	case "capnhat":
-		$dm->suadanhmuc($_POST["txtid"], $_POST["txtten"], $_POST["txtmota"]);
+		$dm->suadanhmuc($_POST["txtid"], $_POST["txtten"]);
         $danhmuc = $dm->laydanhmuc();
         include("main.php");
         break;

@@ -6,7 +6,7 @@ class MATHANG
     {
         $dbcon = DATABASE::connect();
         try {
-            $sql = "SELECT COUNT(*) FROM product";
+            $sql = "SELECT COUNT(*) FROM product where active = 1 ";
             $cmd = $dbcon->prepare($sql);
             $cmd->execute();
             $count = $cmd->fetchColumn();
@@ -23,7 +23,7 @@ class MATHANG
     public function laymathangnoibat(){
         $dbcon = DATABASE::connect();
         try{
-            $sql = "SELECT m.*, d.tendanhmuc 
+            $sql = "SELECT m.*, d.title 
             FROM mathang m, danhmuc d 
             WHERE d.id=m.danhmuc_id 
             ORDER BY luotxem 
@@ -44,9 +44,9 @@ class MATHANG
     {
         $dbcon = DATABASE::connect();
         try {
-            $sql = "SELECT m.*, d.title 
+            $sql = "SELECT m.*, d.title as cattitle
             FROM product m, category d 
-            WHERE d.id=m.category_id 
+            WHERE d.id=m.category_id And m.active = 1
             ORDER BY id  
             DESC LIMIT $m, $n";
             $cmd = $dbcon->prepare($sql);

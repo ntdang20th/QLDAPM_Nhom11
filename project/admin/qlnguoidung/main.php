@@ -19,14 +19,13 @@
 
   <!-- Danh sách người dùng -->
   <table class="table table-hover">
-        <tr><th>Email</th><th>Số điện thoại</th><th>Họ tên</th><th>Loại quyền</th><th>Trạng thái</th><th>Khóa</th></tr>
+        <tr><th>Tên Người Dùng</th><th>Email </th><th>Số Điện Thoại</th><th>Địa Chỉ</th><th>Hình Ảnh</th><th>Loại Phân Quyền</th></tr>
       <?php foreach ($nguoidung as $nd): ?>
-        <tr><td><?php echo $nd["email"]; ?></td>
-        	<td><?php echo $nd["sodienthoai"]; ?></td>
-          <td><?php echo $nd["hoten"]; ?></td>
-        	<td><?php if($nd["loai"]==1) echo "Quản trị";elseif($nd["loai"]==2) echo "Nhân viên"; else echo "Khách hàng" ; ?></td>
-          <td><?php if($nd["loai"]!=1) {if($nd["trangthai"]==1) echo "Kích hoạt"; else echo "Khóa" ; }?></td>
-          <td>
+        <tr><td><?php echo $nd["username"]; ?></td>
+        	<td><?php echo $nd["email"]; ?></td>
+          <td><?php echo $nd["phone_number"]; ?></td>
+          <td><?php echo $nd["address"]; ?></td>
+          
           <?php 
           if($nd["loai"]!=1) {
             if($nd["trangthai"]==1){ ?>
@@ -53,7 +52,7 @@
         <div class="modal-body">
           <form method="post">
             <div class="form-group">        
-            <input class="form-control" type="email" name="txtemail" placeholder="Email" required>
+            <input class="form-control" type="text" name="txtemail" placeholder="Email" required>
             </div>
             <div class="form-group"><input class="form-control"  type="text" name="txtmatkhau" placeholder="Mật khẩu" required></div>
             <div class="form-group">        

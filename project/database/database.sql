@@ -31,7 +31,7 @@ USE `shop_matkinh`;
 -- Table structure for table `danhmuc`
 --
 
-CREATE TABLE `category` (
+CREATE TABLE `brand` (
   `id` int(11) NOT NULL,
   `title` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `slug` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
@@ -43,13 +43,33 @@ CREATE TABLE `category` (
 -- Dumping data for table `danhmuc`
 --
 
-INSERT INTO `category` (`id`, `title`,`slug`,`description`,`active`) VALUES
-(1, 'Kính mát', 'ADI', 'mát lắm', 1),
-(2, 'Kính cận', 'PUM', 'mù đeo dô cũng thấy', 1),
-(3, 'Kính lão đắt thọ', 'NIK', 'sống lâu', 1);
+INSERT INTO `brand` (`id`, `title`,`slug`,`description`,`active`) VALUES
+(1, 'Gucci', 'GUC', 'Gu chìiiiiiiiiiiiiii', 1),
+(2, 'Dior', 'DIO', 'Đì ooooô', 1),
+(3, 'Rayban', 'RAY', 'Rây bennnnnnnnnnnn', 1),
+(4, 'Gentle Monster', 'GMT', 'gien tồ môn sờ tơ', 1),
+(5, 'Louis Vuitton', 'LVT', 'luôn vui tươi', 1),
+(6, 'Prada', 'PRA', 'pơ ra đa', 1),
+(7, 'Lacoste', 'LAC', 'lác kotex', 1),
+(8, 'Cartier', 'CAR', 'cả ti ơ', 1);
+
 
 -- --------------------------------------------------------
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL,
+  `title` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `active` bit default 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+INSERT INTO `category` VALUES
+(1, 'Kính mát', 'che luôn mặt trời', 1),
+(2, 'Kính cận', 'dành cho mấy thằng nguy hiểm', 1),
+(3, 'Kính thời trang', 'thích ra dẻ, sở khanh giả danh tri thức', 1),
+(4, 'Kính áp tròng', 'đeo như không đeo', 1),
+(5, 'Kính thể thao', 'đeo kính đá banh, đéo hiểu', 1),
+(6, 'Gọng kính', 'mua mẹ nó nguyên cái kính đi', 1),
+(7, 'Tròng kính', 'm ẩu nên mới mua tròng mới chứ gì', 1);
 --
 -- Table structure for table `diachi`
 --
@@ -58,22 +78,34 @@ CREATE TABLE `product` (
   `id` int(11) NOT NULL,
   `title` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `price` int NOT NULL,
   `category_id` int(11) NOT NULL,
+  `brand_id` int(11) not null,
   `active` bit default 1,
   `hinhanh` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `diachi`
---
+-- insert kinhs gucci + dior
+INSERT INTO product VALUES (1, 'Kính mát Gucci GG0653S 001 55', 'Kính mát Gucci GG0653S 001 55', 1, 1, 1, 'GG0653S_001_55.jpg');
+INSERT INTO product VALUES (2, 'Gọng kính Ray-Ban New Clubmaster RX7216F-2000(53)', 'Gọng kính Ray-Ban New Clubmaster RX7216F-2000(53)', 6, 1, 1, 'rayban-rx7216f-2000-53x160x120.jpg');
+INSERT INTO product VALUES (3, 'Tròng kính Gucci', 'Tròng kính Gucci', 7, 1, 1, 'trongkinhguc001.jpg');
+INSERT INTO product VALUES (4, 'Kính thể thao Gucci GC2601', 'Kính thể thao Gucci GC2601', 5, 1, 1, 'gucci_tt_001.jpg');
+INSERT INTO product VALUES (5, 'GUCCI Cận Round Mens Eyeglasses', 'GUCCI Cận Round Mens Eyeglasses', 2, 1, 1, 'gucci-demo-round-mens-eyeglasses-gg0590ok001-52.jpg');
+INSERT INTO product VALUES (6, 'GUCCI Mát Square Mens Sunglasses', 'GUCCI Mát Square Mens Sunglasses', 1, 1, 1, 'gucci-grey-square-mens-sunglasses-gg0562sk-001-53.jpg');
+INSERT INTO product VALUES (7, 'Gucci Cầu lông', 'Gu lòng củ chi', 5, 1, 1, 'gucci-thethao.jpg');
 
-INSERT INTO product VALUES (1, 'Mắt kính', 'màu đỏ', 120000, 1, 1, 'kinh1.jpg');
-INSERT INTO product VALUES (2, 'Mắt kính chấn bé đù', 'màu vàng', 130000, 1, 1, 'kinh2.jpg');
-INSERT INTO product VALUES (3, 'Mắt mính laze', 'màu xanh', 140000, 2, 1, 'kinh3.jpg');
-INSERT INTO product VALUES (4, 'Mắt kính nhìn xuyên thấu', 'màu đen', 150000, 3, 1, 'kinh4.jpg');
-INSERT INTO product VALUES (5, 'Kính trên nhường dưới', 'màu đen', 150000, 3, 1, 'kinh5.jpg');
+INSERT INTO product VALUES (8, 'Kính Mát Dior Ladies Sunglasses DIORULTIME1 0AVB 57-17 Màu Vàng', 'Kính Mát Dior Ladies Sunglasses DIORULTIME1 0AVB 57-17 Màu Vàng', 1, 2, 1, 'kinh-mat-dior-ladies-sunglasses-diorultime1-0avb-57-17-mau-vang-635f9971e5484-31102022164625.jpg');
+INSERT INTO product VALUES (9, 'Kính Mát Dior Oblique Pilot Sunglasses CD Link A1U F0B8 Màu Xanh Bạc', 'Kính Mát Dior Oblique Pilot Sunglasses CD Link A1U F0B8 Màu Xanh Bạc', 1, 2, 1, 'kinh-mat-dior-oblique-pilot-sunglasses-cd-link-a1u-f0b8-mau-xanh-bac-631ed328926b5-12092022133520.jpg');
+INSERT INTO product VALUES (10, 'Kính Thời trang Dior Blue Mask Sunglasses With Silver Mirrored Dior Oblique MotifDior Motion M1I F0B8 Màu Xanh', 'Kính Mát Dior Blue Mask Sunglasses With Silver Mirrored Dior Oblique MotifDior Motion M1I F0B8 Màu Xanh', 3, 2, 1, 'kinh-mat-dior-blue-mask-sunglasses-with-silver-mirrored-dior-oblique-motifdior-motion-m1i-f0b8-mau-xanh-62ce8c2092b97-13072022161056.jpg');
+INSERT INTO product VALUES (11, 'Kính Thời trang Dior So Stellaire 1 807VC Màu Hồng Gọng Đen', 'Kính Thời trang Dior So Stellaire 1 807VC Màu Hồng Gọng Đen', 3, 2, 1, 'kinh-mat-dior-so-stellaire-1-807vc-mau-hong-gong-den-6309a12a9e1cd-27082022114426.jpg');
+INSERT INTO product VALUES (12, 'Kính Mắt Cận Eyeglasses Dior Stellaire 5 Gold DIORSTELLAIRE05 2M2 54-17 Medium', 'Kính Mắt Cận Eyeglasses Dior Stellaire 5 Gold DIORSTELLAIRE05 2M2 54-17 Medium', 2, 2, 1, 'kinh-mat-can-eyeglasses-dior-stellaire-5-gold-diorstellaire05-2m2-54-17-medium-6020fc4b4b4d2-08022021155435.jpg');
+INSERT INTO product VALUES (13, 'Kính Mắt Dior Clan 2 DDB/1I Polarized', 'Kính Mắt Dior Clan 2 DDB/1I Polarized', 5, 2, 1, 'ki-nh-ma-t-dior-clan-2-ddb-1i-polarized-612f66e7dca3b-01092021184127.jpg');
+-- insert rayben + Gentle Monster
 
+-- insert Luis vuiton + prada
+
+-- insert lacoste + cartier
 -- --------------------------------------------------------
 
 --
@@ -83,7 +115,6 @@ INSERT INTO product VALUES (5, 'Kính trên nhường dưới', 'màu đen', 150
 CREATE TABLE `variation` (
   `id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `title` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `price` int NOT NULL,
   `sale_price` int NOT NULL,
   `inventory` int NOT NULL,
@@ -173,6 +204,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 -- --------------------------------------------------------
 
+insert into `user` VALUES (1, 'admin', '202cb962ac59075b964b07152d234b70', 'admin@gmail.com', '0123456789', 'Viet Nam');
 --
 -- Table structure for table `nguoidung`
 --
@@ -213,7 +245,11 @@ CREATE TABLE `order` (
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
-
+--
+-- Indexes for table `danhmuc`
+--
+ALTER TABLE `brand`
+  ADD PRIMARY KEY (`id`);
 --
 -- Indexes for table `donhang`
 --
@@ -262,6 +298,8 @@ ALTER TABLE `order`
 ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
+ALTER TABLE `brand`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `diachi`
 --
@@ -303,7 +341,8 @@ ALTER TABLE `order`
 -- Constraints for table `diachi`
 --
 ALTER TABLE `product`
-  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `product_ibfk_2` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`id`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `donhang`
