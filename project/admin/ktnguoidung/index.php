@@ -45,29 +45,23 @@ switch($action){
             include("loginform.php");
         }
         break;
-
-    case "capnhaths":
-        $mand = $_POST["txtid"];
-        $email = $_POST["txtemail"];
-        
-        $sodt = $_POST["txtdienthoai"];
-        $hoten = $_POST["txthoten"];
-        $hinhanh = basename($_FILES["fhinh"]["name"]);
-        $duongdan = "../images/" . $hinhanh;
-        move_uploaded_file($_FILES["fhinh"]["tmp_name"], $duongdan);
-        
-        $nguoidung->capnhatnguoidung($mand,$email,$sodt,$hoten,$hinhanh);
-
-        $_SESSION["nguoidung"] = $nguoidung->getUserInfo($email);
-        include("main.php");        
+        case "capNhatHoSoCaNhan":
+            $userName = $_POST['txtUserName'];
+            $email = $_POST['txtEmail'];
+            $phoneNumber = $_POST['txtDienThoai'];
+            $address = $_POST['txtDiaChi'];
+            $nguoidung->capnhatnguoidung($userName, $email, $phoneNumber, $address);
+            $_SESSION['nguoidung'] = $nguoidung->getUserInfo($userName);
+            include('main.php');
         break;
-
-    case "doimatkhau":
-         if (isset($_POST["txtemail"]) && isset($_POST["txtmatkhaumoi"]) )
-            $nguoidung->doimatkhau($_POST["txtemail"],$_POST["txtmatkhaumoi"]);
-        include("main.php");
-        break;    
-    default:
-        break;
+        case 'doiMatKhau':
+            $matKhauMoi = $_POST['txtMatKhauMoi'];
+            $userName = $_SESSION['nguoidung']['username'];
+            $nguoidung->doiMatKhau($userName, $matKhauMoi);
+    
+            $_SESSION['nguoidung'] = $nguoidung->getUserInfo($userName);
+    
+            include("main.php");
+            break;
 }
 ?>
