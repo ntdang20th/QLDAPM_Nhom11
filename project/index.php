@@ -180,9 +180,9 @@ switch ($action) {
             $phone = $_POST['txtphone'];
             $address = $_POST['txtaddress'];
             $nguoidung->addUser($username, $password, $email, $phone, $address);
-            include("main.php");
+            include("login.php");
         } else
-            include("main.php");
+            include("login.php");
         break;
     default:
         break;
