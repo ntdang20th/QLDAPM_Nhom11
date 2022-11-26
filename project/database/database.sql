@@ -204,6 +204,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 -- --------------------------------------------------------
 
+insert into `user` VALUES (1, 'admin', '202cb962ac59075b964b07152d234b70', 'admin@gmail.com', '0123456789', 'Viet Nam');
 --
 -- Table structure for table `nguoidung`
 --
