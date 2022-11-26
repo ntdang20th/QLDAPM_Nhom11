@@ -256,10 +256,10 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h3 class="modal-title">Hồ sơ cá nhân</h3>
+            <h3 class="modal-title">Đổi Mật Khẩu</h3>
           </div>
           <div class="modal-body">
-            <form method="post">
+            <form method="post" >
               <div class="form-group">
                 <label>Tài khoản</label>
                 <input class="form-control" type="text" name="txtTaiKhoan" value="<?php echo $_SESSION["nguoidung"]["username"]; ?>" disabled>
