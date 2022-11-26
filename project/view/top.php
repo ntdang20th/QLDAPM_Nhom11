@@ -212,10 +212,7 @@
           <div class="modal-body">
             <form method="post" enctype="multipart/form-data">
 
-              <div class="text-center">
-                <img class="img-circle" src="../../images/<?php echo $_SESSION["nguoidung"]["hinhanh"]; ?>" alt="<?php echo
-                                                                                                                  $_SESSION["nguoidung"]["username"]; ?>" width="100px">
-              </div>
+              
 
               <div class="form-group">
                 <label>Username</label>
