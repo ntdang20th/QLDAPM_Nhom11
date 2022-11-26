@@ -96,37 +96,40 @@
           <form method="post" enctype="multipart/form-data" action="../ktnguoidung/index.php">
           
           <div class="form-group">
-            <label>Họ tên</label>
-            <input class="form-control"  type="text" name="txthoten" placeholder="Họ tên" value="<?php echo $_SESSION["nguoidung"]["username"]; ?>" disabled></div>
+                <label>Username</label>
+                <input class="form-control" type="email" name="txtUsername" placeholder="nhập tên tài khoản" value="<?php echo $_SESSION["nguoidung"]["username"]; ?>" disabled>
+              </div>
 
-            <input type="hidden" name="txtid" value="<?php echo $_SESSION["nguoidung"]["id"]; ?>">
-            <div class="form-group">    
-            <label>Email</label>    
-            <input class="form-control" type="email" name="txtemail" placeholder="Email" value="<?php echo $_SESSION["nguoidung"]["email"]; ?>" required>
-            </div>
-            <div class="form-group">    
-            <label>Số điện thoại</label>    
-            <input class="form-control" type="number" name="txtdienthoai" placeholder="Số điện thoại" value="<?php echo $_SESSION["nguoidung"]["phone_number"]; ?>" required>
-            </div>        
-            <div class="form-group">    
-            <label>Địa chỉ</label>    
-            <input class="form-control" type="text" name="txtdiachi" placeholder="Địa chỉ" value="<?php echo $_SESSION["nguoidung"]["address"]; ?>" required>
-            </div>      
-           
-          
-            <div class="form-group">
-            <input type="hidden" name="txtid" value="<?php echo $_SESSION["nguoidung"]["id"]; ?>" >
-            <input type="hidden" name="action" value="capnhaths" >
-            <input class="btn btn-primary"  type="submit" value="Lưu">
-            <input class="btn btn-warning"  type="reset" value="Hủy"></div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+              <div class="form-group">
+                <label>Số điện thoại</label>
+                <input class="form-control" type="number" name="txtDienThoai" placeholder="Số điện thoại" value="<?php echo $_SESSION["nguoidung"]["phone_number"]; ?>">
+              </div>
+
+              <div class="form-group">
+                <label>Email</label>
+                <input class="form-control" type="text" name="txtEmail" placeholder="Email" value="<?php echo $_SESSION["nguoidung"]["email"]; ?>" required>
+              </div>
+
+              <div class="form-group">
+                <label>Địa Chỉ</label>
+                <input class="form-control" type="text" name="txtDiaChi" placeholder="Nhập địa chỉ" value="<?php echo $_SESSION["nguoidung"]["address"]; ?>" required>
+              </div>
+
+              <div class="form-group">
+                <input type="hidden" name="txtUserName" value="<?php echo $_SESSION['nguoidung']['username']; ?>">
+
+                <input type="hidden" name="action" value="capNhatHoSoCaNhan">
+                <input class="btn btn-primary" type="submit" value="Lưu">
+                <input class="btn btn-warning" type="reset" value="Hủy">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 <!-- Form đổi mật khẩu -->
   <div class="modal fade" id="fdoimatkhau" role="dialog">
     <div class="modal-dialog">
