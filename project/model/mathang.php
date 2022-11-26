@@ -20,9 +20,10 @@ class MATHANG
     }
 
     //Lấy mặt hàng nổi bật top 4 lượt mua
-    public function laymathangnoibat(){
+    public function laymathangnoibat()
+    {
         $dbcon = DATABASE::connect();
-        try{
+        try {
             $sql = "SELECT m.*, d.title 
             FROM mathang m, danhmuc d 
             WHERE d.id=m.danhmuc_id 
@@ -32,8 +33,7 @@ class MATHANG
             $cmd->execute();
             $ketqua = $cmd->fetchAll();
             return $ketqua;
-        }
-        catch(PDOException $e){
+        } catch (PDOException $e) {
             $error_message = $e->getMessage();
             echo "<p>Lỗi truy vấn: $error_message</p>";
             exit();
@@ -44,9 +44,9 @@ class MATHANG
     {
         $dbcon = DATABASE::connect();
         try {
-            $sql = "SELECT m.*, d.title as cattitle
-            FROM product m, category d 
-            WHERE d.id=m.category_id And m.active = 1
+            $sql = "SELECT p.*, v.price as vprice, c.title as catitle
+            FROM product p, variation v, category c
+            WHERE p.id = v.product_id
             ORDER BY id  
             DESC LIMIT $m, $n";
             $cmd = $dbcon->prepare($sql);
@@ -65,7 +65,7 @@ class MATHANG
     {
         $dbcon = DATABASE::connect();
         try {
-            $sql = "SELECT * FROM product where active = 1";
+            $sql = "SELECT p.*, v.price AS vprice, c.title AS catitle FROM product p, variation v, category c where p.id = v.product_id AND p.category_id = c.id AND v.active = 1";
             $cmd = $dbcon->prepare($sql);
             $cmd->execute();
             $result = $cmd->fetchAll();
@@ -131,7 +131,7 @@ class MATHANG
 
     // Thêm mới
 
-    public function themmathang($hinhanh,$title,$description,$price,$category_id)
+    public function themmathang($hinhanh, $title, $description, $price, $category_id)
     {
         $dbcon = DATABASE::connect();
         try {
@@ -150,7 +150,6 @@ class MATHANG
             $error_message = $e->getMessage();
             echo "<p>Lỗi truy vấn: $error_message</p>";
             exit();
-
         }
     }
 
@@ -172,7 +171,7 @@ class MATHANG
     }
 
     // Cập nhật 
-    public function suamathang($id,$title,$category_id,$description,$price,$hinhanh)
+    public function suamathang($id, $title, $category_id, $description, $price, $hinhanh)
     {
         $dbcon = DATABASE::connect();
         try {
@@ -189,8 +188,8 @@ class MATHANG
             $cmd->bindValue(":category_id", $category_id);
             $cmd->bindValue(":description", $description);
             $cmd->bindValue(":price", $price);
-            $cmd->bindValue(":hinhanh",$hinhanh);
-           $cmd->bindValue(":id", $id);
+            $cmd->bindValue(":hinhanh", $hinhanh);
+            $cmd->bindValue(":id", $id);
             $result = $cmd->execute();
             return $result;
         } catch (PDOException $e) {
