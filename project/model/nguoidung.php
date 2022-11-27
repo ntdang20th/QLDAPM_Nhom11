@@ -305,7 +305,7 @@ class NGUOIDUNG
 	{
 		$db = DATABASE::connect();
 		try {
-			$sql = "UPDATE user set email=:email, phone_number=:sodt, address =:diaChi where username=:id";
+			$sql = "UPDATE user set email=:email, phone_number=:sodt, address =:diaChi where id=:id";
 			$cmd = $db->prepare($sql);
 			$cmd->bindValue(':id', $id);
 			$cmd->bindValue(':email', $email);
@@ -341,16 +341,16 @@ class NGUOIDUNG
 		}
 	}
 
-	public function doiMatKhau($userName, $matKhauMoi)
+	public function doiMatKhau($id, $newpass)
 	{
 		$dbcon = DATABASE::connect();
 		try {
-			$sql = "UPDATE user SET password=:matKhauMoi WHERE username=:username";
+			$newpass = md5($newpass);
+			$sql = "UPDATE user SET password=:newpass WHERE id=:id";
 			$cmd = $dbcon->prepare($sql);
-			$cmd->bindValue(":username", $userName);
-			$cmd->bindValue(":matKhauMoi", md5($matKhauMoi));
-			$result = $cmd->execute();
-			return $result;
+			$cmd->bindValue(":id", $id);
+			$cmd->bindValue(":newpass", $newpass);
+			$cmd->execute();
 		} catch (PDOException $e) {
 			$error_message = $e->getMessage();
 			echo "<p>Lỗi truy vấn: $error_message</p>";

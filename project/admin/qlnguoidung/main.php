@@ -30,8 +30,8 @@
         <td><?php echo $nd["address"]; ?></td>
         <td>
           <a class="btn btn-danger" href="index.php?action=xoa&id=<?php echo $nd["id"]; ?>"><span class="glyphicon glyphicon-trash"></span></a>
-          <a href="#" data-toggle="modal" data-target="#fsuanguoidung" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span></a>
-          <div class="modal fade" id="fsuanguoidung" role="dialog">
+          <a href="#" data-toggle="modal" data-target="#fsuanguoidung<?php echo $nd["id"]; ?>" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span></a>
+          <div class="modal fade" id="fsuanguoidung<?php echo $nd["id"]; ?>" role="dialog">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
@@ -42,17 +42,18 @@
                   <form method="post" enctype="multipart/form-data">
                     <div class="form-group">
                       <label>Username</label>
+                      <input type="hidden" name="txtId" value="<?php echo $nd["id"] ?>">
                       <input class="form-control" type="email" name="txtUsername" placeholder="nhập tên tài khoản" value="<?php echo $nd["username"]; ?>" disabled>
                     </div>
 
                     <div class="form-group">
                       <label>Số điện thoại</label>
-                      <input class="form-control" type="number" name="txtDienThoai" placeholder="Số điện thoại" value="<?php echo $nd["email"]; ?>">
+                      <input class="form-control" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" name="txtDienThoai" placeholder="Số điện thoại" value="<?php echo $nd["phone_number"]; ?>">
                     </div>
 
                     <div class="form-group">
                       <label>Email</label>
-                      <input class="form-control" type="text" name="txtEmail" placeholder="Email" value="<?php echo $nd["phone_number"]; ?>" required>
+                      <input class="form-control" type="email" name="txtEmail" placeholder="Email" value="<?php echo $nd["email"]; ?>" required>
                     </div>
 
                     <div class="form-group">
@@ -61,9 +62,7 @@
                     </div>
 
                     <div class="form-group">
-                      <input type="hidden" name="txtUserName" value="<?php echo $_SESSION['nguoidung']['username']; ?>">
-
-                      <input type="hidden" name="action" value="capNhatHoSoCaNhan">
+                      <input type="hidden" name="action" value="updateUser">
                       <input class="btn btn-primary" type="submit" value="Lưu">
                       <input class="btn btn-warning" type="reset" value="Hủy">
                     </div>
