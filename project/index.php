@@ -38,9 +38,10 @@ switch ($action) {
             $tranghh = $_REQUEST["trang"];
         $batdau = ($tranghh - 1) * $soluong;
         $mathang = $mh->laymathangphantrang($batdau, $soluong, null, null);
+        $mathangnoibat = $mh -> laymathangnoibat();
         include("main.php");
         break;
-        
+
     case "xemchitiet":
         if (isset($_GET["mahang"])) {
             $mahang = $_GET["mahang"];
@@ -190,8 +191,8 @@ switch ($action) {
         break;
 
     case "xemloai":
-        $tongmh = $mh->demtongsomathang($_REQUEST["madm"], null);
-        $mathang = $mh->laymathang($_REQUEST["madm"], null);
+        $tongmh = $mh->demtongsomathang(null, $_REQUEST["madm"]);
+        $mathang = $mh->laymathang(null, $_REQUEST["madm"]);
         $soluong = 8;
         $tongsotrang = ceil($tongmh / $soluong);
         if (!isset($_REQUEST["trang"]))
@@ -199,7 +200,20 @@ switch ($action) {
         else
             $tranghh = $_REQUEST["trang"];
         $batdau = ($tranghh - 1) * $soluong;
-        $mathang = $mh->laymathangphantrang($batdau, $soluong, $_REQUEST["madm"], null);
+        $mathang = $mh->laymathangphantrang($batdau, $soluong, null, $_REQUEST["madm"]);
+        include("main.php");
+        break;
+    case "xembrand":
+        $tongmh = $mh->demtongsomathang($_REQUEST["brandid"], null);
+        $mathang = $mh->laymathang($_REQUEST["brandid"], null);
+        $soluong = 8;
+        $tongsotrang = ceil($tongmh / $soluong);
+        if (!isset($_REQUEST["trang"]))
+            $tranghh = 1;
+        else
+            $tranghh = $_REQUEST["trang"];
+        $batdau = ($tranghh - 1) * $soluong;
+        $mathang = $mh->laymathangphantrang($batdau, $soluong, $_REQUEST["brandid"], null);
         include("main.php");
         break;
     default:

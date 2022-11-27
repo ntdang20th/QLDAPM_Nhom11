@@ -120,7 +120,7 @@
                     <span class="caret"></span></a>
                   <ul class="dropdown-menu dropdown-menu-right">
                     <?php foreach ($danhmuc as $dm): ?>
-                  <li><a href="?action=xemloai?madm=<?php echo $dm["id"];?>" class="subtitle"><?php echo $dm["title"]; ?></a></li>
+                  <li><a href="?action=xemloai&madm=<?php echo $dm["id"];?>" class="subtitle"><?php echo $dm["title"]; ?></a></li>
                   <?php endforeach;?>
                 </ul>
             </div>
@@ -135,7 +135,7 @@
                     <span class="caret"></span></a>
                   <ul class="dropdown-menu dropdown-menu-right">
                     <?php foreach ($thuonghieu as $dm): ?>
-                  <li><a href="?action=xemnbrand?madm=<?php echo $dm["id"];?>" class="subtitle"><?php echo $dm["title"]; ?></a></li>
+                  <li><a href="?action=xembrand&brandid=<?php echo $dm["id"];?>" class="subtitle"><?php echo $dm["title"]; ?></a></li>
                   <?php endforeach;?>
                 </ul>
                 </div>

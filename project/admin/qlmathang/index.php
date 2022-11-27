@@ -20,7 +20,7 @@ $mh = new MATHANG();
 
 switch($action){
     case "xem":
-        $mathang = $mh->laymathang();
+        $mathang = $mh->laymathang(null, null);
 		include("main.php");
         break;
 	case "them":
@@ -40,13 +40,13 @@ switch($action){
 		//$active = $_POST["txtsoluong"];
 	    //	$danhmuc_id = $_POST["optdanhmuc"];
 		$mh->themmathang($hinhanh,$title,$description,$price,$category_id);
-		$mathang = $mh->laymathang();
+		$mathang = $mh->laymathang(null, null);
 		include("main.php");
         break;
 	case "xoa":
 		if(isset($_GET["id"]))
 			$mh->xoamathang($_GET["id"]);
-		$mathang = $mh->laymathang();
+		$mathang = $mh->laymathang(null, null);
 		include("main.php");
 		break;	
     case "sua":
@@ -56,7 +56,7 @@ switch($action){
             include("updateform.php");
         }
         else{
-            $mathang = $mh->laymathang();        
+            $mathang = $mh->laymathang(null, null);        
             include("main.php");            
         }
         break;
@@ -80,7 +80,7 @@ switch($action){
         $mh->suamathang($id,$title,$category_id,$description,$price,$hinhanh);         
     
         // hiển thị ds mặt hàng
-        $mathang = $mh->laymathang();    
+        $mathang = $mh->laymathang(null, null);    
         include("main.php");
         break;
     case "timKiem":

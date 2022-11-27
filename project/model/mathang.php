@@ -11,14 +11,23 @@ class MATHANG
             where v.product_id=p.id and v.active = 1 ";
 
             if ($brand_id != null) {
-                $sql += " and p.category_id=:cat_id";
+                $sql = $sql . " and p.brand_id=:brand_id";
             }
 
             if ($category_id != null) {
-                $sql += " and p.brand_id=:brand_id";
+                $sql .= " and p.category_id=:cat_id";
             }
 
             $cmd = $dbcon->prepare($sql);
+
+            if ($brand_id != null) {
+                $cmd->bindValue(":brand_id", $brand_id);
+            }
+
+            if ($category_id != null) {
+                $cmd->bindValue(":cat_id", $category_id);
+            }
+            
             $cmd->execute();
             $count = $cmd->fetchColumn();
             //rsort($result);
@@ -36,8 +45,10 @@ class MATHANG
         $dbcon = DATABASE::connect();
         try {
             $sql = "SELECT m.*, d.title 
-            FROM mathang m, danhmuc d 
-            WHERE d.id=m.danhmuc_id 
+            FROM product p, category c, brand b, variation v, cart_item cart
+            WHERE p.id = v.product_id and p.category_id = c.id 
+                and p.brand_id = b.id 
+
             ORDER BY luotxem 
             DESC LIMIT 0, 4";
             $cmd = $dbcon->prepare($sql);
@@ -57,20 +68,27 @@ class MATHANG
         try {
             $sql = "SELECT p.*, v.price as vprice, c.title as catitle
             FROM product p, variation v, category c, brand as b
-            WHERE p.id = v.product_id and p.category_id=c.id and p.brand_id = b.id
-            ORDER BY id  
-            DESC LIMIT $m, $n ";
+            WHERE p.id = v.product_id and p.category_id=c.id and p.brand_id = b.id ";
 
             if ($brand_id != null) {
-                $sql += " and p.category_id=:cat_id";
+                $sql = $sql . " and p.brand_id=:brand_id";
             }
 
             if ($category_id != null) {
-                $sql += " and p.brand_id=:brand_id";
+                $sql .= " and p.category_id=:cat_id";
             }
+            $sql .= " ORDER BY id  
+                        DESC LIMIT $m, $n ";
             $cmd = $dbcon->prepare($sql);
-            $cmd->bindValue(":catcat_idid", $category_id);
-            $cmd->bindValue(":brand_id", $brand_id);
+
+            if ($brand_id != null) {
+                $cmd->bindValue(":brand_id", $brand_id);
+            }
+
+            if ($category_id != null) {
+                $cmd->bindValue(":cat_id", $category_id);
+            }
+
             $cmd->execute();
             $result = $cmd->fetchAll();
             rsort($result); // sắp xếp giảm thay cho order by desc
@@ -92,15 +110,22 @@ class MATHANG
             where p.id = v.product_id AND p.category_id = c.id AND v.active = 1 and p.brand_id = b.id ";
 
             if ($brand_id != null) {
-                $sql += " and p.category_id=:cat_id";
+                $sql = $sql . " and p.brand_id=:brand_id";
             }
 
             if ($category_id != null) {
-                $sql += " and p.brand_id=:brand_id";
+                $sql .= " and p.category_id= :cat_id";
             }
+
             $cmd = $dbcon->prepare($sql);
-            $cmd->bindValue(":catcat_idid", $category_id);
-            $cmd->bindValue(":brand_id", $brand_id);
+
+            if ($brand_id != null) {
+                $cmd->bindValue(":brand_id", $brand_id);
+            }
+
+            if ($category_id != null) {
+                $cmd->bindValue(":cat_id", $category_id);
+            }
             $cmd->execute();
             $result = $cmd->fetchAll();
             rsort($result); // sắp xếp giảm thay cho order by desc
