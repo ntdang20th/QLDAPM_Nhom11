@@ -113,46 +113,38 @@
         <ul class="nav navbar-nav">
 
           <li>
-            <div class="container-fluid">
-              <div class="dropdown">
+          <div class="container-fluid">
+          <div class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                   Phân loại
                   <span class="caret"></span></a>
                 <ul class="dropdown-menu dropdown-menu-right">
-                  <<<<<<< HEAD <?php foreach ($danhmuc as $dm) : ?> <li><a href="?action=xemnhom?madm=<?php echo $dm["id"]; ?>" class="subtitle"><?php echo $dm["title"]; ?></a>
+                  <?php foreach ($danhmuc as $dm): ?>
+                <li><a href="?action=xemloai?madm=<?php echo $dm["id"];?>" class="subtitle"><?php echo $dm["title"]; ?></a></li>
+                <?php endforeach;?>
+              </ul>
+          </div>
           </li>
-        <?php endforeach; ?>
-        </ul>
-      </div>
-      =======
-      <?php foreach ($danhmuc as $dm) : ?>
-        <li><a href="?action=xemloai?madm=<?php echo $dm["id"]; ?>" class="subtitle"><?php echo $dm["title"]; ?></a></li>
-      <?php endforeach; ?>
-      </ul>
-    </div>
-    </li>
 
-    <li>
-      <div class="container-fluid">
-        <div class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            Thương hiệu
-            <span class="caret"></span></a>
-          <ul class="dropdown-menu dropdown-menu-right">
-            <?php foreach ($thuonghieu as $dm) : ?>
-              <li><a href="?action=xemnbrand?madm=<?php echo $dm["id"]; ?>" class="subtitle"><?php echo $dm["title"]; ?></a></li>
-            <?php endforeach; ?>
-          </ul>
-        </div>
-        >>>>>>> ab6bac46442be4cfe7239793d671dd612e46b84f
-    </li>
-
-    <li><a href="#">Liên hệ</a></li>
-
-    <li><a href="#" data-toggle="modal" data-target="#modalTimKiem">
+          <li>
+          <div class="container-fluid">
+          <div class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  Thương hiệu
+                  <span class="caret"></span></a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <?php foreach ($thuonghieu as $dm): ?>
+                <li><a href="?action=xemnbrand?madm=<?php echo $dm["id"];?>" class="subtitle"><?php echo $dm["title"]; ?></a></li>
+                <?php endforeach;?>
+              </ul>
+          </div>
+            
+          <li><a href="#">Liên hệ</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#modalTimKiem">
         <span class="glyphicon glyphicon-search"></span> Tìm kiếm sản phẩm</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
       <?php if (isset($_SESSION["nguoidung"])) { ?>
         <li>
           <div class="container-fluid">
@@ -188,7 +180,8 @@
     </div>
     </div>
   </nav>
-
+    </div>
+    
   <!-- Hộp tìm kiếm -->
   <div class="modal fade" id="modalTimKiem" role="dialog">
     <div class="modal-dialog">
@@ -272,7 +265,7 @@
     </div>
   </div>
 
-  <<<<<<< HEAD <!-- Form cậP nhật mật khẩu -->
+  <!-- Form cậP nhật mật khẩu -->
     <div class="modal fade" id="fDoiMatKhau" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -286,7 +279,6 @@
                 <label>Tài khoản</label>
                 <input class="form-control" type="text" name="txtTaiKhoan" value="<?php echo $_SESSION["nguoidung"]["username"]; ?>" disabled>
               </div>
-              =======
               <!-- Form cậP nhật mật khẩu -->
               <div class="modal fade" id="fDoiMatKhau" role="dialog">
                 <div class="modal-dialog">
@@ -301,7 +293,6 @@
                           <label>Tài khoản</label>
                           <input class="form-control" type="text" name="txtTaiKhoan" value="<?php echo $_SESSION["nguoidung"]["username"]; ?>" disabled>
                         </div>
-                        >>>>>>> ab6bac46442be4cfe7239793d671dd612e46b84f
 
                         <div class="form-group">
                           <label>Mật khẩu cũ</label>
