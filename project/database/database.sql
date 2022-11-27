@@ -37,7 +37,7 @@ CREATE TABLE `brand` (
   `slug` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `active` bit default 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `danhmuc`
@@ -205,18 +205,6 @@ CREATE TABLE `cart` (
 -- Dumping data for table `donhangct`
 -- --
 
--- INSERT INTO `donhangct` (`id`, `donhang_id`, `mathang_id`, `dongia`, `soluong`, `thanhtien`) VALUES
--- (1, 1, 1, 1320000, 1, 1320000),
--- (2, 2, 3, 2130000, 1, 2130000),
--- (3, 2, 7, 1790000, 1, 1790000),
--- (4, 4, 9, 1775000, 1, 1775000),
--- (5, 4, 4, 2130000, 2, 4260000),
--- (6, 5, 7, 1790000, 1, 1790000),
--- (7, 5, 5, 2050000, 1, 2050000),
--- (8, 5, 1, 1320000, 3, 3960000);
-
--- --------------------------------------------------------
-
 --
 -- Table structure for table `mathang`
 --
@@ -233,19 +221,6 @@ CREATE TABLE `cart_item` (
 -- Dumping data for table `mathang`
 --
 
--- INSERT INTO `mathang` (`id`, `tenmathang`, `mota`, `giagoc`, `giaban`, `soluongton`, `hinhanh`, `danhmuc_id`, `luotxem`, `luotmua`) VALUES
--- (1, 'Giày đá bóng Adidas Ace 15.2 CG đen xanh B27128', NULL, 0, 1320000, 10, 'images/a1.jpg', 1, 3, 0),
--- (2, 'Giày đá bóng Nike Magistax finale TF vàng - 844446 708', NULL, 0, 2020000, 10, 'images/n1.jpg', 3, 9, 0),
--- (3, 'Giày đá bóng Adidas X 16.3 TF bạc - S79575', NULL, 0, 2130000, 10, 'images/a2.jpg', 1, 9, 0),
--- (4, 'Giày đá bóng Adidas X 16.3 TF đỏ - S79576', NULL, 0, 2130000, 10, 'images/a3.jpg', 1, 7, 0),
--- (5, 'Giày đá bóng Nike Hypervenomx Pro TF đen trắng - 749904 013', NULL, 0, 2050000, 10, 'images/n2.jpg', 3, 4, 0),
--- (6, 'Giày đá bóng Nike Magistax Onda II TF vàng - 844417 708', NULL, 0, 1850000, 10, 'images/n3.jpg', 3, 4, 0),
--- (7, 'Giày thể thao Puma Ignite Sock W.T 361391_03', NULL, 0, 1790000, 10, 'images/p1.jpg', 2, 2, 0),
--- (8, 'Giày thể thao nam Puma Smash Suede V2 364989-08', NULL, 0, 1590000, 10, 'images/p2.jpg', 2, 1, 0),
--- (9, 'Giày nữ Nike Air Relentless 4 MSL hồng - 685152-601', NULL, 0, 1775000, 10, 'images/n4.jpg', 3, 6, 0);
-
--- --------------------------------------------------------
-
 --
 -- Table structure for table `nguoidung`
 --
@@ -257,11 +232,11 @@ CREATE TABLE `user` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `phone_number` varchar(15) ,
   `address` varchar(255),
-  `active` boolean,
+  `active` boolean
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 -- --------------------------------------------------------
 
-insert into `user` VALUES (1, 'admin', '202cb962ac59075b964b07152d234b70', 'admin@gmail.com', '0123456789', 'Viet Nam');
+insert into `user` VALUES (1, 'admin', '202cb962ac59075b964b07152d234b70', 'admin@gmail.com', '0123456789', 'Viet Nam', 1);
 --
 -- Table structure for table `nguoidung`
 --
@@ -274,28 +249,12 @@ CREATE TABLE `order` (
   `order_description` varchar(255) COLLATE utf8_unicode_ci,
   `order_total` int(11) not null,
   `is_completed` bit default 0
-  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `nguoidung`
 --
 
--- INSERT INTO `nguoidung` (`id`, `email`, `sodienthoai`, `matkhau`, `hoten`, `loai`, `trangthai`, `hinhanh`) VALUES
--- (1, 'abc@abc.com', '0988994683', '900150983cd24fb0d6963f7d28e17f72', 'Quản trị ABC', 1, 1, NULL),
--- (2, 'def@abc.com', '0988994684', '900150983cd24fb0d6963f7d28e17f72', 'Nhân viên DEF', 2, 1, NULL),
--- (3, 'ghi@abc.com', '0988994685', '900150983cd24fb0d6963f7d28e17f72', 'Nhân viên GHI', 2, 1, NULL),
--- (4, 'kh1@gmail.com', '0988994686', '900150983cd24fb0d6963f7d28e17f72', 'Nguyễn Thị Thu An', 3, 1, NULL),
--- (5, 'kh2@gmail.com', '0988994687', '900150983cd24fb0d6963f7d28e17f72', 'Hồ Xuân Minh', 3, 1, NULL),
--- (6, 'aaa@abc.com', '1234567890', 'e807f1fcf82d132f9bb018ca6738a19f', 'AAA', 3, 1, NULL),
--- (7, 'bbb@abc.com', '1234567891', '0f7e44a922df352c05c5f73cb40ba115', 'BBB', 3, 1, NULL),
--- (8, 'ccc@abc.com', '1234567892', 'd893377c9d852e09874125b10a0e4f66', 'CCC', 3, 1, NULL),
--- (9, 'ddd@abc.com', '1234567893', '43042f668f07adfd174cb1823d4795e1', 'DDD', 3, 1, NULL),
--- (10, 'eee@abc.com', '1234567894', 'f66f4446648ae7ae56419eca43bf2b8a', 'EEE', 3, 1, NULL);
-
---
--- Indexes for dumped tables
---
 
 --
 -- Indexes for table `danhmuc`
