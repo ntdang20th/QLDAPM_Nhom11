@@ -40,6 +40,7 @@ switch ($action) {
         $mathang = $mh->laymathangphantrang($batdau, $soluong, null, null);
         include("main.php");
         break;
+        
     case "xemchitiet":
         if (isset($_GET["mahang"])) {
             $mahang = $_GET["mahang"];

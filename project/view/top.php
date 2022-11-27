@@ -109,78 +109,79 @@
         </button>
         <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-home"></span> ABC Shop</a>
       </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
 
           <li>
-          <div class="container-fluid">
-          <div class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                  Phân loại
-                  <span class="caret"></span></a>
-                <ul class="dropdown-menu dropdown-menu-right">
-                  <?php foreach ($danhmuc as $dm): ?>
-                <li><a href="?action=xemloai?madm=<?php echo $dm["id"];?>" class="subtitle"><?php echo $dm["title"]; ?></a></li>
-                <?php endforeach;?>
-              </ul>
-          </div>
+            <div class="container-fluid">
+            <div class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    Phân loại
+                    <span class="caret"></span></a>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <?php foreach ($danhmuc as $dm): ?>
+                  <li><a href="?action=xemloai?madm=<?php echo $dm["id"];?>" class="subtitle"><?php echo $dm["title"]; ?></a></li>
+                  <?php endforeach;?>
+                </ul>
+            </div>
+            </div>
           </li>
 
           <li>
-          <div class="container-fluid">
-          <div class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                  Thương hiệu
-                  <span class="caret"></span></a>
-                <ul class="dropdown-menu dropdown-menu-right">
-                  <?php foreach ($thuonghieu as $dm): ?>
-                <li><a href="?action=xemnbrand?madm=<?php echo $dm["id"];?>" class="subtitle"><?php echo $dm["title"]; ?></a></li>
-                <?php endforeach;?>
-              </ul>
-          </div>
+            <div class="container-fluid">
+            <div class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    Thương hiệu
+                    <span class="caret"></span></a>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <?php foreach ($thuonghieu as $dm): ?>
+                  <li><a href="?action=xemnbrand?madm=<?php echo $dm["id"];?>" class="subtitle"><?php echo $dm["title"]; ?></a></li>
+                  <?php endforeach;?>
+                </ul>
+                </div>
+            </div>
+          </li>
             
           <li><a href="#">Liên hệ</a></li>
           <li><a href="#" data-toggle="modal" data-target="#modalTimKiem">
         <span class="glyphicon glyphicon-search"></span> Tìm kiếm sản phẩm</a></li>
-        </li>
       </ul>
+
       <ul class="nav navbar-nav navbar-right">
-      <?php if (isset($_SESSION["nguoidung"])) { ?>
-        <li>
-          <div class="container-fluid">
-            <!-- Thông tin người dùng - sẽ bổ sung ở bài thực hành sau -->
-            <div class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                <span class="glyphicon glyphicon-user"></span>
-                <?php echo $_SESSION["nguoidung"]["username"]; ?>
-                <span class="caret"></span></a>
-              <ul class="dropdown-menu dropdown-menu-right">
-                <li><a href="#" class="subtitle"><span class="glyphicon glyphicon-envelope"></span> Thông báo</a></li>
-                <li><a href="#" class="subtitle" data-toggle="modal" data-target="#fCapNhatThongTin"><span class="glyphicon glyphicon-edit"></span> Hồ sơ cá nhân</a></li>
-                <li><a href="#" class="subtitle" data-toggle="modal" data-target="#fDoiMatKhau"><span class="glyphicon glyphicon-wrench"></span> Đổi mật khẩu</a></li>
-                <li class="divider"></li>
-                <li><a class="subtitle" href="?action=dangxuat"><span class="glyphicon glyphicon-log-out"></span> Thoát</a></li>
-              </ul>
+        <?php if (isset($_SESSION["nguoidung"])) { ?>
+          <li>
+            <div class="container-fluid">
+              <!-- Thông tin người dùng - sẽ bổ sung ở bài thực hành sau -->
+              <div class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <span class="glyphicon glyphicon-user"></span>
+                  <?php echo $_SESSION["nguoidung"]["username"]; ?>
+                  <span class="caret"></span></a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <li><a href="#" class="subtitle"><span class="glyphicon glyphicon-envelope"></span> Thông báo</a></li>
+                  <li><a href="#" class="subtitle" data-toggle="modal" data-target="#fCapNhatThongTin"><span class="glyphicon glyphicon-edit"></span> Hồ sơ cá nhân</a></li>
+                  <li><a href="#" class="subtitle" data-toggle="modal" data-target="#fDoiMatKhau"><span class="glyphicon glyphicon-wrench"></span> Đổi mật khẩu</a></li>
+                  <li class="divider"></li>
+                  <li><a class="subtitle" href="?action=dangxuat"><span class="glyphicon glyphicon-log-out"></span> Thoát</a></li>
+                </ul>
 
+              </div>
             </div>
-        </li>
-        <!-- ádasd -->
-
-        </li>
-      <?php } else { ?>
-        <!--Contact Form-->
-        <li><a href="?action=dangnhap">Đăng nhập</a>
-        <li><a href="" data-toggle="modal" data-target="#myModal">Đăng ký</a>
-        <?php } ?>
-        <li><a href="#" class="text-warning">
-            <span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng
-          </a>
-        </li>
-    </ul>
+          </li>
+          <!-- ádasd -->
+        <?php } else { ?>
+          <!--Contact Form-->
+          <li><a href="?action=dangnhap">Đăng nhập</a>
+          <li><a href="" data-toggle="modal" data-target="#myModal">Đăng ký</a>
+          <?php } ?>
+          <li><a href="#" class="text-warning">
+              <span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng
+            </a>
+          </li>
+      </ul>
     </div>
     </div>
   </nav>
-    </div>
     
   <!-- Hộp tìm kiếm -->
   <div class="modal fade" id="modalTimKiem" role="dialog">
@@ -365,3 +366,9 @@
                   </div>
                 </div>
               </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
