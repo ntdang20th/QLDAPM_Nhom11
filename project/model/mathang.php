@@ -161,7 +161,7 @@ class MATHANG
         try {
             $sql = "SELECT p.*, v.price AS price
             FROM product p, variation v
-            where p.id = v.product_id AND p.id = :id";
+            where p.id = v.product_id AND p.id=:id";
             $cmd = $dbcon->prepare($sql);
             $cmd->bindValue(":id", $id);
             $cmd->execute();
