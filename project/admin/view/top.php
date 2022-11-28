@@ -53,10 +53,11 @@
       </h3><br>
       <ul class="nav nav-pills nav-stacked">
         <li class="active"><a href="#"><span class="glyphicon glyphicon-cog"></span> Bảng điều khiển</a></li>
+        <li><a href="../qlthuonghieu/"><span class="glyphicon glyphicon-gift"></span> Quản lý thương hiệu</a></li>
         <li><a href="../qldanhmuc/index.php"><span class="glyphicon glyphicon-list-alt"></span> Quản lý danh mục</a></li>
         <li><a href="../qlmathang/index.php"><span class="glyphicon glyphicon-gift"></span> Quản lý mặt hàng</a></li>
-        <li><a href=""><span class="glyphicon glyphicon-list-alt"></span> Quản lý... (bổ sung)</a></li>
         
+        <li><a href=""><span class="glyphicon glyphicon-list-alt"></span> Quản lý... (bổ sung)</a></li>
         <li class="active"><a href="#"><span class="glyphicon glyphicon-cog"></span> Quản trị</a></li>
         <li><a href="../qlnguoidung"><span class="glyphicon glyphicon-list-alt"></span> Quản lý người dùng</a></li>
       </ul><br>

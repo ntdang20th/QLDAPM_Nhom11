@@ -34,8 +34,8 @@
 			
 				<td><?php echo $d["description"]; ?></td>
 
-	<td><a href="index.php?action=sua&id=<?php echo $d["id"]; ?>">Sửa</a></td>
-	<td><a href="index.php?action=xoa&id=<?php echo $d["id"]; ?>">Xóa</a></td>
+	<td><a href="index.php?action=sua&id=<?php echo $d["id"]; ?>"><span class="glyphicon glyphicon-edit"></a></td>
+	<td><a href="index.php?action=xoa&id=<?php echo $d["id"]; ?>"><span class="glyphicon glyphicon-trash"></a></td>
 	</tr>
 <?php
 		}
