@@ -131,6 +131,7 @@ INSERT INTO product VALUES (58, 'CARTIER EYE00074', 'CARTIER EYE00074', 2, 8, 1,
 INSERT INTO product VALUES (59, 'CARTIER EYP00006-CT0070O', 'CARTIER EYP00006-CT0070O', 2, 8, 1, 'cartier-eyp00006-cartier-eyp00006-1.png');
 
 
+
 INSERT INTO product VALUES (60, 'Mắt kính lục giác Ray-Ban RB3548N 001 51', 'Kính Mắt Ray-Ban RB3548N 001 51 thời trang', 1, 3, 1, 'rayban_lucgia.jpg');
 INSERT INTO product VALUES (61, 'Kính Mát Rayban Evolve RB3025 90664A 58-14 Màu Vàng', 'Xinh xắn cho mấy nam giới thích Java', 3, 3, 1, 'rayban_yellow.jpg');
 INSERT INTO product VALUES (62, 'Kính mát nam RAYBAN RB3449 004-55 Màu Xanh', 'Xanh dương tự tin khoe cá tính', 5, 3, 1, 'rayban_blue.jpg');

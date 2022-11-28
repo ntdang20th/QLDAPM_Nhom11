@@ -159,7 +159,9 @@ class MATHANG
     {
         $dbcon = DATABASE::connect();
         try {
-            $sql = "SELECT * FROM product WHERE id=:id";
+            $sql = "SELECT p.*, v.price AS price
+            FROM product p, variation v
+            where p.id = v.product_id AND p.id=:id";
             $cmd = $dbcon->prepare($sql);
             $cmd->bindValue(":id", $id);
             $cmd->execute();
