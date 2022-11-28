@@ -12,18 +12,18 @@
       <div class="col-sm-3">
         <div class="panel panel-primary text-center">
           <div class="panel-heading">
-            <a href="?action=xemchitiet&mahang=<?php echo $mh["id"]; ?>" style="color:Yellow;font-weight:bold;"><?php echo $mh["catitle"]; ?></a>
+            <a href="?action=detail&product_id=<?php echo $mh["id"]; ?>" style="color:Yellow;font-weight:bold;"><?php echo $mh["catitle"]; ?></a>
           </div>
-          <div class="panel-body"><a href="?action=xemchitiet&mahang=<?php echo $mh["id"]; ?>"><img src="images/<?php echo $mh["hinhanh"]; ?> " class="img-responsive" style="width:100%" alt="<?php echo $mh["title"]; ?>"></a>
+          <div class="panel-body"><a href="?action=detail&product_id=<?php echo $mh["id"]; ?>"><img src="images/<?php echo $mh["hinhanh"]; ?> " class="img-responsive" style="width:100%" alt="<?php echo $mh["title"]; ?>"></a>
             <p><strong>Giá bán: <span class="text-danger">
                   <?php echo number_format($mh["vprice"]); ?>đ</span> </strong></p>
           </div>
           <div class="panel-heading">
-            <a href="?action=xemchitiet&mahang=<?php echo $mh["id"]; ?>" style="color:white;font-weight:bold;"><?php echo $mh["title"]; ?></a>
+            <a href="?action=detail&product_id=<?php echo $mh["id"]; ?>" style="color:white;font-weight:bold;"><?php echo $mh["title"]; ?></a>
           </div>
 
           <div class="panel-footer">
-            <a class="btn btn-success" href="?action=xemchitiet&mahang=<?php echo $mh["id"]; ?>">Chi tiết</a>
+            <a class="btn btn-success" href="?action=detail&product_id=<?php echo $mh["id"]; ?>">Chi tiết</a>
             <a class="btn btn-danger" href="">Chọn mua</a>
           </div>
         </div>

@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-sm-9">      
 
-      <h3 class="text-primary"><?php echo $mhct["title"]; ?></h3>
+      <h3 class="text-primary"><?php echo $mhct["title"]; ?></h3> 
       
       <div><img src="<?php echo $mhct["hinhanh"]; ?>"></div>
 
@@ -23,7 +23,7 @@
      
       <br>
     </div>
-    <div class="col-sm-3"> 
+    <!-- <div class="col-sm-3"> 
       <h3>Sản phẩm cùng loại:</h3>
       <div style="height: 300px">
       <marquee direction="up" onmouseover="stop()" onmouseout="start()">
@@ -58,7 +58,7 @@
       ?>
       </marquee>
       </div>
-    </div>    
+    </div>     -->
   </div>
   
 </div>

@@ -266,20 +266,7 @@
     </div>
   </div>
 
-  <!-- Form cậP nhật mật khẩu -->
-    <div class="modal fade" id="fDoiMatKhau" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" datadismiss="modal">&times;</button>
-            <h3 class="modal-title">Hồ sơ cá nhân</h3>
-          </div>
-          <div class="modal-body">
-            <form method="post">
-              <div class="form-group">
-                <label>Tài khoản</label>
-                <input class="form-control" type="text" name="txtTaiKhoan" value="<?php echo $_SESSION["nguoidung"]["username"]; ?>" disabled>
-              </div>
+
               <!-- Form cậP nhật mật khẩu -->
               <div class="modal fade" id="fDoiMatKhau" role="dialog">
                 <div class="modal-dialog">
