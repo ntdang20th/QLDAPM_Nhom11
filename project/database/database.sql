@@ -132,6 +132,18 @@ INSERT INTO product VALUES (59, 'CARTIER EYP00006-CT0070O', 'CARTIER EYP00006-CT
 
 
 
+INSERT INTO product VALUES (60, 'Mắt kính lục giác Ray-Ban RB3548N 001 51', 'Kính Mắt Ray-Ban RB3548N 001 51 thời trang', 1, 3, 1, 'rayban_lucgia.jpg');
+INSERT INTO product VALUES (61, 'Kính Mát Rayban Evolve RB3025 90664A 58-14 Màu Vàng', 'Xinh xắn cho mấy nam giới thích Java', 3, 3, 1, 'rayban_yellow.jpg');
+INSERT INTO product VALUES (62, 'Kính mát nam RAYBAN RB3449 004-55 Màu Xanh', 'Xanh dương tự tin khoe cá tính', 5, 3, 1, 'rayban_blue.jpg');
+INSERT INTO product VALUES (63, 'Ray ban RX7140 5854 (51CN)', 'Không đẹp không lấy tiền', 1, 3, 1, 'rayban_green.jpg');
+INSERT INTO product VALUES (64, 'Kính Ray-Ban Aviator RB3025-001/15 Polarized hồng', 'Kính hông mạnh mẽ', 3, 3, 1, 'rayban_pink.jpg');
+
+INSERT INTO product VALUES (65, 'Kính Gentle Monster Hồng JFSD123', 'Mang vào nhìn đời bằng màu hông', 5, 4, 1, 'monter_pink.jpg');
+INSERT INTO product VALUES (66, 'Kính Gentle Monster Đỏ JASID1657', 'Mắt kính đỏ', 1, 4, 1, 'monter_red.jpg');
+INSERT INTO product VALUES (67, 'Kính Gentle Monster Xanh IJHGF12', 'Mắt kính xanh', 3, 4, 1, 'monter_blue.jpg');
+INSERT INTO product VALUES (68, 'Kính Gentle Monster Lục NVG185', 'Mắt kính xanh lục', 5, 4, 1, 'monter_green.jpg');
+INSERT INTO product VALUES (69, 'Kính Gentle Monster Đen BCG4622', 'Đen như chó mực luôn ', 1, 4, 1, 'monter_black.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -187,6 +199,17 @@ INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, 
 INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (58,58, 3100000,3100000,200,1);
 INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (59, 59, 5000000,5000000,200,1);
 
+
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (60, 60, 50100000,3100000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (61, 61, 5000000,5000000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (62, 62, 3100000,3100000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (63, 63, 5000000,5000000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (64, 64, 3100000,3100000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (65, 65, 5000000,5000000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (66, 66, 3100000,3100000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (67, 67, 5000000,5000000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (68, 68, 3100000,3100000,200,1);
+INSERT INTO `variation`(`id`, `product_id`, `price`, `sale_price`, `inventory`, `active`) VALUES (69, 69, 5000000,5000000,200,1);
 
 -- --------------------------------------------------------
 

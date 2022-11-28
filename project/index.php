@@ -12,7 +12,7 @@ $mh = new MATHANG();
 $th = new THUONGHIEU();
 
 $danhmuc = $dm->laydanhmuc();
-$thuonghieu = $th -> laythuonghieu();
+$thuonghieu = $th->laythuonghieu();
 
 if (isset($_REQUEST["action"])) {
     $action = $_REQUEST["action"];
@@ -46,13 +46,8 @@ switch ($action) {
         if (isset($_GET["product_id"])) {
             $mahang = $_GET["product_id"];
            
-            // lấy thông tin chi tiết mặt hàng
             $mhct = $mh->laymathangtheoid($mahang);
-           var_dump($mhct);
-           var_dump($mhct);
-            // // lấy các mặt hàng cùng danh mục
-            // $madm = $mhct["danhmuc_id"];
-            // $mathang = $mh->laymathangtheodanhmuc($madm);
+          
             include("detail.php");
         }
         break;
@@ -159,9 +154,23 @@ switch ($action) {
         $batdau = ($tranghh - 1) * $soluong;
         $mathang = $mh->laymathangphantrang($batdau, $soluong, null, null);
 
-        $matKhauMoi = $_POST['txtMatKhauMoi'];
+        $id = $_POST['txtid'];
+        $oldpass = $_POST['txtoldpass'];
+        $newpass = $_POST['txtnewpass'];
+        $confirmpass = $_POST['txtconfirmpass'];
         $userName = $_SESSION['nguoidung']['username'];
-        $nguoidung->doiMatKhau($userName, $matKhauMoi);
+        $row = $nguoidung->checkUser($userName, $oldpass);
+
+        if ($row == 1) {
+            if ($newpass == $confirmpass) {
+                $message = "Cập nhật mật khẩu mới thành công";
+                $nguoidung->resetPass($id, $newpass);
+            } else {
+                $message = "Xác nhận mật khẩu mới sai";
+            }
+        } else {
+            $message = "Mật khẩu cũ không đúng";
+        }
 
         $_SESSION['nguoidung'] = $nguoidung->getUserInfo($userName);
 

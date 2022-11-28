@@ -62,6 +62,16 @@ switch ($action) {
         $nguoidung = $nguoidung->selectAllUser();
         include("main.php");
         break;
+    case "updateUser":
+        $id = $_POST['txtId'];
+        $email = $_POST['txtEmail'];
+        $phoneNumber = $_POST['txtDienThoai'];
+        $address = $_POST['txtDiaChi'];
+        $nguoidung->capnhatnguoidung($id, $email, $phoneNumber, $address);
+        $nguoidung = $nguoidung->selectAllUser();
+        $message = "Cập nhật thành công !!!";
+        include('main.php');
+        break;
     default:
         break;
 }

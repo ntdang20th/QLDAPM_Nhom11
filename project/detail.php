@@ -6,11 +6,11 @@
 
       <h3 class="text-primary"><?php echo $mhct["title"]; ?></h3> 
       
-      <div><img src="<?php echo $mhct["hinhanh"]; ?>"></div>
+      <div><img src="./images/<?php echo $mhct["hinhanh"] ; ?>"></div>
 
-      <h4 class="text-primary">Giá bán: 
+     <h4 class="text-primary">Giá bán: 
         <span class="text-danger"><?php echo number_format($mhct["price"]); ?> đ</span>
-      </h4>
+      </h4> 
 
       <p><?php echo $mhct["description"]; ?></p>
 
