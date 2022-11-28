@@ -54,10 +54,35 @@ switch($action){
             $_SESSION['nguoidung'] = $nguoidung->getUserInfo($userName);
             include('main.php');
         break;
+        // case 'doiMatKhau':
+        //     $matKhauMoi = $_POST['txtMatKhauMoi'];
+        //     $userName = $_SESSION['nguoidung']['username'];
+        //     $nguoidung->doiMatKhau($userName, $matKhauMoi);
+    
+        //     $_SESSION['nguoidung'] = $nguoidung->getUserInfo($userName);
+    
+        //     include("main.php");
+        //     break;
         case 'doiMatKhau':
-            $matKhauMoi = $_POST['txtMatKhauMoi'];
+        
+    
+            $id = $_POST['txtid'];
+            $oldpass = $_POST['txtoldpass'];
+            $newpass = $_POST['txtnewpass'];
+            $confirmpass = $_POST['txtconfirmpass'];
             $userName = $_SESSION['nguoidung']['username'];
-            $nguoidung->doiMatKhau($userName, $matKhauMoi);
+            $row = $nguoidung->checkUser($userName, $oldpass);
+    
+            if ($row == 1) {
+                if ($newpass == $confirmpass) {
+                    $message = "Cập nhật mật khẩu mới thành công";
+                    $nguoidung->resetPass($id, $newpass);
+                } else {
+                    $message = "Xác nhận mật khẩu mới sai";
+                }
+            } else {
+                $message = "Mật khẩu cũ không đúng";
+            }
     
             $_SESSION['nguoidung'] = $nguoidung->getUserInfo($userName);
     
