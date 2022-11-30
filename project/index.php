@@ -42,16 +42,12 @@ switch ($action) {
         include("main.php");
         break;
 
-    case "xemchitiet":
-        if (isset($_GET["mahang"])) {
-            $mahang = $_GET["mahang"];
-            // tăng lượt xem lên 1
-            $mh->tangluotxem($mahang);
-            // lấy thông tin chi tiết mặt hàng
+    case "detail":
+        if (isset($_GET["product_id"])) {
+            $mahang = $_GET["product_id"];
+           
             $mhct = $mh->laymathangtheoid($mahang);
-            // lấy các mặt hàng cùng danh mục
-            $madm = $mhct["danhmuc_id"];
-            $mathang = $mh->laymathangtheodanhmuc($madm);
+          
             include("detail.php");
         }
         break;

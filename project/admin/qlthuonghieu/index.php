@@ -2,8 +2,9 @@
 if(!isset($_SESSION["nguoidung"]))
     header("location:../index.php");
 require("../../model/database.php");
-require("../../model/danhmuc.php");
+
 require("../../model/timkiem.php");
+require("../../model/thuonghieu.php");
 
 // Xét xem có thao tác nào được chọn
 if(isset($_REQUEST["action"])){
@@ -13,12 +14,12 @@ else{
     $action="xem";
 }
 
-$dm = new DANHMUC();
+$th = new THUONGHIEU();
 $idsua = 0;
 
 switch($action){
     case "xem":
-        $danhmuc = $dm->laydanhmuc();       
+        $thuonghieu = $th->laythuonghieu();       
         include("main.php");
         break;
     case "them":
@@ -27,23 +28,23 @@ switch($action){
         $slug = $_POST["txtslug"]; 
         $description = $_POST["txtmota"];
        
-        $dm->themdanhmuc($tile, $slug,$description);    
-		$danhmuc = $dm->laydanhmuc(); 
+        $th->themthuonghieu($tile, $slug,$description);    
+		$thuonghieu = $th->laythuonghieu(); 
         include("main.php");
         break;
 	case "xoa":
-        $dm->xoadanhmuc($_GET["id"]);    
-		$danhmuc = $dm->laydanhmuc(); 
+        $th->xoathuonghieu($_GET["id"]);    
+		$thuonghieu = $th->laythuonghieu(); 
         include("main.php");
         break;
 	case "sua":
 		$idsua = $_GET["id"];
-        $danhmuc = $dm->laydanhmuc();       
+        $thuonghieu = $th->laythuonghieu();       
         include("main.php");
         break;
 	case "capnhat":
-		$dm->suadanhmuc($_POST["txtid"], $_POST["txtten"]);
-        $danhmuc = $dm->laydanhmuc();
+		$th->suathuonghieu($_POST["txtid"], $_POST["txtten"],$_POST["txtslug"], $_POST["txtmota"]);
+        $thuonghieu = $th->laythuonghieu();
         include("main.php");
         break;
     case "timKiem":
@@ -54,11 +55,11 @@ switch($action){
             $loaiTimKiem = $_POST['optbang'];
 
         if($loaiTimKiem =='selectTenHoacTenVietTat')
-            $danhmuc = layDanhMucTheoTenHoacTenVietTat($tuKhoa);
+            $thuonghieu = layDanhMucTheoTenHoacTenVietTat($tuKhoa);
         else if($loaiTimKiem == 'selectConHang')
-            $danhmuc = layDanhMucConHang();
+            $thuonghieu = layDanhMucConHang();
         else if($loaiTimKiem =='selectHetHang')
-            $danhmuc = layDanhMucHetHang();
+            $thuonghieu = layDanhMucHetHang();
         include("main.php");
         break;
     default:

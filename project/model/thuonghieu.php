@@ -1,5 +1,5 @@
 <?php
-class thuonghieu{
+class THUONGHIEU{
     private $id;
     private $tenthuonghieu;
 
@@ -79,14 +79,14 @@ class thuonghieu{
     }
 
     // Cập nhật 
-    public function suathuonghieu($id, $slug, $tendm, $mota){
+    public function suathuonghieu($id,$tenthuonghieu,$slug, $mota){
         $dbcon = DATABASE::connect();
         try{
-            $sql = "UPDATE brand SET title=:tenthuonghieu, slug=:slug description=:mota WHERE id=:id";
+            $sql = "UPDATE brand SET title=:tenthuonghieu, slug=:slug, description=:mota WHERE id=:id";
             $cmd = $dbcon->prepare($sql);
-            $cmd->bindValue(":tenthuonghieu", $tendm);
-            $cmd->bindValue(":mota", $mota);
+            $cmd->bindValue(":tenthuonghieu", $tenthuonghieu);
             $cmd->bindValue(":slug", $slug);
+            $cmd->bindValue(":mota", $mota);
             $cmd->bindValue(":id", $id);
             $result = $cmd->execute();              
             return $result;
