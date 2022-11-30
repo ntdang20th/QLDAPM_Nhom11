@@ -1,5 +1,6 @@
 <?php include("../view/top.php"); ?>
 
+<!--Content -->
 <h3>Quản lý danh mục <i>(Các loại mắt kính)</i> </h3>
 <a href="" data-toggle="modal" data-target="#modalTimKiem" class="btn btn-success">Tìm kiếm danh mục</a>
 <br>
@@ -34,8 +35,8 @@
 			
 				<td><?php echo $d["description"]; ?></td>
 
-	<td><a href="index.php?action=sua&id=<?php echo $d["id"]; ?>">Sửa</a></td>
-	<td><a href="index.php?action=xoa&id=<?php echo $d["id"]; ?>">Xóa</a></td>
+	<td><a href="index.php?action=sua&id=<?php echo $d["id"]; ?>"><span class="glyphicon glyphicon-edit"></a></td>
+	<td><a href="index.php?action=xoa&id=<?php echo $d["id"]; ?>"><span class="glyphicon glyphicon-trash"></a></td>
 	</tr>
 <?php
 		}

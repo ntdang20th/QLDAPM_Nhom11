@@ -174,7 +174,7 @@
             <li><a href="?action=dangnhap">Đăng nhập</a>
             <li><a href="" data-toggle="modal" data-target="#myModal">Đăng ký</a>
             <?php } ?>
-            <li><a href="#" class="text-warning">
+            <li><a href="?action=viewcart" class="text-warning">
                 <span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng
               </a>
             </li>

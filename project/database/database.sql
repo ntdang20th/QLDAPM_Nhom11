@@ -405,4 +405,4 @@ ALTER TABLE `order`
 COMMIT;
 
 
-INSERT INTO user VALUES ('admin', MD5('123'), 'admin@gmail.com', '0956626169', 'long xuyen, an giang', 'avatar');
+INSERT INTO user VALUES ('admin', MD5('123'), 'admin@gmail.com', '0956626169', 'long xuyen, an giang', 'avatar.jpg');
