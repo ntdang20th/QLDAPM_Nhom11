@@ -305,7 +305,7 @@ class NGUOIDUNG
 	{
 		$db = DATABASE::connect();
 		try {
-			$sql = "UPDATE user set email=:email, phone_number=:sodt, address =:diaChi where id=:id";
+			$sql = "UPDATE user set email=:email, phone_number=:sodt, address =:diaChi where username=:id";
 			$cmd = $db->prepare($sql);
 			$cmd->bindValue(':id', $id);
 			$cmd->bindValue(':email', $email);

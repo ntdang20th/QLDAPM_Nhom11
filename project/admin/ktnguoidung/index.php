@@ -47,8 +47,8 @@ switch($action){
         break;
         case "capNhatHoSoCaNhan":
             $userName = $_POST['txtUserName'];
-            $email = $_POST['txtEmail'];
             $phoneNumber = $_POST['txtDienThoai'];
+            $email = $_POST['txtEmail'];
             $address = $_POST['txtDiaChi'];
             $nguoidung->capnhatnguoidung($userName, $email, $phoneNumber, $address);
             $_SESSION['nguoidung'] = $nguoidung->getUserInfo($userName);
