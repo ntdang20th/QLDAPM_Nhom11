@@ -83,7 +83,6 @@
           </ul>  
           
         </div>
-      </div>
       
 <!-- Form cập nhật thông tin ng dùng-->
   <div class="modal fade" id="fcapnhatthongtin" role="dialog" >
@@ -179,6 +178,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
  
     

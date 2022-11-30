@@ -1,5 +1,6 @@
 <?php include("../view/top.php"); ?>
 
+<!--Content -->
 <h3>Quản lý danh mục <i>(Các loại mắt kính)</i> </h3>
 <a href="" data-toggle="modal" data-target="#modalTimKiem" class="btn btn-success">Tìm kiếm danh mục</a>
 <br>

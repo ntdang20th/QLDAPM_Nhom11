@@ -1,5 +1,5 @@
 <?php
-class DANHMUC{
+class GIOHANG{
     private $id;
     private $cart;
     private $item;
