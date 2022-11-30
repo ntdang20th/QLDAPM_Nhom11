@@ -1,81 +1,81 @@
 <?php
-// Tạo mảng SESSION giohang rỗng nếu nó không tồn tại
-if (!isset($_SESSION['giohang']) ) {
-    $_SESSION['giohang'] = array();
-}
-// Hàm thêm sản phẩm vào giỏ
-function themhangvaogio($mahang, $soluong){
-    //Tạo thể hiện của lớp MATHANG
-    $mh_db = new MATHANG();
-    //Cập nhập Số lượng vào SESSION - Làm tròn
-    $_SESSION['giohang'][$mahang] = round($soluong, 0);
-    //Lấy thông tin của sản phẩm dựa vào $mahang
-    $mh = $mh_db->laymathangtheoid($mahang);
-    //Cập nhật thông tin của Mã danh mục và Tên danh mục vào mảng SESSION
-    $_SESSION['madm_cuoi'] = $mh['danhmuc_id'];
-    $_SESSION['tendm_cuoi'] = $mh['tendanhmuc'];
-}
-// Cập nhật số lượng của giỏ hàng
-function capnhatsoluong($mahang, $soluong) {
-    if (isset($_SESSION['giohang'][$mahang])) {
-        $_SESSION['giohang'][$mahang] = round($soluong, 0);
-    }
-}
-// Xóa một sản phẩm trong giỏ hàng
-function xoamotmathang($mahang) {
-    if (isset($_SESSION['giohang'][$mahang])) {
-        unset($_SESSION['giohang'][$mahang]);
-    }
-}
-// Hàm lấy mảng các sản phẩm trong giohang
-function laygiohang() {
-	
-    //Tạo mảng rỗng để lưu danh sách sản phẩm trong giỏ
-    $mh = array();
-    $mh_db = new MATHANG();
-    
-    //Duyệt mảng SESSION giohang và lấy từng id sản phẩm cùng số lượng
-    foreach ($_SESSION['giohang'] as $mahang => $soluong ) {
-        // Gọi hàm lấy thông tin của sản phẩm theo mã sản phẩm
-        $m = $mh_db->laymathangtheoid($mahang);
-        $dongia = $m['giaban'];
-        $solg = intval($soluong);        
-        // Tính tiền
-        $sotien = round($dongia * $soluong, 2);
+class DANHMUC{
+    private $id;
+    private $cart;
+    private $item;
+    private $is_paid;
 
-        // Lưu thông tin trong mảng items để hiển thị lên giỏ hàng
-        $mh[$mahang]['tenhang'] = $m['tenmathang'];
-        $mh[$mahang]['giaban'] = $dongia;
-        $mh[$mahang]['soluong'] = $solg;
-        $mh[$mahang]['sotien'] = $sotien;
+    public function getID(){
+        return $this->id;
     }
-    return $mh;
-}
-// Đếm số sản phẩm trong giỏ hàng
-function demhangtronggio() {
-    return count($_SESSION['giohang']);
-}
-// Đếm tổng số lượng các sản phẩm trong giỏ
-function demsoluongtronggio() {
-    $tongsl = 0;
-	//Lấy mảng các sản phẩm từ trong SESSION
-    $giohang = laygiohang();
-    foreach ($giohang as $item) {
-        $tongsl += $item['soluong'];
+
+    public function setID($value){
+        $this->id = $value;
     }
-    return $tongsl;
-}
-// Tính tổng thành tiền trong giỏ hàng
-function tinhtiengiohang () {
-    $tong = 0;
-    $giohang = laygiohang();
-    foreach ($giohang as $mh) {
-        $tong += $mh['giaban'] * $mh['soluong'];
+
+    public function getCart(){
+        return $this->cart;
     }
-    return $tong;
-}
-// Xóa tất cả giỏ hàng
-function xoagiohang() {
-    $_SESSION['giohang'] = array();
+
+    public function setCart($value){
+        $this->cart = $value;
+    }
+    public function getItem(){
+        return $this->item;
+    }
+
+    public function setItem($value){
+        $this->item = $value;
+    }
+
+    public function getIs_paid(){
+        return $this->is_paid;
+    }
+
+    public function setIs_paid($value){
+        $this->is_paid = $value;
+    }
+    // Hàm thêm sản phẩm vào giỏ
+    function themhangvaogio($mahang, $soluong){
+    }
+    // Cập nhật số lượng của giỏ hàng
+    function capnhatsoluong($mahang, $soluong) {
+    
+    }
+    // Xóa một sản phẩm trong giỏ hàng
+    function xoamotmathang($mahang) {
+    
+    }
+    // Hàm lấy mảng các sản phẩm trong giohang
+    function laygiohang() {
+        $dbcon = DATABASE::connect();
+        try{
+            $sql = "SELECT * FROM cart where active=1";
+            $cmd = $dbcon->prepare($sql);
+            $cmd->execute();
+            $result = $cmd->fetchAll();
+            return $result;
+        }
+        catch(PDOException $e){
+            $error_message = $e->getMessage();
+            echo "<p>Lỗi truy vấn: $error_message</p>";
+            exit();
+        }
+    }
+    // Đếm số sản phẩm trong giỏ hàng
+    function demhangtronggio() {
+    }
+    // Đếm tổng số lượng các sản phẩm trong giỏ
+    function demsoluongtronggio() {
+        
+    }
+    // Tính tổng thành tiền trong giỏ hàng
+    function tinhtiengiohang () {
+    
+    }
+    // Xóa tất cả giỏ hàng
+    function xoagiohang() {
+        
+    }
 }
 ?>

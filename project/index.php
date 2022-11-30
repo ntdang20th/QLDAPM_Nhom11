@@ -57,16 +57,13 @@ switch ($action) {
         break;
 
     case "chovaogio":
-        if (isset($_REQUEST["txtmahang"]))
-            $mahang = $_REQUEST["txtmahang"];
-        if (isset($_REQUEST["txtsoluong"]))
-            $soluong = $_REQUEST["txtsoluong"];
-
-        // tăng lượt xem lên 1
-        themhangvaogio($mahang, $soluong);
-        $giohang = laygiohang();
         include("cart.php");
         break;
+
+    case "viewcart":
+        include("cart.php");
+        break;
+
     case "timKiem":
         // $tongmh = $mh->demtongsomathang();
         // $soluong = 4;
