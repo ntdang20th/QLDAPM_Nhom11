@@ -105,7 +105,7 @@ class MATHANG
     {
         $dbcon = DATABASE::connect();
         try {
-            $sql = "SELECT p.*, v.price AS price, c.title AS catitle 
+            $sql = "SELECT p.*, v.price AS vprice, c.title AS catitle 
             FROM product p, variation v, category c , brand as b
             where p.id = v.product_id AND p.category_id = c.id AND v.active = 1 and p.brand_id = b.id ";
 

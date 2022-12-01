@@ -55,11 +55,9 @@ switch($action){
             $loaiTimKiem = $_POST['optbang'];
 
         if($loaiTimKiem =='selectTenHoacTenVietTat')
-            $thuonghieu = layDanhMucTheoTenHoacTenVietTat($tuKhoa);
-        else if($loaiTimKiem == 'selectConHang')
-            $thuonghieu = layDanhMucConHang();
-        else if($loaiTimKiem =='selectHetHang')
-            $thuonghieu = layDanhMucHetHang();
+            $thuonghieu = layDanhMucTheoTenHoacTenVietTat1($tuKhoa);
+    
+       
         include("main.php");
         break;
     default:
