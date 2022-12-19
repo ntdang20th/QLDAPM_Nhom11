@@ -6,6 +6,7 @@
     <!-- Tất cả mặt hàng - Xử lý phân trang -->
     <a name="sptatca"></a>
     <h3>Tất cả sản phẩm </h3>
+    <?php if(!$mathang)?><h5>Hiện không có mặt hàng nào!</h5>
     <?php
     foreach ($mathang as $mh) :
     ?>

@@ -39,7 +39,7 @@ switch ($action) {
             $tranghh = $_REQUEST["trang"];
         $batdau = ($tranghh - 1) * $soluong;
         $mathang = $mh->laymathangphantrang($batdau, $soluong, null, null);
-        // $mathangnoibat = $mh -> laymathangnoibat();
+        $mathangnoibat = $mh -> laymathangnoibat();
         include("main.php");
         break;
 
