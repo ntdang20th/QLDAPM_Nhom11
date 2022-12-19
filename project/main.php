@@ -10,7 +10,7 @@
     <?php
     foreach ($mathang as $mh) :
     ?>
-      <div class="col-sm-3">
+      <div class="col-lg-3 col-sm-4 col-6">
         <div class="panel panel-primary text-center">
           <div class="panel-heading">
             <a href="?action=detail&product_id=<?php echo $mh["id"]; ?>" style="color:Yellow;font-weight:bold;"><?php echo $mh["catitle"]; ?></a>

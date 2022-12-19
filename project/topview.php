@@ -4,9 +4,9 @@
     <?php
     foreach($mathangnoibat as $m):
     ?>
-    <div class="col-sm-3">
+    <div class="col-lg-3 col-sm-4 col-6">
         <div class="panel panel-primary text-center">
-          <div class="panel-heading">
+          <div class="panel-heading cattitle">
             <a href="?action=detail&product_id=<?php echo $m["id"]; ?>" style="color:Yellow;font-weight:bold;"><?php echo $m["catitle"]; ?></a>
           </div>
           <div class="panel-body"><a href="?action=detail&product_id=<?php echo $m["id"]; ?>"><img src="images/<?php echo $m["hinhanh"]; ?> " class="img-responsive" style="width:100%" alt="<?php echo $m["title"]; ?>"></a>
