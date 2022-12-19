@@ -10,6 +10,7 @@ require("model/thuonghieu.php");
 $dm = new DANHMUC();
 $mh = new MATHANG();
 $th = new THUONGHIEU();
+$gh = new GIOHANG();
 
 $danhmuc = $dm->laydanhmuc();
 $thuonghieu = $th->laythuonghieu();
@@ -53,10 +54,25 @@ switch ($action) {
         break;
 
     case "chovaogio":
+        if(isset($_REQUEST["txtmahang"]) && isset($_REQUEST["txtsoluong"])){
+            $mahang = $_REQUEST["txtmahang"];
+            $soluong = $_REQUEST["txtsoluong"];
+        }
+        $card_id = $gh->layidgiohang($_SESSION['nguoidung']['id']);
+        $gh -> themhangvaogio($card_id ,$mahang, $soluong);
+
+        $soluongtronggio = $gh->demhangtronggio();
+        $giohang = $gh->laygiohang();
+        $tongtiengiohang = $gh->tinhtiengiohang();
         include("cart.php");
         break;
 
     case "viewcart":
+        if(!isset($_SESSION['nguoidung']))
+            return;
+        $soluongtronggio = $gh->demhangtronggio();
+        $giohang = $gh->laygiohang();
+        $tongtiengiohang = $gh->tinhtiengiohang();
         include("cart.php");
         break;
 
@@ -113,6 +129,7 @@ switch ($action) {
                 $tranghh = $_REQUEST["trang"];
             $batdau = ($tranghh - 1) * $soluong;
             $mathang = $mh->laymathangphantrang($batdau, $soluong, null, null);
+            $gh -> giohang();
             include("main.php");
         } else {
             $tb = "Đăng nhập không thành công!";
