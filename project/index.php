@@ -129,6 +129,7 @@ switch ($action) {
                 $tranghh = $_REQUEST["trang"];
             $batdau = ($tranghh - 1) * $soluong;
             $mathang = $mh->laymathangphantrang($batdau, $soluong, null, null);
+            $mathangnoibat = $mh -> laymathangnoibat();
             $gh -> giohang();
             include("main.php");
         } else {
@@ -147,7 +148,7 @@ switch ($action) {
             $tranghh = $_REQUEST["trang"];
         $batdau = ($tranghh - 1) * $soluong;
         $mathang = $mh->laymathangphantrang($batdau, $soluong, null, null);
-
+        $mathangnoibat = $mh -> laymathangnoibat();
         $userName = $_POST['txtUserName'];
         $email = $_POST['txtEmail'];
         $phoneNumber = $_POST['txtDienThoai'];
@@ -167,7 +168,7 @@ switch ($action) {
             $tranghh = $_REQUEST["trang"];
         $batdau = ($tranghh - 1) * $soluong;
         $mathang = $mh->laymathangphantrang($batdau, $soluong, null, null);
-
+        $mathangnoibat = $mh -> laymathangnoibat();
         $id = $_POST['txtid'];
         $oldpass = $_POST['txtoldpass'];
         $newpass = $_POST['txtnewpass'];
@@ -201,7 +202,7 @@ switch ($action) {
             $tranghh = $_REQUEST["trang"];
         $batdau = ($tranghh - 1) * $soluong;
         $mathang = $mh->laymathangphantrang($batdau, $soluong, null, null);
-
+        $mathangnoibat = $mh -> laymathangnoibat();
         if (isset($_POST["txtusername"]) && isset($_POST["txtpassword"]) && isset($_POST["txtemail"]) && isset($_POST["txtphone"]) && isset($_POST["txtaddress"])) {
             $username = $_POST['txtusername'];
             $password = $_POST['txtpassword'];
@@ -225,6 +226,7 @@ switch ($action) {
             $tranghh = $_REQUEST["trang"];
         $batdau = ($tranghh - 1) * $soluong;
         $mathang = $mh->laymathangphantrang($batdau, $soluong, null, $_REQUEST["madm"]);
+        $mathangnoibat = $mh -> laymathangnoibat();
         include("main.php");
         break;
     case "xembrand":
@@ -238,7 +240,22 @@ switch ($action) {
             $tranghh = $_REQUEST["trang"];
         $batdau = ($tranghh - 1) * $soluong;
         $mathang = $mh->laymathangphantrang($batdau, $soluong, $_REQUEST["brandid"], null);
+        $mathangnoibat = $mh -> laymathangnoibat();
         include("main.php");
+        break;
+    
+    case "thoedoidonhang":
+        break;
+
+    case "xoagiohang":
+        $card_id = $gh->layidgiohang($_SESSION['nguoidung']['id']);
+        $gh->xoagiohang($card_id);
+        if(!isset($_SESSION['nguoidung']))
+            return;
+        $soluongtronggio = $gh->demhangtronggio();
+        $giohang = $gh->laygiohang();
+        $tongtiengiohang = $gh->tinhtiengiohang();
+        include("cart.php");
         break;
     default:
         break;

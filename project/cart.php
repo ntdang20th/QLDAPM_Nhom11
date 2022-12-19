@@ -32,8 +32,9 @@
           </tr>
           <tr>
             <td colspan="2" align="left"><i>Để xóa đi sản phẩm đã thêm vui lòng nhập số lượng = 0</i>|
-                                          <a href="?action=xoagiohang">Xóa tất cả</a></td>
-            <td colspan="2" align="right"><input type="submit" class="btn btn-info" value="Update"><a href="#" class="btn btn-danger">Thanh toán</a></td>
+              <a href="?action=xoagiohang">Xóa tất cả</a></td>
+            <td colspan="2" align="right">
+              <a href="#" class="btn btn-danger">Thanh toán</a></td>
           </tr>
       </table>
     </form>

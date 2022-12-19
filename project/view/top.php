@@ -162,7 +162,7 @@
                     <?php echo $_SESSION["nguoidung"]["username"]; ?>
                     <span class="caret"></span></a>
                   <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a href="#" class="subtitle"><span class="glyphicon glyphicon-envelope"></span> Thông báo</a></li>
+                    <li><a href="?action=theodoidonhang" class="subtitle"><span class="glyphicon glyphicon-gift"></span> Theo dõi đơn hàng</a></li>
                     <li><a href="#" class="subtitle" data-toggle="modal" data-target="#fCapNhatThongTin"><span class="glyphicon glyphicon-edit"></span> Hồ sơ cá nhân</a></li>
                     <li><a href="#" class="subtitle" data-toggle="modal" data-target="#fDoiMatKhau"><span class="glyphicon glyphicon-wrench"></span> Đổi mật khẩu</a></li>
                     <li class="divider"></li>

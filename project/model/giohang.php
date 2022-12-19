@@ -84,7 +84,7 @@ class GIOHANG{
 
     // Cập nhật số lượng của giỏ hàng
     function capnhatsoluong($mahang, $soluong) {
-    
+        
     }
     // Xóa một sản phẩm trong giỏ hàng
     function xoamotmathang($mahang) {
@@ -166,9 +166,23 @@ class GIOHANG{
             exit();
         }
     }
+
     // Xóa tất cả giỏ hàng
-    function xoagiohang() {
-        
+    function xoagiohang($cart_id) {
+        $dbcon = DATABASE::connect();
+        try {
+            $sql = "delete from cart_item 
+            where id not in (select item_id from `order`) 
+            and cart_id =:cart_id and is_paid = 0;";
+            $cmd = $dbcon->prepare($sql);
+            $cmd->bindValue(":cart_id", $cart_id);
+            $result = $cmd->execute();
+            return $result;
+        } catch (PDOException $e) {
+            $error_message = $e->getMessage();
+            echo "<p>Lỗi truy vấn: $error_message</p>";
+            exit();
+        }
     }
 }
 ?>
