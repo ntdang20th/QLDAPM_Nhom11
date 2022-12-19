@@ -26,6 +26,18 @@
 				<?php } ?>
 			</select>
 		</div>
+		<div class="form-group">
+		<label>Thương hiệu</label>
+		<select class="form-control" name="optthuonghieu">
+			<?php
+			foreach ($thuonghieu as $d) :
+			?>
+				<option value="<?php echo $d["id"]; ?>"><?php echo $d["title"]; ?></option>
+			<?php
+			endforeach;
+			?>
+		</select>
+	</div>
 	
 		<div id="hinh" class="form-group">
 			<label>Hình ảnh</label><br>

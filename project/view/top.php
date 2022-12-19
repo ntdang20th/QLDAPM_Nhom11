@@ -191,7 +191,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">×</button>
-          <h4><span class="glyphicon glyphicon-search"></span>Đăng ký tài khoản mua sắm</h4>
+          <h4><span class="glyphicon glyphicon-search"></span>Tìm kiếm</h4>
         </div>
         <div class="modal-body">
           <form role="form" method="post">
@@ -200,17 +200,15 @@
               <input type="text" class="form-control" id="txttukhoa" name="txtTuKhoa" placeholder="Nhập từ khóa">
             </div>
             <div class="form-group">
-              <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span> Từ khóa: </label>
+              <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span> Theo giá </label>
               <input type="text" class="form-control" id="txttukhoa" name="txtTuKhoa" placeholder="Nhập từ khóa">
             </div>
-            <div class="form-group">
-              <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span> Từ khóa: </label>
-              <input type="text" class="form-control" id="txttukhoa" name="txtTuKhoa" placeholder="Nhập từ khóa">
-            </div>
-            <div class="form-group">
-              <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span> Từ khóa: </label>
-              <input type="text" class="form-control" id="txttukhoa" name="txtTuKhoa" placeholder="Nhập từ khóa">
-            </div>
+            <button type="submit" class="btn btn-info">Tìm kiếm
+              <span class="glyphicon glyphicon-ok"></span>
+            </button>
+          
+        
+          
           </form>
         </div>
 

@@ -6,6 +6,7 @@
 <br> <br>
 <table class="table table-hover">
 	<tr>
+    <th>Id </th>
     <th>Danh Mục</th>
 		<th>Tên mặt hàng</th>
 		<th>Mô tả</th>
@@ -18,9 +19,10 @@
 	foreach ($mathang as $m) :
 	?>
 		<tr>
-      <td><?php echo $m["category_id"]; ?>
-     
-    </td>
+      <td><?php echo $m["id"]; ?></td>
+
+			
+      <td><?php echo $m["category_id"]; ?></td>
 			<td><?php echo $m["title"]; ?></td>
 			<td><?php echo $m["description"]; ?></td>
 			<td><?php echo $m["price"]; ?></td>

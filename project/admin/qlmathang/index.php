@@ -6,7 +6,7 @@ require("../../model/database.php");
 require("../../model/danhmuc.php");
 require("../../model/mathang.php");
 require("../../model/timkiem.php");
-
+require("../../model/thuonghieu.php");
 // Xét xem có thao tác nào được chọn
 if(isset($_REQUEST["action"])){
     $action = $_REQUEST["action"];
@@ -17,14 +17,17 @@ else{
 
 $dm = new DANHMUC();
 $mh = new MATHANG();
+$th = new THUONGHIEU();
 
 switch($action){
     case "xem":
         $mathang = $mh->laymathang(null, null);
+        $thuonghieu = $th->laythuonghieu();
 		include("main.php");
         break;
 	case "them":
 		$danhmuc = $dm->laydanhmuc();
+		$thuonghieu = $th->laythuonghieu();
 		include("addform.php");
         break;
 	case "xulythem":	
@@ -37,9 +40,13 @@ switch($action){
 		$description	 = $_POST["txtmota"];
 		$price = $_POST["txtgiaban"];
 		$category_id	= $_POST["optdanhmuc"];
+		$brand_id	= $_POST["optthuonghieu"];
 		//$active = $_POST["txtsoluong"];
 	    //	$danhmuc_id = $_POST["optdanhmuc"];
-		$mh->themmathang($hinhanh,$title,$description,$price,$category_id);
+		$mh->themmathang($title, $description, $category_id, $brand_id, null, $hinhanh);
+        $getLastId = $mh->getLastProductID();
+        $mh->themVariation($getLastId['id'], $price, 1, 1, null);
+
 		$mathang = $mh->laymathang(null, null);
 		include("main.php");
         break;
@@ -53,6 +60,7 @@ switch($action){
         if(isset($_GET["id"])){ 
             $m = $mh->laymathangtheoid($_GET["id"]);
             $danhmuc = $dm->laydanhmuc(); 
+            $thuonghieu =$th->laythuonghieu();
             include("updateform.php");
         }
         else{
@@ -67,6 +75,7 @@ switch($action){
         $description	 = $_POST["txtmota"];
         $price =$_POST["txtgiaban"];
         $hinhanh = $_POST["txthinhcu"];
+        $price = $_POST["txtgiaban"];
 
         // upload file mới (nếu có)
         if($_FILES["filehinhanh"]["name"]!=""){

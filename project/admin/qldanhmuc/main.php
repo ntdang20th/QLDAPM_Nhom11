@@ -5,6 +5,7 @@
 <a href="" data-toggle="modal" data-target="#modalTimKiem" class="btn btn-success">Tìm kiếm danh mục</a>
 <br>
 <table class="table table-hover">
+
 	<tr>
 		<th>Tên danh mục</th>
 		<th>Mô Tả</th>
@@ -31,8 +32,8 @@
 		} else {
 		?>
 			<tr>
-				<td><?php echo $d["title"]; ?></td>
 			
+				<td><?php echo $d["title"]; ?></td>
 				<td><?php echo $d["description"]; ?></td>
 
 	<td><a href="index.php?action=sua&id=<?php echo $d["id"]; ?>"><span class="glyphicon glyphicon-edit"></a></td>

@@ -192,19 +192,40 @@ class MATHANG
 
     // Thêm mới
 
-    public function themmathang($hinhanh, $title, $description, $price, $category_id)
+    public function themmathang( $title, $description, $category_id, $brand_id, $hinhanh)
     {
         $dbcon = DATABASE::connect();
         try {
-            $sql = "INSERT INTO `product`( `title`, `description`, `price`, `category_id`, `active`, `hinhanh`) 
-				VALUES(:title,:description,:price,:category_id,1,:hinhanh)";
+            $sql = "INSERT INTO `product`( `title`, `description`, `category_id`, `brand_id`, `active`, `hinhanh`) 
+				VALUES(:title, :description, :category_id, :brand_id, 1, :hinhanh)";
             $cmd = $dbcon->prepare($sql);
             $cmd->bindValue(":title", $title);
             $cmd->bindValue(":description", $description);
-            $cmd->bindValue(":price", $price);
             $cmd->bindValue(":category_id", $category_id);
+            $cmd->bindValue(":brand_id", $brand_id);
+           // $cmd->bindValue(":active", $active);
             $cmd->bindValue(":hinhanh", $hinhanh);
+            $result = $cmd->execute();
+            return $result;
+        } catch (PDOException $e) {
+            $error_message = $e->getMessage();
+            echo "<p>Lỗi truy vấn: $error_message</p>";
+            exit();
+        }
+    }
 
+    public function themVariation( $product_id, $price, $sale_price, $inventory)
+    {
+        $dbcon = DATABASE::connect();
+        try {
+            $sql = "INSERT INTO `variation`( `product_id`, `price`, `sale_price`, `inventory`, `active`) 
+				VALUES(:product_id, :price, :sale_price, :inventory, 1)";
+            $cmd = $dbcon->prepare($sql);
+            $cmd->bindValue(":product_id", $product_id);
+            $cmd->bindValue(":price", $price);
+            $cmd->bindValue(":sale_price", $sale_price);
+            $cmd->bindValue(":inventory", $inventory);
+           // $cmd->bindValue(":active", $active);
             $result = $cmd->execute();
             return $result;
         } catch (PDOException $e) {
@@ -232,26 +253,39 @@ class MATHANG
     }
 
     // Cập nhật 
-    public function suamathang($id, $title, $category_id, $description, $price, $hinhanh)
+    public function suamathang($id, $title, $category_id, $description, $hinhanh)
     {
         $dbcon = DATABASE::connect();
         try {
             $sql = "UPDATE product SET title=:title,
                                         category_id=:category_id,
 										description=:description,
-										price=:price,
-										
                                         hinhanh=:hinhanh									
-
 										WHERE id=:id";
             $cmd = $dbcon->prepare($sql);
             $cmd->bindValue(":title", $title);
             $cmd->bindValue(":category_id", $category_id);
             $cmd->bindValue(":description", $description);
-            $cmd->bindValue(":price", $price);
             $cmd->bindValue(":hinhanh", $hinhanh);
             $cmd->bindValue(":id", $id);
             $result = $cmd->execute();
+            return $result;
+        } catch (PDOException $e) {
+            $error_message = $e->getMessage();
+            echo "<p>Lỗi truy vấn: $error_message</p>";
+            exit();
+        }
+    }
+
+    // Cập nhật 
+    public function getLastProductID()
+    {
+        $dbcon = DATABASE::connect();
+        try {
+            $sql = "SELECT id FROM variation ORDER BY id DESC LIMIT 1";
+            $cmd = $dbcon->prepare($sql);
+            $cmd->execute();
+            $result = $cmd->fetch();
             return $result;
         } catch (PDOException $e) {
             $error_message = $e->getMessage();
