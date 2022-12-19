@@ -6,10 +6,11 @@
     <!-- Tất cả mặt hàng - Xử lý phân trang -->
     <a name="sptatca"></a>
     <h3>Tất cả sản phẩm </h3>
+    <?php if(!$mathang){?><h5>Hiện không có mặt hàng nào!</h5> <?php }?>
     <?php
-    foreach ($mathang as $mh) :
+    foreach ($mathang as $mh):
     ?>
-      <div class="col-sm-3">
+      <div class="col-lg-3 col-sm-4 col-6">
         <div class="panel panel-primary text-center">
           <div class="panel-heading">
             <a href="?action=detail&product_id=<?php echo $mh["id"]; ?>" style="color:Yellow;font-weight:bold;"><?php echo $mh["catitle"]; ?></a>

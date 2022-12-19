@@ -35,10 +35,27 @@
 
 
 // Lấy danh mục theo tên và tên viết tắt
-function layDanhMucTheoTenHoacTenVietTat($tenHoacTenVietTat){
+function layDanhMucTheoTenHoacTenVietTat($c){
     $dbcon = DATABASE::connect();
     try{
-        $sql = "SELECT * FROM category WHERE title = '$tenHoacTenVietTat' or slug = '$tenHoacTenVietTat'";
+        $sql="SELECT * FROM category  WHERE title LIKE '%$c%' ";
+        //$sql = "SELECT * FROM category WHERE title = '$tenHoacTenVietTat' or slug = '$tenHoacTenVietTat'";
+        $cmd = $dbcon->prepare($sql);
+        $cmd->execute();
+        $result = $cmd->fetchAll();             
+        return $result;
+    }
+    catch(PDOException $e){
+        $error_message = $e->getMessage();
+        echo "<p>Lỗi truy vấn: $error_message</p>";
+        exit();
+    }
+}
+function layDanhMucTheoTenHoacTenVietTat1($c){
+    $dbcon = DATABASE::connect();
+    try{
+        $sql="SELECT * FROM brand  WHERE slug LIKE '%$c%' or title LIKE '%$c%' ";
+        //$sql = "SELECT * FROM category WHERE title = '$tenHoacTenVietTat' or slug = '$tenHoacTenVietTat'";
         $cmd = $dbcon->prepare($sql);
         $cmd->execute();
         $result = $cmd->fetchAll();             
@@ -168,9 +185,9 @@ function laymathangphantrang($m, $n)
         // WHERE p.category_id = c.id and p.price <= $pricemax
         // ORDER BY id  
         // DESC LIMIT $batDau, $soLuong";
-        $sql = "SELECT p.*, c.title
-        FROM product p, category c
-        WHERE p.category_id = c.id and p.price <= $pricemax";
+        $sql = "SELECT p.*, v.price as price
+        FROM product p, variation v
+        WHERE p.id = v.product_id and  p.price <= $pricemax";
         $cmd = $dbcon->prepare($sql);
         $cmd->execute();
         $result = $cmd->fetchAll();             
@@ -189,14 +206,10 @@ function getPriceMin($pricemin /*, $batDau, $soLuong*/)
 {
     $dbcon = DATABASE::connect();
     try{
-        // $sql = "SELECT p.*, c.title
-        // FROM product p, category c
-        // WHERE p.category_id = c.id and p.price >= $pricemin
-        // ORDER BY id  
-        // DESC LIMIT $batDau, $soLuong";
-        $sql = "SELECT p.*, c.title
-        FROM product p, category c
-        WHERE p.category_id = c.id and p.price >= $pricemin";
+       
+        $sql = "SELECT p.*, v.price as price
+        FROM product p, variation v
+        WHERE p.id = v.product_id and v.price >= $pricemin";
         $cmd = $dbcon->prepare($sql);
         $cmd->execute();
         $result = $cmd->fetchAll();             
@@ -214,9 +227,9 @@ function laySPConHang()
 {
     $dbcon = DATABASE::connect();
     try{
-        $sql = "SELECT p.*, c.title
-        FROM product p, category c
-        WHERE p.category_id = c.id and p.active = 1";
+        $sql = "SELECT p.*, v.price as vprice
+        FROM product p, variation v
+        WHERE p.id = v.product_id and p.active = 1 and v.active = 1 and v.inventory >0";
         $cmd = $dbcon->prepare($sql);
         $cmd->execute();
         $result = $cmd->fetchAll();             
@@ -234,9 +247,10 @@ function laySPHetHang()
 {
     $dbcon = DATABASE::connect();
     try{
-        $sql = "SELECT p.*, c.title
-        FROM product p, category c
-        WHERE p.category_id = c.id and p.active = 0";
+       
+        $sql = "SELECT p.*, v.price as price
+        FROM product p, variation v
+        WHERE p.id = v.product_id and p.active = 1 and v.active = 1 and v.inventory <= 0";
         $cmd = $dbcon->prepare($sql);
         $cmd->execute();
         $result = $cmd->fetchAll();             

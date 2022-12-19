@@ -11,6 +11,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
+    .img-detail{
+      width: 450px;
+      display: flex;
+    }
     .img-responsive {
       height: 200px;
       width: 100px;
@@ -158,7 +162,7 @@
                     <?php echo $_SESSION["nguoidung"]["username"]; ?>
                     <span class="caret"></span></a>
                   <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a href="#" class="subtitle"><span class="glyphicon glyphicon-envelope"></span> Thông báo</a></li>
+                    <li><a href="?action=theodoidonhang" class="subtitle"><span class="glyphicon glyphicon-gift"></span> Theo dõi đơn hàng</a></li>
                     <li><a href="#" class="subtitle" data-toggle="modal" data-target="#fCapNhatThongTin"><span class="glyphicon glyphicon-edit"></span> Hồ sơ cá nhân</a></li>
                     <li><a href="#" class="subtitle" data-toggle="modal" data-target="#fDoiMatKhau"><span class="glyphicon glyphicon-wrench"></span> Đổi mật khẩu</a></li>
                     <li class="divider"></li>

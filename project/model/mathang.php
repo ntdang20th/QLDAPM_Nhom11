@@ -44,13 +44,10 @@ class MATHANG
     {
         $dbcon = DATABASE::connect();
         try {
-            $sql = "SELECT m.*, d.title 
-            FROM product p, category c, brand b, variation v, cart_item cart
-            WHERE p.id = v.product_id and p.category_id = c.id 
-                and p.brand_id = b.id 
-
-            ORDER BY luotxem 
-            DESC LIMIT 0, 4";
+            $sql = "SELECT DISTINCT p.*, v.price as vprice, cat.id as catid, cat.title as catitle
+            FROM `cart_item` as c, variation as v, product as p, category as cat
+            where c.item_id = v.id and v.product_id = p.id and p.category_id = cat.id
+            limit 0,4";
             $cmd = $dbcon->prepare($sql);
             $cmd->execute();
             $ketqua = $cmd->fetchAll();
@@ -105,7 +102,7 @@ class MATHANG
     {
         $dbcon = DATABASE::connect();
         try {
-            $sql = "SELECT p.*, v.price AS price, c.title AS catitle 
+            $sql = "SELECT p.*, v.price AS vprice, c.title AS catitle 
             FROM product p, variation v, category c , brand as b
             where p.id = v.product_id AND p.category_id = c.id AND v.active = 1 and p.brand_id = b.id ";
 

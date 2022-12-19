@@ -25,7 +25,7 @@
       <td><?php echo $m["category_id"]; ?></td>
 			<td><?php echo $m["title"]; ?></td>
 			<td><?php echo $m["description"]; ?></td>
-			<td><?php echo $m["price"]; ?></td>
+			<td><?php echo $m["vprice"]; ?></td>
 			<td><img src="../../images/<?php echo $m["hinhanh"]; ?>" width="100" class="img-thumbnail"></td>
 			<td><a class="btn btn-warning" href="index.php?action=sua&id=<?php echo $m["id"]; ?>"><span class="glyphicon glyphicon-edit"> </span></a></td>
 			<td><a class="btn btn-danger" href="index.php?action=xoa&id=<?php echo $m["id"]; ?>"><span class="glyphicon glyphicon-trash"></span></a></td>

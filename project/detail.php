@@ -6,7 +6,7 @@
 
       <h3 class="text-primary"><?php echo $mhct["title"]; ?></h3> 
       
-      <div><img src="./images/<?php echo $mhct["hinhanh"] ; ?>"></div>
+      <div><img class="img-detail" src="./images/<?php echo $mhct["hinhanh"] ; ?>"></div>
 
      <h4 class="text-primary">Giá bán: 
         <span class="text-danger"><?php echo number_format($mhct["price"]); ?> đ</span>
@@ -21,7 +21,7 @@
         <input type="submit" name="sub"  class="btn btn-info"     value="Chọn mua">
       </form>
      
-      <br>
+      <br> 
     </div>
     <!-- <div class="col-sm-3"> 
       <h3>Sản phẩm cùng loại:</h3>

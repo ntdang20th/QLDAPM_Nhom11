@@ -86,7 +86,7 @@
               <label for="optbang"> Loại tìm kiếm: </label>
               <select name="optbang" class="form-control">
                 <option value="">--- chọn loại tìm kiếm ---</option>
-                <option selected value="selectTenHoacTenVietTat">Danh mục theo tên hoặc tên viết tắt</option>
+                <option selected value="selectTenHoacTenVietTat">Danh mục theo tên </option>
                 <option value="selectConHang">Danh mục còn hàng</option>
                 <option value="selectHetHang">Danh mục hết hàng</option>
               </select>

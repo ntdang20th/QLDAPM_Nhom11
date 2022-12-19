@@ -10,6 +10,7 @@ require("model/thuonghieu.php");
 $dm = new DANHMUC();
 $mh = new MATHANG();
 $th = new THUONGHIEU();
+$gh = new GIOHANG();
 
 $danhmuc = $dm->laydanhmuc();
 $thuonghieu = $th->laythuonghieu();
@@ -38,7 +39,7 @@ switch ($action) {
             $tranghh = $_REQUEST["trang"];
         $batdau = ($tranghh - 1) * $soluong;
         $mathang = $mh->laymathangphantrang($batdau, $soluong, null, null);
-        // $mathangnoibat = $mh -> laymathangnoibat();
+        $mathangnoibat = $mh -> laymathangnoibat();
         include("main.php");
         break;
 
@@ -53,10 +54,25 @@ switch ($action) {
         break;
 
     case "chovaogio":
+        if(isset($_REQUEST["txtmahang"]) && isset($_REQUEST["txtsoluong"])){
+            $mahang = $_REQUEST["txtmahang"];
+            $soluong = $_REQUEST["txtsoluong"];
+        }
+        $card_id = $gh->layidgiohang($_SESSION['nguoidung']['id']);
+        $gh -> themhangvaogio($card_id ,$mahang, $soluong);
+
+        $soluongtronggio = $gh->demhangtronggio();
+        $giohang = $gh->laygiohang();
+        $tongtiengiohang = $gh->tinhtiengiohang();
         include("cart.php");
         break;
 
     case "viewcart":
+        if(!isset($_SESSION['nguoidung']))
+            return;
+        $soluongtronggio = $gh->demhangtronggio();
+        $giohang = $gh->laygiohang();
+        $tongtiengiohang = $gh->tinhtiengiohang();
         include("cart.php");
         break;
 
@@ -113,6 +129,8 @@ switch ($action) {
                 $tranghh = $_REQUEST["trang"];
             $batdau = ($tranghh - 1) * $soluong;
             $mathang = $mh->laymathangphantrang($batdau, $soluong, null, null);
+            $mathangnoibat = $mh -> laymathangnoibat();
+            $gh -> giohang();
             include("main.php");
         } else {
             $tb = "Đăng nhập không thành công!";
@@ -130,7 +148,7 @@ switch ($action) {
             $tranghh = $_REQUEST["trang"];
         $batdau = ($tranghh - 1) * $soluong;
         $mathang = $mh->laymathangphantrang($batdau, $soluong, null, null);
-
+        $mathangnoibat = $mh -> laymathangnoibat();
         $userName = $_POST['txtUserName'];
         $email = $_POST['txtEmail'];
         $phoneNumber = $_POST['txtDienThoai'];
@@ -150,7 +168,7 @@ switch ($action) {
             $tranghh = $_REQUEST["trang"];
         $batdau = ($tranghh - 1) * $soluong;
         $mathang = $mh->laymathangphantrang($batdau, $soluong, null, null);
-
+        $mathangnoibat = $mh -> laymathangnoibat();
         $id = $_POST['txtid'];
         $oldpass = $_POST['txtoldpass'];
         $newpass = $_POST['txtnewpass'];
@@ -184,7 +202,7 @@ switch ($action) {
             $tranghh = $_REQUEST["trang"];
         $batdau = ($tranghh - 1) * $soluong;
         $mathang = $mh->laymathangphantrang($batdau, $soluong, null, null);
-
+        $mathangnoibat = $mh -> laymathangnoibat();
         if (isset($_POST["txtusername"]) && isset($_POST["txtpassword"]) && isset($_POST["txtemail"]) && isset($_POST["txtphone"]) && isset($_POST["txtaddress"])) {
             $username = $_POST['txtusername'];
             $password = $_POST['txtpassword'];
@@ -208,6 +226,7 @@ switch ($action) {
             $tranghh = $_REQUEST["trang"];
         $batdau = ($tranghh - 1) * $soluong;
         $mathang = $mh->laymathangphantrang($batdau, $soluong, null, $_REQUEST["madm"]);
+        $mathangnoibat = $mh -> laymathangnoibat();
         include("main.php");
         break;
     case "xembrand":
@@ -221,7 +240,22 @@ switch ($action) {
             $tranghh = $_REQUEST["trang"];
         $batdau = ($tranghh - 1) * $soluong;
         $mathang = $mh->laymathangphantrang($batdau, $soluong, $_REQUEST["brandid"], null);
+        $mathangnoibat = $mh -> laymathangnoibat();
         include("main.php");
+        break;
+    
+    case "thoedoidonhang":
+        break;
+
+    case "xoagiohang":
+        $card_id = $gh->layidgiohang($_SESSION['nguoidung']['id']);
+        $gh->xoagiohang($card_id);
+        if(!isset($_SESSION['nguoidung']))
+            return;
+        $soluongtronggio = $gh->demhangtronggio();
+        $giohang = $gh->laygiohang();
+        $tongtiengiohang = $gh->tinhtiengiohang();
+        include("cart.php");
         break;
     default:
         break;
