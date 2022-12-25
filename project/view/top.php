@@ -187,6 +187,7 @@
     </div>
   </nav>
 
+ 
   <!-- Hộp tìm kiếm -->
   <div class="modal fade" id="modalTimKiem" role="dialog">
     <div class="modal-dialog">
@@ -203,15 +204,21 @@
               <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span> Từ khóa: </label>
               <input type="text" class="form-control" id="txttukhoa" name="txtTuKhoa" placeholder="Nhập từ khóa">
             </div>
-            <div class="form-group">
-              <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span> Theo giá </label>
-              <input type="text" class="form-control" id="txttukhoa" name="txtTuKhoa" placeholder="Nhập từ khóa">
+           <div class="form-group">
+              <label for="optbang"> Loại tìm kiếm: </label>
+              <select name="optbang" class="form-control">
+                <option value="">--- chọn loại tìm kiếm ---</option>
+                <option selected value="tenSP">Sản phẩm theo tên</option>
+                <option value="giaMin">Sản phẩm theo giá tối thiểu</option>
+                <option value="giaMax">Sản phẩm theo giá tối đa</option>
+              </select>
             </div>
             <button type="submit" class="btn btn-info">Tìm kiếm
               <span class="glyphicon glyphicon-ok"></span>
             </button>
           
-        
+            <input type="hidden" name="action" value="timKiem">
+
           
           </form>
         </div>
