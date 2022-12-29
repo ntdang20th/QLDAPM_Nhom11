@@ -185,9 +185,9 @@ function laymathangphantrang($m, $n)
         // WHERE p.category_id = c.id and p.price <= $pricemax
         // ORDER BY id  
         // DESC LIMIT $batDau, $soLuong";
-        $sql = "SELECT p.*, v.price as price
+        $sql = "SELECT p.*, v.price as vprice
         FROM product p, variation v
-        WHERE p.id = v.product_id and  p.price <= $pricemax";
+        WHERE p.id = v.product_id and  v.price <= $pricemax";
         $cmd = $dbcon->prepare($sql);
         $cmd->execute();
         $result = $cmd->fetchAll();             
@@ -207,7 +207,7 @@ function getPriceMin($pricemin /*, $batDau, $soLuong*/)
     $dbcon = DATABASE::connect();
     try{
        
-        $sql = "SELECT p.*, v.price as price
+        $sql = "SELECT p.*, v.price as vprice
         FROM product p, variation v
         WHERE p.id = v.product_id and v.price >= $pricemin";
         $cmd = $dbcon->prepare($sql);
